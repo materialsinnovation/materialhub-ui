@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
+    <clipPath id="myClip"> <circle cx="300" cy="300" r="300" /> </clipPath>
+    <path d="M0 0h600v100l-400 100z"      clip-path="url(#myClip)" stroke="#000" fill="#998100" stroke-opacity="0" stroke-width="0"/>
+    <path d="M0 600V0l200 200z"           clip-path="url(#myClip)" stroke="#000" fill="#ccac00" stroke-opacity="0" stroke-width="0"/>
+    <path d="M200 200l400-100v500H0z"     clip-path="url(#myClip)" stroke="#000" fill="#ffd700" stroke-opacity="0" stroke-width="0"/>
+    <path d="M0 0l200 200"                clip-path="url(#myClip)" stroke="#000" fill="none"    stroke-width="4"/>
+    <path d="M600 100l-400 100"           clip-path="url(#myClip)" stroke="#000" fill="none"    stroke-width="4"/>
+    <path d="M200 200l-0 0M200 200L0 600" clip-path="url(#myClip)" stroke="#000" fill="none"    stroke-width="4"/>
+</svg>
