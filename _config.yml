@@ -3,4 +3,4 @@ title: "Material Hub"
 description: "This is the user interface to the materials and microstructure data hub."
 
 baseurl: "/materialhub-ui"
-rooturl: "http://localhost:4000"
+rooturl: "https://materialsinnovation.github.io/"
