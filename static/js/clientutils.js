@@ -2,23 +2,25 @@ const CORDRA_HTTPS_URL = 'https://149.165.157.156'
 
 // TODO less hacky
 /// Check if a string is nonempty
-function nonEmpty(str){
+function nonEmpty(str) {
 	return !!str;
 }
 
-function tryGetAuthToken(){
+function tryGetAuth() {
 	const username = sessionStorage.getItem("username");
 	const token = sessionStorage.getItem("authToken");
 
-	console.log("Token is", token)
+	console.log("Token is", token);
+	console.log("Token empty is ", nonEmpty(token));
 
-	if (nonEmpty(token)){
-		return token;
+	if (nonEmpty(token)) {
+		return { "username": username, "token": token };
+	} else {
+		return null;
 	}
-	return undefined;
 }
 
-function saveAuthToken(username, token){
+function saveAuthToken(username, token) {
 	sessionStorage.setItem("username", username);
 	sessionStorage.setItem("authToken", token);
 }
@@ -36,14 +38,14 @@ async function sendHTTPRequest(endpoint, method, body) {
 
 	console.log(body);
 
-	const token = tryGetAuthToken();
+	const authdata = tryGetAuth();
 
 	// add authentication if we have it
-	if (token !== undefined) {
-		options['headers']['Authorization'] = 'Bearer ' + token;
+	if (authdata !== null) {
+		options['headers']['Authorization'] = 'Bearer ' + authdata['token'];
 	}
 	// add body if we have it
-	if ((body !== undefined) || (method !== 'GET')) {
+	if ((body !== null) || (method !== 'GET')) {
 		options['body'] = body;
 	}
 
@@ -63,7 +65,8 @@ async function getData(endpoint = '') {
 	return await sendHTTPRequest(endpoint, 'GET');
 }
 
-async function login(username, password) {
+//TODO DO NOT LOG TOKEN THIS IS INSECURE AND FOR DEBUG ONLY
+async function loginUser(username, password) {
 	console.log('auth started');
 	const response = await postData(
 		'/auth/token', {
@@ -74,12 +77,12 @@ async function login(username, password) {
 
 	console.log('auth returned');
 	console.log(response);
-	
-	if (!response.ok){
+
+	if (!response.ok) {
 		alert("Login failed!");
 		return;
 	}
-	
+
 	// now await the json content as well
 	resp = await response.json();
 	console.log(resp);
@@ -97,3 +100,9 @@ async function login(username, password) {
 	saveAuthToken(username, access_token);
 	console.log(access_token);
 }
+
+async function logoutUser(username, password) {
+	sessionStorage.removeItem("username");
+	sessionStorage.removeItem("authToken");
+}
+
