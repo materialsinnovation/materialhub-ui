@@ -1,3 +1,4 @@
+// Listener for the login form
 document.getElementById('loginform').addEventListener('submit', (event) => {
 	event.preventDefault()
 	const username = document.getElementById('username').value;
@@ -6,19 +7,14 @@ document.getElementById('loginform').addEventListener('submit', (event) => {
 	loginUser(username, password)
 });
 
+// Listener for the logout form
 document.getElementById('logoutform').addEventListener('submit', (event) => {
 	event.preventDefault()
 	
 	const authdata = tryGetAuth();
 
-	let username = null;
-	if (null !== authdata) {
-		username = authdata["username"];
-	}
-
 	logoutUser();
-
-	console.log(username);
+	
 	if (null !== authdata) {
 		alert(authdata["username"] + " was logged out!");
 	} else {

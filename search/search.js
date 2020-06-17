@@ -1,4 +1,5 @@
-async function search(query){
+/// Forward a search query to cordra and populate search page
+async function runSearch(query){
 	let response = await getData('/objects?query='+query);
 
 	if (!response.ok){
@@ -14,9 +15,6 @@ async function search(query){
 	results_box.appendChild(document.createTextNode(data_pretty));
 }
 
-
-
-
 // If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
 	let params = new URLSearchParams(location.search);
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// if we have params, search for them
 	if (nonEmpty(qstr)) {
-		search(qstr);
+		runSearch(qstr);
 	}
 
 }, false);

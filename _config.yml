@@ -2,5 +2,7 @@
 title: "Material Hub"
 description: "This is the user interface to the materials and microstructure data hub."
 
+# TODO is this necessary?
 baseurl: "/materialhub-ui"
+# Also is this necessary? makes debugging hard
 # rooturl: "https://materialsinnovation.github.io"
