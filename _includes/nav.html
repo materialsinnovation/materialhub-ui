@@ -1,27 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-    
-    <a class="navbar-brand" href="{{ site.rooturl }}{{ site.baseurl }}/">
+
+    <a class="navbar-brand" href="{{ site.baseurl }}/">
         <div class="navbar-brand">
-        <img src="{{ site.rooturl }}{{ site.baseurl }}/static/img/logo.svg" height="25"/>
+        <img src="{{ site.baseurl }}/static/img/logo.svg" height="25"/>
         </div>
         {{ site.title }}
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{{ site.rooturl }}{{ site.baseurl }}/contribute">Contribute</a>
+            <a class="nav-link" href="{{ site.baseurl }}/contribute">Contribute</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Process
+          </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ site.baseurl }}/process">Create Process</a>
+            </div>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Explore
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ site.rooturl }}{{ site.baseurl }}/search">Full Text Search</a>
-            <a class="dropdown-item" href="{{ site.rooturl }}{{ site.baseurl }}/periodic-table">Search by Periodic Table</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}/search">Full Text Search</a>
+            <a class="dropdown-item" href="{{ site.baseurl }}/periodic-table">Search by Periodic Table</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -29,9 +37,9 @@
                 More
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ site.rooturl }}{{ site.baseurl }}/about">About</a>
-                <a class="dropdown-item" href="{{ site.rooturl }}{{ site.baseurl }}/contact">Contact</a>
-                <a class="dropdown-item" href="{{ site.rooturl }}{{ site.baseurl }}/docs">Documentation</a>
+                <a class="dropdown-item" href="{{ site.baseurl }}/about">About</a>
+                <a class="dropdown-item" href="{{ site.baseurl }}/contact">Contact</a>
+                <a class="dropdown-item" href="{{ site.baseurl }}/docs">Documentation</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
