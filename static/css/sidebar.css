@@ -1,0 +1,17 @@
+.sidebar {
+  background-color: rgb(51,51,51);
+  color: #ddd;
+}
+
+.sidebar a {
+  font-size: 12px;
+  overflow: hidden;
+  font-weight: bold;
+  display: block;
+  color: #bbb;
+  margin: 10px;
+}
+
+.sidebar a:hover {
+  color: #fff;
+}
