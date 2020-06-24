@@ -15,3 +15,10 @@
     color: #FFF;
     text-decoration: underline;
 }
+
+.btn-margin-left {
+    margin-left: .5rem;
+}
+.btn-margin-right {
+    margin-right: .5rem;
+}

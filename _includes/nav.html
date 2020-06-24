@@ -11,6 +11,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- left side of navbar -->
         <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <a class="nav-link" href="{{ site.baseurl }}/contribute">Contribute</a>
@@ -40,11 +41,57 @@
                 <a class="dropdown-item" href="{{ site.baseurl }}/about">About</a>
                 <a class="dropdown-item" href="{{ site.baseurl }}/contact">Contact</a>
                 <a class="dropdown-item" href="{{ site.baseurl }}/docs">Documentation</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="{{ site.rooturl }}{{ site.baseurl }}/search/" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Full Text Search" aria-label="Search" name="query">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
+        </li>
+    </ul>
+    <!-- right navbar -->
+    <ul class="navbar-nav">
+        <!-- Login/logout button -->
+        <li class="nav-item">
+            <button class="btn btn-outline-light my-2 my-sm-0 btn-margin-left btn-margin-right" type="submit" id="loginToggleButton">Login</button>
+        </li>
+        <li class="nav-item">
+                <!-- search button -->
+                <form class="form-inline my-2 my-lg-0" action="{{ site.rooturl }}{{ site.baseurl }}/search/" method="GET">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Full Text Search" aria-label="Search" name="query">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+        </li>
+    </ul>
+        
+
+</div>
 </nav>
+
+<!-- Login form (triggered by button) -->
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="text" id="username" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="username">Username</label>
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <input type="password" id="password" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="password">Password</label>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <form id="loginSubmitForm">
+                    <input class="btn btn-default" id="loginButton" type="submit" value="Login"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
