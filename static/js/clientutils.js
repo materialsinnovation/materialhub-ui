@@ -52,6 +52,8 @@ async function sendHTTPRequest(endpoint, method, body) {
 	}
 	// add body if we have it
 	if ((body !== null) || (method !== 'GET')) {
+		console.log("POST request, body is ", body)
+
 		options['body'] = body;
 	}
 
