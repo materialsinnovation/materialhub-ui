@@ -22,3 +22,8 @@
 .btn-margin-right {
     margin-right: .5rem;
 }
+
+.close { 
+  position: absolute; 
+  right: 1rem;
+}

@@ -52,8 +52,6 @@ async function loginUser(username, password) {
 	// write back access token to global store
 	saveAuthToken(username, access_token);
 
-	alert(username + " is logged in!");
-
 	// refresh page now that we're logged in
 	location.reload();
 
@@ -68,7 +66,6 @@ async function logoutUser() {
 	const was_logged_in = (null !== authdata);
 
 	if (was_logged_in) {
-		alert(authdata["username"] + " was logged out!");
 	} else {
 		alert("No one was logged in, so nothing has been done!");
 		// return false; // always dump data anyways
@@ -88,9 +85,9 @@ function checkLogin() {
 	// logged in if auth isn't null
 	loggedIn = (null !== authdata);
 	if (loggedIn) {
-		document.getElementById('loginToggleButton').innerHTML = "Logout";
+		document.getElementById('loginToggleText').innerHTML = "Logout";
 	} else {
-		document.getElementById('loginToggleButton').innerHTML = "Login";
+		document.getElementById('loginToggleText').innerHTML = "Login";
 	}
 	return loggedIn;
 }
@@ -139,6 +136,18 @@ document.getElementById('loginSubmitForm').addEventListener('submit', (event) =>
 	event.preventDefault();
 	processModalLogin();
 });
+
+// JQuery is gross but bootstrap loves it
+// Capture enter key for login form
+$(function () {
+	$('#modalLoginForm').keypress(function (e) {
+		console.log("Key pressed")
+		if (e.which == 13) {
+			// if enter key pressed, process data
+			processModalLogin();
+		}
+	})
+})
 
 
 
