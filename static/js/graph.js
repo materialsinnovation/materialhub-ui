@@ -1,5 +1,3 @@
-// console.log("Script accessed");
-
 // Initialize graph canvas area
 var svg = d3.select("#canvas")
   .on("click", function() {
@@ -90,9 +88,9 @@ function drawSelectors() {
 async function cordraCreate(node) {
   let objType = (graphTypes[selected] == "material") ? "Material" : "ProcessHistory";
   objType = "Document";
-  var res = await sendHTTPRequest(`/objects/?type=${objType}`, 'POST', JSON.stringify(node.properties));
+  let res = await sendHTTPRequest(`/objects/?type=${objType}&full=true`, 'POST', JSON.stringify(node.properties));
   console.log(res);
-  var uuid = await res.id;
+  let uuid = (await res.json())["id"];
   console.log(uuid);
   node.properties.id = uuid;
   console.log(node);
@@ -100,9 +98,9 @@ async function cordraCreate(node) {
 
 async function cordraUpdate(properties) {
   // console.log(properties.id);
-  var res = await sendHTTPRequest(`/objects/${properties.id}`, 'PUT', JSON.stringify(properties));
+  let res = await sendHTTPRequest(`/objects/${properties.id}`, 'PUT', JSON.stringify(properties));
   console.log(res);
-  var uuid = await res.id;
+  let uuid = (await res.json())["id"];
   console.log(uuid);
 }
 
