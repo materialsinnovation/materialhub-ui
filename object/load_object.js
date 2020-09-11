@@ -24,31 +24,40 @@ async function populateObject(object_id) {
 
 	// TODO: more useful formatting
 	content_box.innerHTML = '';
-	content_box.appendChild(document.createTextNode(data_pretty));
 
-	let name_box = document.getElementById('object_name');
-	name_box.innerHTML = results['name'];
-}
+	var ppopt = {}
+	// ppopt['expanded'] = false;
+	ppopt['styles'] = {
+		'array': { 'th': { 'backgroundColor': '#e3c000', 'color': 'white' } }};
 
-// If we have a query string, search it now
-document.addEventListener('DOMContentLoaded', function () {
-	// get query string
-	let params = new URLSearchParams(location.search);
-	for (const [key, value] of params) { console.log(key, value); }
+		var ppTable = prettyPrint(results, ppopt);
 
-	console.log(params);
-
-	let object_id = params.get('id');
-
-	console.log(object_id);
-
-	// if we have params, search for them
-	if (nonEmpty(object_id)) {
-		populateObject(object_id);
-	} else {
+		// document.getElementById('debug').appendChild(ppTable);
+		content_box.appendChild(ppTable);
 
 		let name_box = document.getElementById('object_name');
-		name_box.innerHTML = 'No object id provided!';
+		name_box.innerHTML = results['name'];
 	}
 
-}, false);
+	// If we have a query string, search it now
+	document.addEventListener('DOMContentLoaded', function () {
+		// get query string
+		let params = new URLSearchParams(location.search);
+		for (const [key, value] of params) { console.log(key, value); }
+
+		console.log(params);
+
+		let object_id = params.get('id');
+
+		console.log(object_id);
+
+		// if we have params, search for them
+		if (nonEmpty(object_id)) {
+			populateObject(object_id);
+		} else {
+
+			let name_box = document.getElementById('object_name');
+			name_box.innerHTML = 'No object id provided!';
+		}
+
+	}, false);
