@@ -2,49 +2,108 @@
 
     <a class="navbar-brand" href="{{ site.baseurl }}/">
         <div class="navbar-brand">
-        <img src="{{ site.baseurl }}/static/img/logo.svg" height="25"/>
+            <img src="{{ site.baseurl }}/static/img/logo.svg" height="25" />
         </div>
         {{ site.title }}
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- left side of navbar -->
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ site.baseurl }}/contribute">Contribute</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Process
-          </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ site.baseurl }}/process">Create Process</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Explore
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ site.baseurl }}/search">Full Text Search</a>
-            <a class="dropdown-item" href="{{ site.baseurl }}/periodic-table">Search by Periodic Table</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                More
+            <li class="nav-item">
+                <a class="nav-link" href="{{ site.baseurl }}/contribute">Contribute</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Process
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ site.baseurl }}/about">About</a>
-                <a class="dropdown-item" href="{{ site.baseurl }}/contact">Contact</a>
-                <a class="dropdown-item" href="{{ site.baseurl }}/docs">Documentation</a>
+                    <a class="dropdown-item" href="{{ site.baseurl }}/process">Create Process</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Explore
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ site.baseurl }}/search">Full Text Search</a>
+                    <a class="dropdown-item" href="{{ site.baseurl }}/periodic-table">Search by Periodic Table</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    More
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ site.baseurl }}/about">About</a>
+                    <a class="dropdown-item" href="{{ site.baseurl }}/contact">Contact</a>
+                    <a class="dropdown-item" href="{{ site.baseurl }}/docs">Documentation</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" action="{{ site.rooturl }}{{ site.baseurl }}/search/" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Full Text Search" aria-label="Search" name="query">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <!-- right navbar -->
+        <ul class="navbar-nav">
+            <!-- search button -->
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0" action="{{ site.rooturl }}{{ site.baseurl }}/search/"
+                    method="GET">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Full Text Search" aria-label="Search"
+                        name="query">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+            <!-- Login/logout button -->
+            <li class="nav-item">
+                <a class="btn btn-light my-2 my-sm-0 btn-margin-left btn-margin-right" type="submit"
+                    id="loginToggleButton">
+                    <i class="fa fa-user"></i>
+                    <span id="loginToggleText">Login</span>
+                </a>
+            </li>
+        </ul>
+
+
     </div>
 </nav>
+
+<!-- Login form (triggered by button) -->
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title font-weight-bold" style="margin: 0 auto;">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-4 text-center">
+                    <div class="input-prepend">
+                        <i class="fa fa-fw fa-envelope prefix grey-text"></i>
+                        <input type="text" id="username" class="span2" placeholder="Username">
+                    </div>
+                </div>
+
+                <div class="md-form mb-4 text-center">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="fa fa-fw fa-lock prefix grey-text"></i> </span>
+                        <input type="password" id="password" class="span2" placeholder="Password">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <form id="loginSubmitForm">
+                    <input class="btn btn-default" id="loginButton" type="submit" value="Login"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
