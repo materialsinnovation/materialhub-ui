@@ -27,3 +27,19 @@
   position: absolute; 
   right: 1rem;
 }
+
+/* feature  */
+.feature {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* stats */
+.stats {
+    text-align: center;
+    line-height: 1.8; 
+}
+.badge-stats {
+    background-color:#153B5E;
+    color:#fff;
+}
