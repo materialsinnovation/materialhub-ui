@@ -16,6 +16,18 @@
     text-decoration: underline;
 }
 
+.btn-margin-left {
+    margin-left: .5rem;
+}
+.btn-margin-right {
+    margin-right: .5rem;
+}
+
+.close { 
+  position: absolute; 
+  right: 1rem;
+}
+
 /* feature  */
 .feature {
     padding-top: 15px;
