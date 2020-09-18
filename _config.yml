@@ -2,5 +2,4 @@
 title: "Material Hub"
 description: "This is the user interface to the materials and microstructure data hub."
 
-baseurl: "/"
-rooturl: "https://materialhub.org"
+baseurl: "https://materialhub.org"
