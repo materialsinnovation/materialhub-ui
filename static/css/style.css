@@ -43,3 +43,8 @@
     background-color:#153B5E;
     color:#fff;
 }
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #CCE7FF; // Choose your own color here
+ }
