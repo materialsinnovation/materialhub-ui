@@ -2,11 +2,10 @@
 
 // frontmatter forces jekyll to parse this 
 const authdata = tryGetAuth();
-if (null !== authdata){
+if (null !== authdata) {
 	// do nothing, let page continue loading
-} else{
+} else {
 	// FORCE LOGIN HERE
-	alert("Login Required!");
-	// TODO: is hacky bc of baseurl
+	alert("Please log in to use this page!");
 	window.location.replace("/materialhub-ui/login");
 }
