@@ -1,5 +1,5 @@
 # Site settings
-title: "Material Hub"
+title: "Material Data Hub"
 description: "This is the user interface to the materials and microstructure data hub."
 
 baseurl: "https://materialhub.org"
