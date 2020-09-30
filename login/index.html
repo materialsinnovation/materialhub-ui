@@ -1,0 +1,33 @@
+---
+layout: default
+title: Login
+root: .
+description: ""
+---
+
+<h1>{{ page.title }} </h1>
+<div>
+    <form id="loginPageForm">
+        <label for="user"> Username: </label>
+        <input type="text" id="loginPageUsername" name="username"> </input>
+
+        <label for="pass"> Password: </label>
+        <input type="password" id="loginPagePassword" name="password"> </input>
+
+        <input type="submit" value="Submit"></input>
+    </form>
+
+    <br>
+</div>
+
+<script>
+    // Listener for the login form
+    document.getElementById('loginPageForm').addEventListener('submit', (event) => {
+        event.preventDefault()
+        const username = document.getElementById('loginPageUsername').value;
+        const password = document.getElementById('loginPagePassword').value;
+        console.log("user is", username);
+        console.log("password is", password);
+        loginUser(username, password)
+    });
+</script>

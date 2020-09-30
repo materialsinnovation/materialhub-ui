@@ -1,0 +1,7 @@
+<div class="sidebar" style="grid-column: 1; grid-row: 1 / 3;">
+  {% for page in site.pages %}
+    <a href="{{ site.baseurl }}{{ page.url }}">
+        {{ page.title }}
+    </a>
+  {% endfor %}
+</div>

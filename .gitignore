@@ -1,4 +1,7 @@
-_site/
+Gemfile
+Gemfile.lock
+sven_helper.sh
+_site/*
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
