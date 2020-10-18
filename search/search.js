@@ -43,13 +43,10 @@ async function createSearchResult(result) {
 
 	row_td.appendChild(id_link);
 
-	console.log(row_td);
-
 	return row_td;
 }
 
 async function populateTable(results) {
-	console.log(results);
 	// Guided by here: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
 
 	// Get references to the table body
@@ -69,8 +66,6 @@ async function populateTable(results) {
 document.addEventListener('DOMContentLoaded', function () {
 	let params = new URLSearchParams(location.search);
 	let qstr = params.get("query");
-
-	console.log(qstr);
 
 	// if we have params, search for them
 	if (nonEmpty(qstr)) {
