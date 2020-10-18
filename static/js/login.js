@@ -3,9 +3,6 @@ var loggedIn = false;
 
 /// Log a user into Cordra and store a token for later use
 async function loginUser(username, password) {
-	//TODO DO NOT LOG TOKEN THIS IS INSECURE AND FOR DEBUG ONLY
-	console.log('auth started');
-
 	if (!nonEmpty(username)) {
 		alert("Error: username cannot be empty!");
 		return false;
@@ -21,9 +18,6 @@ async function loginUser(username, password) {
 		'username': username,
 		'password': password
 	});
-
-	console.log('auth returned');
-	console.log(response)
 
 	if (!response.ok) {
 		console.log('auth failed');
@@ -43,8 +37,6 @@ async function loginUser(username, password) {
 		alert("Login failed: bad credentials!");
 		return false;
 	}
-
-	console.log('auth success!!');
 
 	// check token
 	const intro_ret = postData('/auth/introspect', { 'token': access_token });
