@@ -1,0 +1,11 @@
+<div style='container'>
+{{#name}}
+Name: {{ name }} <br>
+{{/name}}
+{{#@id}}
+ID: {{ @id }} <br>
+{{/@id}}
+{{#wrong}}
+Fail: {{ wrong }} <br>
+{{/wrong}}
+</div>
