@@ -1,0 +1,430 @@
+{{! 'https://api.materialhub.org/objects/'}}
+
+<div class='row' id='row1'>
+    <div class="col-6">
+        {{#name}}
+            <h2> {{name}} </h2>
+        {{/name}}
+
+        {{#alternateName}}
+            <h3> ({{alternateName}}) </h3>
+        {{/alternateName}}
+
+
+        {{#@type.0}}
+            <b>Type:</b> <br>
+        {{/@type.0}}
+        {{#@type}}
+            <div class='badge badge-pill badge-primary'>{{.}}</div>
+        {{/@type}}
+
+        <br>
+
+        {{#@id}}
+            <b>Identifier:</b> <a href='https://hdl.handle.net/{{@id}}'>hdl:{{@id}}</a> <br>
+        {{/@id}}
+
+        {{! Lifecycle Hook Needed, what metadata property will this be?}}
+        {{#Identifier}}
+            <strong>LifeCycle Hook for Other Identifiers:</strong>
+            {{ . }} <br>
+        {{/Identifier}}
+
+        {{#url}}
+            <strong> Direct link: </strong> <a href='{{url}}'>{{url}}</a>
+        {{/url}}
+
+        <br>
+
+        {{! Lifecycle Hook Needed, what metadata property will this be?}}
+        {{#url}}
+            <strong> Related Records: </strong> 
+            to do
+        {{/url}}
+    </div>
+    <div class='col-6'>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{image.0}}"  class='img-fluid img-thumbnail'>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{image.1}}"  class='img-fluid img-thumbnail'>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{image.2}}"  class='img-fluid img-thumbnail'>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+<div class='row' id='row2'>
+    <div class='col-12'>
+        {{#description}}
+            <b>Description:</b> <br>
+            <div class="card card-body bg-light">
+            {{description}}
+            </div>
+        {{/description}}
+    </div>
+</div>
+<br>
+<div class='row' id='row3'>
+    <div class='col-12'>
+        {{#about.0}}
+            <b> Topic(s):</b> (Controlled Vocabulary as Defined Terms) <br>
+        {{/about.0}}
+        {{#about}}
+            <div class='badge badge-pill badge-primary'>{{ name }}</div>
+        {{/about}}
+
+        {{#keywords.0}}
+        <br>
+            <b> Keyword(s):</b> (User Supplied) <br>
+        {{/keywords.0}}
+        {{#keywords}}
+            <div class='badge badge-pill badge-primary'>{{ . }}</div>
+        {{/keywords}}
+
+        <br><br>
+
+        {{#license}}
+            <b>License:</b> {{license}}
+        {{/license}}
+        <br>
+        {{#dateCreated}}
+            <b>Dates:</b> {{dateCreated}} (created) <b>|</b> {{datePublished}} (published) <b>|</b> {{dateModified}} (modified)
+        {{/dateCreated}}
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row4'>
+    <div class='col-3'>
+        <div class='card' id='author'>
+            <div class='card-header'>
+            <b>Author(s)/Creator(s):</b> 
+            </div>
+            <div class='card-body'>
+                {{#author}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/author}}
+                {{#creator}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/creator}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-3'>
+        <div class='card' id='contributor'>
+            <div class='card-header'>
+            <b>Contributor(s):</b> 
+            </div>
+            <div class='card-body'>
+                {{#contributor}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/contributor}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-3'>
+        <div class='card' id='editor'>
+            <div class='card-header'>
+                {{#editor.0}}
+                    <b>Editor(s):</b>
+                {{/editor.0}}
+            </div>
+            <div class='card-body'>
+                {{#editor}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/editor}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-3'>
+        <div class='card' id='accountablePerson'>
+            <div class='card-header'>
+                {{#accountablePerson.0}}
+                    <b>Accountable Person(s):</b> 
+                {{/accountablePerson.0}}
+            </div>
+            <div class='card-body'>
+                {{#accountablePerson}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/accountablePerson}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row5'>
+    <div class='col-3'>
+        <div class='card' id='publisher'>
+            <div class='card-header'>
+                {{#publisher.0}}
+                    <b>Publisher(s)</b> 
+                {{/publisher.0}}
+            </div>
+            <div class='card-body'>
+                {{#publisher}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/publisher}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-3'>
+        <div class='card' id='provider'>
+            <div class='card-header'>
+                {{#provider.0}}
+                    <b>Provider(s):</b> 
+                {{/provider.0}}
+            </div>
+            <div class='card-body'>
+                {{#provider}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/provider}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-3'>
+        <div class='card' id='funder'>
+            <div class='card-header'>
+                {{#funder.0}}
+                    <b>Funder(s):</b> 
+                {{/funder.0}}
+            </div>
+            <div class='card-body'>
+                {{#funder}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/funder}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-3'>
+        <div class='card' id='copyrightHolder'>
+            <div class='card-header'>
+                {{#copyrightHolder.0}}
+                    <b>Copyright Holder(s):</b> 
+                {{/copyrightHolder.0}}
+            </div>
+            <div class='card-body'>
+                {{#copyrightHolder}}
+                    <a href='?id={{ @id }}' >{{ name }} </a><br>
+                {{/copyrightHolder}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row6'>
+    <div class='col-4'>  
+        <div class='card'>
+            <div class='card-header'>
+            <b>Lifecycle Hook for Parent Record(s)</b> {{!Need Lifecycle Hook}}
+            </div>
+            <div class='card-body'>
+                {{#isPartOf}}
+                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
+                {{/isPartOf}}
+            </div>
+        </div>     
+    </div>
+    
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#hasPart.0}}
+                    <b>Lifecycle Hook for Child Record(s):</b> {{!Need Lifecycle Hook}}
+                {{/hasPart.0}}
+            </div>
+            <div class='card-body'>
+                {{#hasPart}}
+                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
+                {{/hasPart}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#isBasedOn.0}}
+                    <b>Lifecycle hook for "This Record is derived from or based on":</b> {{!Need Lifecycle Hook}}
+                {{/isBasedOn.0}}
+            </div>
+            <div class='card-body'>
+                {{#isBasedOn}}
+                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
+                {{/isBasedOn}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row7'>
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#measurementTechnique.0}}
+                    <b>Methodology</b> {{!Need Lifecycle Hook}}
+                {{/measurementTechnique.0}}
+            </div>
+            <div class='card-body'>
+                {{#measurementTechnique}}
+                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
+                {{/measurementTechnique}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#material.0}}
+                    <b>Material:</b> 
+                {{/material.0}}
+            </div>
+            <div class='card-body'>
+                {{#material}}
+                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
+                {{/material}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#materialReference.0}}
+                    <b>Reference or Calibration Material:</b> 
+                {{/materialReference.0}}
+            </div>
+            <div class='card-body'>
+                {{#materialReference}}
+                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
+                {{/materialReference}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row8'>
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#variableMeasured.0}}
+                    <b>Variable Measured</b> 
+                {{/variableMeasured.0}}
+            </div>
+            <div class='card-body'>
+                {{#variableMeasured}}
+                    <b>{{ name }}:</b> {{value}} {{unitText}} <br>
+                {{/variableMeasured}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#parameterControlled.0}}
+                    <b>Parameter Controlled:</b> {{!Need Lifecycle Hook}}
+                {{/parameterControlled.0}}
+            </div>
+            <div class='card-body'>
+                {{#parameterControlled}}
+                    <b>{{ name }}:</b> {{value}} {{unitText}} <br>
+                {{/parameterControlled}}
+            </div>
+        </div>
+    </div>
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-header'>
+                {{#conditionObserved.0}}
+                    <b>Condition Observed:</b> {{!Need Lifecycle Hook}}
+                {{/conditionObserved.0}}
+            </div>
+            <div class='card-body'>
+                {{#conditionObserved}}
+                    <b>{{ name }}:</b> {{value}} {{unitText}} <br>
+                {{/conditionObserved}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row9'>
+    <div class='col-12'>
+        {{#distribution}}
+        <b>File Download:</b> <a href='{{.}}'>{{.}}</a>
+        {{/distribution}}
+    </div>
+</div>
+
+<br>
+
+<div class='row' id='row10'>
+    <div class='col-12' id='productInformation'>
+        <h4>Production Information:</h4>
+        
+        {{#manufacturer}}
+        <b>Manufacturer:</b> {{.}}
+        {{/manufacturer}}
+
+        {{#brand}}
+        <b>Brand:</b> {{.}}
+        {{/brand}}
+
+        {{#model}}
+        <b>Model:</b> {{.}}
+        {{/model}}
+
+        {{#productID}}
+        <b>Product ID:</b> {{.}}
+        {{/productID}}
+
+        {{#serialNumber}}
+        <b>Serial Number:</b> {{.}}
+        {{/serialNumber}}
+
+        {{#purchasedDate}}
+        <b>Dates:</b> {{purchasedDate}} (purchased) <b>|</b> {{productionDate}} (produced)
+        {{/purchasedDate}}
+    </div>
+</div>
+
+<br>

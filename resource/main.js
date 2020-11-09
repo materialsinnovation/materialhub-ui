@@ -4,13 +4,15 @@ async function getTemplate(url) {
 }
 
 async function renderTemplate(object_id) {
-    let response_data = await getData('/objects/' + object_id);
+    let response_data = await getData(
+        '/objects/' + object_id + '?requestContext={"view":"ui"}'
+    );
     if (!response_data.ok) {
         alert('Object fetch failed!');
     }
     let data = await response_data.json();
 
-    let response_template = await getTemplate('./template.mst');
+    let response_template = await getTemplate('./content_block.mst');
     if (!response_template.ok) {
         alert('Template fetch failed!');
     }
