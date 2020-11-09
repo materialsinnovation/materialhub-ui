@@ -68,8 +68,12 @@ document.addEventListener(
     function () {
         let params = new URLSearchParams(location.search);
         let qstr = params.get('query');
+        let pageSize = params.get('pageSize');
+        let pageNum = params.get('pageNum');
 
         console.log(qstr);
+        console.log(pageSize);
+        console.log(pageNum);
 
         // if we have params, search for them
         if (nonEmpty(qstr)) {
