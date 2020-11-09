@@ -32,13 +32,18 @@ async function createSearchResult(result) {
     name_link.href = encodeURI('/object?id=' + result_id);
     name_link.innerHTML = result_name;
     thumbnail_link.src = result_thumbnail;
-    thumbnail_link.class = 'img-fluid img-thumbnail';
+    thumbnail_link.height = '50';
+    thumbnail_link.width = '50';
+    //$('img').addClass = 'img-fluid img-thumbnail'; //need to figure out how to pass through a class attribute
 
     // Add tree of elements
     row_td.appendChild(name_div);
     name_div.appendChild(name_header);
     name_header.appendChild(name_link);
-    name_div.appendChild(thumbnail_link);
+
+    if (nonEmpty(result_thumbnail)) {
+        name_div.appendChild(thumbnail_link);
+    }
 
     let id_link = document.createElement('a');
     id_link.href = name_link.href;
