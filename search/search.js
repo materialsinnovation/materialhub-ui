@@ -86,8 +86,10 @@ document.addEventListener(
         console.log(pageNum);
 
         // if we have params, search for them
-        if (nonEmpty(qstr)) {
+        if (nonEmpty(qstr & pageSize)) {
             const results = runSearch(qstr, pageSize);
+        } else {
+            const result = runSearch(qstr, 25); //this seems to work for now, but might not account for all possible outcomes/be the best solution
         }
     },
     false
