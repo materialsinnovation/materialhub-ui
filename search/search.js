@@ -85,13 +85,23 @@ document.addEventListener(
         console.log(pageSize);
         console.log(pageNum);
 
+        // if (nonEmpty(pageSize)) {
+        //     const pageSize = pageSize;
+        //     if (nonEmpty(qstr)) {
+        //         const results = runSearch(qstr, pageSize);
+        //     }
+        // } else {
+        //     //const pageSize = 25;
+        //     if (nonEmpty(qstr)) {
+        //         const results = runSearch(qstr, 25);
+        //     }
+        // }
         // if we have params, search for them
-        if (nonEmpty(qstr & pageSize)) {
+        if (nonEmpty(qstr)) {
             const results = runSearch(qstr, pageSize);
-        } else {
-            const result = runSearch(qstr, 25); //this seems to work for now, but might not account for all possible outcomes/be the best solution
-        }
+        } //else {
+        //     const result = runSearch(qstr, 25); //this seems to work for now, but might not account for all possible outcomes/be the best solution
+        // }
     },
     false
 );
-//something
