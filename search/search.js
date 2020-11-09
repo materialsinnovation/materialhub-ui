@@ -1,10 +1,10 @@
 /// Forward a search query to cordra and populate search page
-async function runSearch(query) {
+async function runSearch(query, pagesize) {
     let qstr = '?query=' + query;
 
-    qstr += '&filter=["/id","/content/name"]'; //&filter=["/id","/content/name","/content/thumbnailUrl"]
+    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]'; //&filter=["/id","/content/name","/content/thumbnailUrl"]
 
-    qstr += '&pageSize=20'; //change this.
+    qstr += '&pageSize=' + pagesize; //change this.
 
     qstr = encodeURI(qstr);
 
@@ -21,19 +21,24 @@ async function runSearch(query) {
 async function createSearchResult(result) {
     const result_id = result.id;
     const result_name = result.content.name;
+    const result_thumbnail = result.content.thumbnailUrl;
 
     let row_td = document.createElement('td');
 
     let name_div = document.createElement('div');
     let name_header = document.createElement('h5');
     let name_link = document.createElement('a');
+    let thumbnail_link = document.createElement('img');
     name_link.href = encodeURI('/object?id=' + result_id);
     name_link.innerHTML = result_name;
+    thumbnail_link.src = result_thumbnail;
+    thumbnail_link.class = 'img-fluid img-thumbnail';
 
     // Add tree of elements
     row_td.appendChild(name_div);
     name_div.appendChild(name_header);
     name_header.appendChild(name_link);
+    name_div.appendChild(thumbnail_link);
 
     let id_link = document.createElement('a');
     id_link.href = name_link.href;
@@ -77,7 +82,7 @@ document.addEventListener(
 
         // if we have params, search for them
         if (nonEmpty(qstr)) {
-            const results = runSearch(qstr);
+            const results = runSearch(qstr, pageSize);
         }
     },
     false
