@@ -1,0 +1,68 @@
+table {
+    width: 100%;
+}
+
+.element {
+    width: 5%;
+    height: 50px;
+    text-align: center;
+}
+
+.separator {
+    width: 5%px;
+    height: 10px;
+}
+
+.element.alkali {
+    background-color: #e9728a;
+    border: 1px solid black;
+}
+
+.element.alkaline {
+    background-color: #f49548;
+    border: 1px solid black;
+}
+
+.element.noble {
+    background-color: #52bdff;
+    border: 1px solid black;
+}
+
+.element.transition {
+    background-color: #eecf68;
+    border: 1px solid black;
+}
+
+.element.post-transition {
+    background-color: #d1d1d1;
+    border: 1px solid black;
+}
+
+.element.metalloid {
+    background-color: #00c295;
+    border: 1px solid black;
+}
+
+.element.non-metal {
+    background-color: #96d4c1;
+    border: 1px solid black;
+}
+
+.element.lanthanide {
+    background-color: #c77acd;
+    border: 1px solid black;
+}
+
+.element.actinide {
+    background-color: #b880e0;
+    border: 1px solid black;
+}
+
+.element.unclassified {
+    background-color: #acb8c8;
+    border: 1px solid black;
+}
+
+.element.star {
+    border: 1px solid black;
+}
