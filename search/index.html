@@ -21,6 +21,7 @@ description: ''
             placeholder="Full Text Search"
             aria-label="Search"
             name="query"
+            id="searchBox"
         />
         <label for="pageSize">Records per page: </label>
         <select name="pageSize" id="pageSize">
@@ -30,7 +31,11 @@ description: ''
             <option value="100">100</option>
         </select>
         <br /><br />
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+        <button
+            class="btn btn-outline-dark my-2 my-sm-0"
+            onclick="keywordSearch()"
+            type="submit"
+        >
             Search
         </button>
     </form>

@@ -1,4 +1,4 @@
-/// Forward a search query to cordra and populate search page
+// Forward a search query to cordra and populate search page
 async function runSearch(query, pagesize) {
     let qstr = '?query=' + query;
 
@@ -85,23 +85,23 @@ document.addEventListener(
         console.log(pageSize);
         console.log(pageNum);
 
-        // if (nonEmpty(pageSize)) {
-        //     const pageSize = pageSize;
-        //     if (nonEmpty(qstr)) {
-        //         const results = runSearch(qstr, pageSize);
-        //     }
-        // } else {
-        //     //const pageSize = 25;
-        //     if (nonEmpty(qstr)) {
-        //         const results = runSearch(qstr, 25);
-        //     }
-        // }
-        // if we have params, search for them
         if (nonEmpty(qstr)) {
             const results = runSearch(qstr, pageSize);
-        } //else {
-        //     const result = runSearch(qstr, 25); //this seems to work for now, but might not account for all possible outcomes/be the best solution
-        // }
-    },
-    false
+        }
+    }
+    // if (nonEmpty(pageSize)) {
+    //     const pageSize = pageSize;
+    //     if (nonEmpty(qstr)) {
+    //         const results = runSearch(qstr, pageSize);
+    //     }
+    // } else {
+    //     //const pageSize = 25;
+    //     if (nonEmpty(qstr)) {
+    //         const results = runSearch(qstr, 25);
+    //     }
+    // }
+    // if we have params, search for them
+    //else {
+    //     const result = runSearch(qstr, 25); //this seems to work for now, but might not account for all possible outcomes/be the best solution
+    //
 );
