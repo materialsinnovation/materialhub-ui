@@ -33,7 +33,6 @@ async function createSearchResult(result) {
     name_link.innerHTML = result_name;
     thumbnail_link.src = result_thumbnail;
     thumbnail_link.height = '50';
-    thumbnail_link.width = '50';
     //$('img').addClass = 'img-fluid img-thumbnail'; //need to figure out how to pass through a class attribute
 
     // Add tree of elements
