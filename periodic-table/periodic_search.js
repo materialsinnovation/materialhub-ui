@@ -1,7 +1,16 @@
 const baseURI = 'http://mmsd-lims-dev:8080/objects/';
-const searchBaseURI =
-    'http://mmsd-lims-dev:8080/objects/?query=/initial_str/sites/_/label:';
-const queryParameter = '%20AND%20/initial_str/sites/_/label:';
+const searchBaseURI = 'https://api.materialhub.org/#objects/';
+const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
+const queryBase = '?query=internal.pointsAt%3A20.500.12772/elements/';
+
+fetch('./elements.json')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        elementsInfo = data;
+        return elementsInfo;
+    });
 
 async function getTemplate(url) {
     response = await fetch(url);
@@ -53,29 +62,18 @@ function add(ev) {
         document.getElementById(ev.target.id).style.backgroundColor = '#000000';
         document.getElementById(ev.target.id).style.color = '#ffffff';
     }
-    // focus on retrieving info by name
-    // change id to number and name to name of element
-    // var thingy = ev.target.name;
-    // var dummyvalue = document.getElementById('dump');
-    // var olddummy = dummyvalue.value;
-
-    // if (olddummy.indexOf(thingy) != -1) {
-    //     dummyvalue.value = olddummy.replace(thingy, '');
-    // } else {
-    //     dummyvalue.value = olddummy + thingy + '';
-    // }
-
-    // return dummyvalue;
 }
 
 async function search() {
     var formulabox = document.getElementById('FormulaBox').value;
-    //console.log(formulabox);
-    var str = formulabox;
-    var shortenedStr = str.substring(0, str.length - 1);
-    //console.log(shortenedStr);
-    var replacedStr = shortenedStr.replace(/-/g, queryParameter);
-    console.log(replacedStr);
+    var shortenedStr = formulabox.substring(0, formulabox.length - 1);
+    //var replacedStr = shortenedStr.replace(/-/g, queryParameter);
+    var splitStr = shortenedStr.split('-');
+    //console.log(splitStr);
+    var numStr = matchElementName2Number(splitStr);
+    //console.log(numStr);
+    var searchStr = convertString2Search(numStr);
+    //console.log(searchStr);
 }
 
 // document.getElementById('Search').addEventListener('click', function () {
@@ -87,8 +85,18 @@ async function search() {
 //     console.log(this.searchstring);
 // });
 
-function myTrim(x) {
-    var str = x.replace(/^\s+|\s+$/gm, '');
-    var dummy = str + '-';
-    return dummy;
+function matchElementName2Number(string) {
+    var newStr = [];
+    for (i in string) {
+        newStr.push(elementsInfo[string[i]]);
+    }
+    return newStr;
+}
+
+function convertString2Search(string) {
+    var numStr = string.toString();
+    //console.log(numStr);
+    var finStr = queryBase + numStr.replace(/,/g, queryParameter);
+    //console.log(finStr);
+    return finStr;
 }
