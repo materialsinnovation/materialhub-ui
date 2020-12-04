@@ -43,7 +43,6 @@ function add(ev) {
     var elt_name = ev.target.id + '-';
     var formulabox = document.getElementById('FormulaBox');
     var oldformula = formulabox.value;
-    //formulabox.value = oldformula + elt_name + '';
 
     if (oldformula.indexOf(elt_name) != -1) {
         formulabox.value = oldformula.replace(elt_name, '');
@@ -54,6 +53,19 @@ function add(ev) {
         document.getElementById(ev.target.id).style.backgroundColor = '#000000';
         document.getElementById(ev.target.id).style.color = '#ffffff';
     }
+    // focus on retrieving info by name
+    // change id to number and name to name of element
+    // var thingy = ev.target.name;
+    // var dummyvalue = document.getElementById('dump');
+    // var olddummy = dummyvalue.value;
+
+    // if (olddummy.indexOf(thingy) != -1) {
+    //     dummyvalue.value = olddummy.replace(thingy, '');
+    // } else {
+    //     dummyvalue.value = olddummy + thingy + '';
+    // }
+
+    // return dummyvalue;
 }
 
 async function search() {
@@ -74,3 +86,9 @@ async function search() {
 //     this.searchstring = replacedStr;
 //     console.log(this.searchstring);
 // });
+
+function myTrim(x) {
+    var str = x.replace(/^\s+|\s+$/gm, '');
+    var dummy = str + '-';
+    return dummy;
+}
