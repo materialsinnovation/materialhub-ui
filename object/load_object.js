@@ -11,13 +11,7 @@ async function populateObject(object_id) {
 
 	let results = await (response.json());
 
-	console.log(results);
-
 	const id = results['@id'];
-
-	console.log(id, object_id);
-
-	console.assert(id == object_id);
 
 	let data_pretty = JSON.stringify(results, null, '\t');
 	let content_box = document.getElementById('object_content');
@@ -43,13 +37,8 @@ async function populateObject(object_id) {
 	document.addEventListener('DOMContentLoaded', function () {
 		// get query string
 		let params = new URLSearchParams(location.search);
-		for (const [key, value] of params) { console.log(key, value); }
-
-		console.log(params);
 
 		let object_id = params.get('id');
-
-		console.log(object_id);
 
 		// if we have params, search for them
 		if (nonEmpty(object_id)) {
