@@ -42,7 +42,7 @@ document.addEventListener(
             renderTemplate(object_id);
         } else {
             let content_block_1 = document.getElementById('content_block_1');
-            content_block_1.innerHTML = 'No Object ID Provided';
+            content_block_1 = 'No Object ID Provided';
         }
     },
     false
