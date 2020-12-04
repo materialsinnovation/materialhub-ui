@@ -1,5 +1,5 @@
-const baseURI = 'http://mmsd-lims-dev:8080/objects/';
-const searchBaseURI = 'https://api.materialhub.org/#objects/';
+// const baseURI = 'http://mmsd-lims-dev:8080/objects/';
+// const searchBaseURI = 'https://api.materialhub.org/#objects/';
 const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 const queryBase = '?query=internal.pointsAt%3A20.500.12772/elements/';
 
@@ -74,6 +74,15 @@ async function search() {
     //console.log(numStr);
     var searchStr = convertString2Search(numStr);
     //console.log(searchStr);
+    //searchStr = encodeURI(searchStr);
+    console.log(searchStr);
+
+    let response = await getData('/objects' + searchStr);
+
+    if (!response.ok) {
+        alert('Search failed!');
+    }
+    let results = await response.json();
 }
 
 // document.getElementById('Search').addEventListener('click', function () {
