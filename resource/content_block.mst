@@ -1,175 +1,257 @@
-{{! 'https://api.materialhub.org/objects/'}}
+<div class='row'>
+    <div class="col-md-6">
+        {{ #name }}
+            <h2> {{ . }} </h2>
+        {{ /name }}
 
-<div class='row' id='row1'>
-    <div class="col-6">
-        {{#name}}
-            <h2> {{name}} </h2>
-        {{/name}}
+        {{ #alternateName }}
+            <h3> ({{ . }}) </h3>
+        {{ /alternateName }}
 
-        {{#alternateName}}
-            <h3> ({{alternateName}}) </h3>
-        {{/alternateName}}
-
-
-        {{#@type.0}}
-            <b>Type:</b> <br>
-        {{/@type.0}}
-        {{#@type}}
-            <div class='badge badge-pill badge-primary'>{{.}}</div>
-        {{/@type}}
-
+        <b>Type:</b>
+        {{ #@type }}
+        <div class='badge badge-pill badge-primary'>{{ . }}</div>
+        {{ /@type }}
+        <br>
+        <b>Local Identifier:</b> <a href='https://hdl.handle.net/{{ @id }}'>hdl:{{ @id }}</a>
         <br>
 
-        {{#@id}}
-            <b>Identifier:</b> <a href='https://hdl.handle.net/{{@id}}'>hdl:{{@id}}</a> <br>
-        {{/@id}}
+        {{ #identifier.0 }}
+        <b>Other Identifier(s):</b>
+        {{ #identifier }}
+        <br><b>{{ name }}:</b>  <a href='{{ url }}'> {{ value }} </a><br>
+        {{ /identifier }}
+        {{ /identifier.0 }}
 
-        {{! Lifecycle Hook Needed, what metadata property will this be?}}
-        {{#Identifier}}
-            <strong>LifeCycle Hook for Other Identifiers:</strong>
-            {{ . }} <br>
-        {{/Identifier}}
-
-        {{#url}}
-            <strong> Direct link: </strong> <a href='{{url}}'>{{url}}</a>
-        {{/url}}
-
+        {{ #url }}
+        <strong> Direct link: </strong> <a href='{{ . }}'>{{ . }}</a>
         <br>
+        {{ /url }}
 
-        {{! Lifecycle Hook Needed, what metadata property will this be?}}
-        {{#url}}
-            <strong> Related Records: </strong> 
-            to do
-        {{/url}}
-    </div>
-    <div class='col-6'>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{image.0}}"  class='img-fluid img-thumbnail'>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{image.1}}"  class='img-fluid img-thumbnail'>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{image.2}}"  class='img-fluid img-thumbnail'>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        
+
+        {{ #about.0 }}
+        <b> Primary Subject(s):</b> <br>
+        <ul>
+        {{ #about }}
+            <li>
+                <a href='?id={{ @id }}' >{{ name }} </a>
+                {{ #@type }}
+                <div class='badge badge-pill badge-light'>{{ . }}</div>
+                {{ /@type }}
+            </li>
+        {{ /about }}
+        </ul>
+        {{ /about.0 }}
+
+        {{ #subjectOf.0 }}
+        <b> Subject Of:</b><br>
+        <ul>
+        {{ #subjectOf }}
+            <li>
+                <a href='?id={{ @id }}' >{{ name }} </a>
+                {{ #@type }}
+                <div class='badge badge-pill badge-light'>{{ . }}</div>
+                {{ /@type }}
+            </li>
+        {{ /subjectOf }}
+        </ul>
+        {{ /subjectOf.0 }}
+
+        {{ #keywords.0 }}
+        <b> Keyword(s):</b> (User Supplied) <br>
+        <ul>
+        {{ #keywords }}
+            <li> {{ . }} </li>
+        {{ /keywords }}
+        </ul>
+        {{ /keywords.0 }}
+
+        {{ #license }}
+        <b>License:</b> {{ . }}
+        <br>
+        {{ /license }}
+        
+        {{ #dateCreated }}
+        <b>Dates:</b> {{ dateCreated }} (created) <b>|</b> {{ datePublished }} (published) <b>|</b> {{ dateModified }} (modified)
+        <br>
+        {{ /dateCreated }}
+
+        {{ #view.Person }}
+        <br>
+        {{ #email }}
+        <b>E-Mail:</b> <a href="mailto:{{ . }}">{{ . }}</a>
+        <br>
+        {{ /email }}
+        {{ #telephone }}
+        <b>Telephone:</b> {{ . }}
+        <br>
+        {{ /telephone }}
+        {{ #address }}
+        <b>Address:</b> {{ . }}
+        <br>
+        {{ /address }}
+        {{ #affiliation.0 }}
+        <br>
+        <b>Affiliation:</b>  <br>
+        <ul>
+            {{ #affiliation }}
+            <li>
+            <a href='?id={{ @id }}' >{{ name }} </a>
+            {{ #@type }}
+            <div class='badge badge-pill badge-light'>{{ . }}</div>
+            {{ /@type }}
+            </li>
+            {{ /affiliation }}
+        </ul>
+        {{ /affiliation.0 }}
+        {{ #workLocation.0 }}
+        <br>
+        <b>Work Location:</b>  <br>
+        <ul>
+            {{ #workLocation }}
+            <li>
+            <a href='?id={{ @id }}' >{{ name }} </a>
+            {{ #@type }}
+            <div class='badge badge-pill badge-light'>{{ . }}</div>
+            {{ /@type }}
+            </li>
+            {{ /workLocation }}
+        </ul>
+        {{ /workLocation.0 }}
+        {{ /view.Person }}
+
+        {{ #description }}
+        <br><b>Description:</b> <br>
+        <div class="card card-body bg-light">
+        {{ . }}
         </div>
+        <br>
+        {{ /description }}
     </div>
-</div>
-<br>
-<div class='row' id='row2'>
-    <div class='col-12'>
-        {{#description}}
-            <b>Description:</b> <br>
-            <div class="card card-body bg-light">
-            {{description}}
+    <div class='col-md-6'>
+        {{ #image.0 }}
+        <div id="carouselIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {{ #image.0 }}
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            {{ /image.0 }}
+            {{ #image }}
+            <li data-target="#carouselIndicators" data-slide-to="{{ @index }}"></li>
+            {{ /image }}
+        </ol>
+        <div class="carousel-inner">
+            {{ #image.0 }}
+            <div class="carousel-item active">
+            <img src="image-carosel-first.png" class="d-block w-100">
             </div>
-        {{/description}}
+            {{ /image.0 }}
+            {{ #image }}
+            <div class="carousel-item">
+            <img src="{{ . }}" class="d-block w-100">
+            </div>
+            {{ /image }}
+        </div>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        </div>
+        {{ /image.0 }}
     </div>
 </div>
 <br>
-<div class='row' id='row3'>
-    <div class='col-12'>
-        {{#about.0}}
-            <b> Topic(s):</b> (Controlled Vocabulary as Defined Terms) <br>
-        {{/about.0}}
-        {{#about}}
-            <div class='badge badge-pill badge-primary'>{{ name }}</div>
-        {{/about}}
 
-        {{#keywords.0}}
-        <br>
-            <b> Keyword(s):</b> (User Supplied) <br>
-        {{/keywords.0}}
-        {{#keywords}}
-            <div class='badge badge-pill badge-primary'>{{ . }}</div>
-        {{/keywords}}
-
-        <br><br>
-
-        {{#license}}
-            <b>License:</b> {{license}}
-        {{/license}}
-        <br>
-        {{#dateCreated}}
-            <b>Dates:</b> {{dateCreated}} (created) <b>|</b> {{datePublished}} (published) <b>|</b> {{dateModified}} (modified)
-        {{/dateCreated}}
-    </div>
-</div>
-
-<br>
-
-<div class='row' id='row4'>
-    <div class='col-3'>
+{{ #view.CreativeWork }}
+<div class='row'>
+    <div class='col-md-3'>
         <div class='card' id='author'>
             <div class='card-header'>
-            <b>Author(s)/Creator(s):</b> 
+                <b>Creator(s):</b> 
             </div>
             <div class='card-body'>
-                {{#author}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/author}}
-                {{#creator}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/creator}}
+                <ul>
+                {{ #author }}
+                <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                </li>
+                {{ /author }}
+                {{ #creator }}
+                <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                </li>
+                {{ /creator }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-3'>
+    <div class='col-md-3'>
         <div class='card' id='contributor'>
             <div class='card-header'>
-            <b>Contributor(s):</b> 
+                <b>Contributor(s):</b> 
             </div>
             <div class='card-body'>
-                {{#contributor}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/contributor}}
+                <ul>
+                    {{ #contributor }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /contributor }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-3'>
+    <div class='col-md-3'>
         <div class='card' id='editor'>
             <div class='card-header'>
-                {{#editor.0}}
-                    <b>Editor(s):</b>
-                {{/editor.0}}
+                <b>Editor(s):</b>
             </div>
             <div class='card-body'>
-                {{#editor}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/editor}}
+                <ul>
+                    {{ #editor }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /editor }}
+                </ul>
             </div>
         </div>
     </div>
-
-    <div class='col-3'>
+    
+    <div class='col-md-3'>
         <div class='card' id='accountablePerson'>
             <div class='card-header'>
-                {{#accountablePerson.0}}
-                    <b>Accountable Person(s):</b> 
-                {{/accountablePerson.0}}
+                <b>Accountable Person(s):</b>
             </div>
             <div class='card-body'>
-                {{#accountablePerson}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/accountablePerson}}
+                <ul>
+                    {{ #accountablePerson }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /accountablePerson }}
+                </ul>
             </div>
         </div>
     </div>
@@ -177,63 +259,83 @@
 
 <br>
 
-<div class='row' id='row5'>
-    <div class='col-3'>
+<div class='row'>
+    <div class='col-md-3'>
         <div class='card' id='publisher'>
             <div class='card-header'>
-                {{#publisher.0}}
-                    <b>Publisher(s)</b> 
-                {{/publisher.0}}
+                <b>Publisher(s)</b> 
             </div>
             <div class='card-body'>
-                {{#publisher}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/publisher}}
+                <ul>
+                    {{ #publisher }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /publisher }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-3'>
+    <div class='col-md-3'>
         <div class='card' id='provider'>
             <div class='card-header'>
-                {{#provider.0}}
-                    <b>Provider(s):</b> 
-                {{/provider.0}}
+                <b>Provider(s):</b>
             </div>
             <div class='card-body'>
-                {{#provider}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/provider}}
+                <ul>
+                    {{ #provider }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /provider }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-3'>
+    <div class='col-md-3'>
         <div class='card' id='funder'>
             <div class='card-header'>
-                {{#funder.0}}
-                    <b>Funder(s):</b> 
-                {{/funder.0}}
+                <b>Funder(s):</b>
             </div>
             <div class='card-body'>
-                {{#funder}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/funder}}
+                <ul>
+                    {{ #funder }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /funder }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-3'>
+    <div class='col-md-3'>
         <div class='card' id='copyrightHolder'>
             <div class='card-header'>
-                {{#copyrightHolder.0}}
-                    <b>Copyright Holder(s):</b> 
-                {{/copyrightHolder.0}}
+                <b>Copyright Holder(s):</b>
             </div>
             <div class='card-body'>
-                {{#copyrightHolder}}
-                    <a href='?id={{ @id }}' >{{ name }} </a><br>
-                {{/copyrightHolder}}
+                <ul>
+                    {{ #copyrightHolder }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /copyrightHolder }}
+                </ul>
             </div>
         </div>
     </div>
@@ -241,47 +343,130 @@
 
 <br>
 
-<div class='row' id='row6'>
-    <div class='col-4'>  
+<div class='row'>
+    <div class='col-md-4'>  
         <div class='card'>
             <div class='card-header'>
-            <b>Lifecycle Hook for Parent Record(s)</b> {{!Need Lifecycle Hook}}
+            <b>Parent Record(s)</b>
             </div>
             <div class='card-body'>
-                {{#isPartOf}}
-                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
-                {{/isPartOf}}
+                <ul>
+                    {{ #isPartOf }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /isPartOf }}
+                </ul>
             </div>
         </div>     
     </div>
     
 
-    <div class='col-4'>
+    <div class='col-md-4'>
         <div class='card'>
             <div class='card-header'>
-                {{#hasPart.0}}
-                    <b>Lifecycle Hook for Child Record(s):</b> {{!Need Lifecycle Hook}}
-                {{/hasPart.0}}
+            <b>Child Record(s):</b>
             </div>
             <div class='card-body'>
-                {{#hasPart}}
-                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
-                {{/hasPart}}
+                <ul>
+                    {{ #hasPart }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /hasPart }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-4'>
+    <div class='col-md-4'>
         <div class='card'>
             <div class='card-header'>
-                {{#isBasedOn.0}}
-                    <b>Lifecycle hook for "This Record is derived from or based on":</b> {{!Need Lifecycle Hook}}
-                {{/isBasedOn.0}}
+            <b>Derived From or Based On:</b>
             </div>
             <div class='card-body'>
-                {{#isBasedOn}}
-                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
-                {{/isBasedOn}}
+                <ul>
+                    {{ #isBasedOn }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /isBasedOn }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+{{ /view.CreativeWork }}
+
+
+{{ #view.DatasetMetadata }}
+<div class='row'>
+    <div class='col-md-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <b>Methodology</b>
+            </div>
+            <div class='card-body'>
+                <ul>
+                    {{ #measurementTechnique }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /measurementTechnique }}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class='col-md-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <b>Material:</b> 
+            </div>
+            <div class='card-body'>
+                <ul>
+                    {{ #material }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /material }}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class='col-md-4'>
+        <div class='card'>
+            <div class='card-header'>
+                <b>Reference or Calibration Material:</b>
+            </div>
+            <div class='card-body'>
+                <ul>
+                    {{ #materialReference }}
+                    <li>
+                    <a href='?id={{ @id }}' >{{ name }} </a>
+                    {{ #@type }}
+                    <div class='badge badge-pill badge-light'>{{ . }}</div>
+                    {{ /@type }}
+                    </li>
+                    {{ /materialReference }}
+                </ul>
             </div>
         </div>
     </div>
@@ -289,97 +474,53 @@
 
 <br>
 
-<div class='row' id='row7'>
-    <div class='col-4'>
+<div class='row'>
+    <div class='col-md-4'>
         <div class='card'>
             <div class='card-header'>
-                {{#measurementTechnique.0}}
-                    <b>Methodology</b> {{!Need Lifecycle Hook}}
-                {{/measurementTechnique.0}}
+                <b>Variable Measured</b>
             </div>
             <div class='card-body'>
-                {{#measurementTechnique}}
-                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
-                {{/measurementTechnique}}
+                {{ #variableMeasured }}
+                    <b>{{ name }}:</b> {{ value }} {{ unitText }} <br>
+                {{ /variableMeasured }}
             </div>
         </div>
     </div>
 
-    <div class='col-4'>
+    <div class='col-md-4'>
         <div class='card'>
             <div class='card-header'>
-                {{#material.0}}
-                    <b>Material:</b> 
-                {{/material.0}}
+                <b>Parameter Controlled:</b>
             </div>
             <div class='card-body'>
-                {{#material}}
-                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
-                {{/material}}
+                <ul>
+                {{ #parameterControlled }}
+                    <li>
+                    <b>{{ name }}:</b> {{ value }} {{ unitText }}
+                    <ul>
+                        {{ #nested.parameterControlled }}
+                        <li>
+                        <b>{{ name }}:</b> {{ value }} {{ unitText }}
+                        </li>
+                        {{ /nested.parameterControlled }}
+                    </ul>
+                    </li>
+                {{ /parameterControlled }}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class='col-4'>
+    <div class='col-md-4'>
         <div class='card'>
             <div class='card-header'>
-                {{#materialReference.0}}
-                    <b>Reference or Calibration Material:</b> 
-                {{/materialReference.0}}
+                <b>Condition Observed:</b>
             </div>
             <div class='card-body'>
-                {{#materialReference}}
-                    <a href='https://api.materialhub.org/objects/{{.}}' >{{.}}</a>
-                {{/materialReference}}
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-
-<div class='row' id='row8'>
-    <div class='col-4'>
-        <div class='card'>
-            <div class='card-header'>
-                {{#variableMeasured.0}}
-                    <b>Variable Measured</b> 
-                {{/variableMeasured.0}}
-            </div>
-            <div class='card-body'>
-                {{#variableMeasured}}
-                    <b>{{ name }}:</b> {{value}} {{unitText}} <br>
-                {{/variableMeasured}}
-            </div>
-        </div>
-    </div>
-
-    <div class='col-4'>
-        <div class='card'>
-            <div class='card-header'>
-                {{#parameterControlled.0}}
-                    <b>Parameter Controlled:</b> {{!Need Lifecycle Hook}}
-                {{/parameterControlled.0}}
-            </div>
-            <div class='card-body'>
-                {{#parameterControlled}}
-                    <b>{{ name }}:</b> {{value}} {{unitText}} <br>
-                {{/parameterControlled}}
-            </div>
-        </div>
-    </div>
-
-    <div class='col-4'>
-        <div class='card'>
-            <div class='card-header'>
-                {{#conditionObserved.0}}
-                    <b>Condition Observed:</b> {{!Need Lifecycle Hook}}
-                {{/conditionObserved.0}}
-            </div>
-            <div class='card-body'>
-                {{#conditionObserved}}
-                    <b>{{ name }}:</b> {{value}} {{unitText}} <br>
-                {{/conditionObserved}}
+                {{ #conditionObserved }}
+                    <b>{{ name }}:</b> {{ value }} {{ unitText }} <br>
+                {{ /conditionObserved }}
             </div>
         </div>
     </div>
@@ -387,44 +528,342 @@
 
 <br>
 
-<div class='row' id='row9'>
-    <div class='col-12'>
-        {{#distribution}}
-        <b>File Download:</b> <a href='{{.}}'>{{.}}</a>
-        {{/distribution}}
+<div class='row'>
+    <div class='col-md-12'>
+        {{ #distribution }}
+        <b>File Download:</b> <a href='{{ contentUrl }}'>{{ contentUrl }}</a>
+        {{ /distribution }}
     </div>
 </div>
-
 <br>
+{{ /view.DatasetMetadata }}
 
-<div class='row' id='row10'>
-    <div class='col-12' id='productInformation'>
+{{ #view.Product }}
+<div class='row'>
+    <div class='col-md-12'>
         <h4>Production Information:</h4>
         
-        {{#manufacturer}}
-        <b>Manufacturer:</b> {{.}}
-        {{/manufacturer}}
+        {{ #manufacturer.0 }}
+        <b>Manufacturer:</b>  <br>
+        <ul>
+            {{ #manufacturer }}
+            <li>
+            <a href='?id={{ @id }}' >{{ name }} </a>
+            {{ #@type }}
+            <div class='badge badge-pill badge-light'>{{ . }}</div>
+            {{ /@type }}
+            </li>
+            {{ /manufacturer }}
+        </ul>
+        {{ /manufacturer.0 }}
 
-        {{#brand}}
-        <b>Brand:</b> {{.}}
-        {{/brand}}
+        {{ #brand }}
+        <b>Brand:</b> {{ . }} <br>
+        {{ /brand }}
 
-        {{#model}}
-        <b>Model:</b> {{.}}
-        {{/model}}
+        {{ #model }}
+        <b>Model:</b> {{ . }} <br>
+        {{ /model }}
 
-        {{#productID}}
-        <b>Product ID:</b> {{.}}
-        {{/productID}}
+        {{ #productID }}
+        <b>Product ID:</b> {{ . }} <br>
+        {{ /productID }}
 
-        {{#serialNumber}}
-        <b>Serial Number:</b> {{.}}
-        {{/serialNumber}}
+        {{ #serialNumber }}
+        <b>Serial Number:</b> {{ . }} <br>
+        {{ /serialNumber }}
 
-        {{#purchasedDate}}
-        <b>Dates:</b> {{purchasedDate}} (purchased) <b>|</b> {{productionDate}} (produced)
-        {{/purchasedDate}}
+        {{ #purchaseDate }}
+        <b>Dates:</b> {{ purchaseDate }} (purchased) <b>|</b> {{ productionDate }} (produced)
+        {{ /purchaseDate }}
     </div>
 </div>
-
 <br>
+{{ /view.Product }}
+
+{{ #view.SoftwareApplication }}
+{{ #applicationCategory.0 }}
+<b>Software Application Category:</b>  <br>
+<ul>
+    {{ #applicationCategory }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /applicationCategory }}
+</ul>
+{{ /applicationCategory.0 }}
+{{ #applicationSuite.0 }}
+<b>Software Application Suite:</b>  <br>
+<ul>
+    {{ #applicationSuite }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /applicationSuite }}
+</ul>
+{{ /applicationSuite.0 }}
+{{ #softwareAddOn.0 }}
+<b>Software Application Add-On:</b>  <br>
+<ul>
+    {{ #softwareAddOn }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /softwareAddOn }}
+</ul>
+{{ /softwareAddOn.0 }}
+{{ #operatingSystem.0 }}
+<b>Operating System(s):</b><br>
+<ul>
+{{ #operatingSystem }}
+    <li> {{ . }} </li>
+{{ /operatingSystem }}
+</ul>
+{{ /operatingSystem.0 }}
+{{ #softwareRequirements }}
+<br><b>Software Requirements:</b> <br>
+<div class="card card-body bg-light">
+{{ . }}
+</div>
+<br>
+{{ /softwareRequirements }}
+{{ #softwareVersion }}
+<b>Software Version:</b> {{ . }}
+<br>
+{{ /softwareVersion }}
+<br>
+{{ /view.SoftwareApplication }}
+
+{{ #view.SoftwareSourceCode }}
+{{ #targetProduct.0 }}
+<b>Target Software Applications:</b>  <br>
+<ul>
+    {{ #targetProduct }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /targetProduct }}
+</ul>
+{{ /targetProduct.0 }}
+{{ #programmingLanguage }}
+<b>Programming Language:</b> {{ . }}
+<br>
+{{ /programmingLanguage }}
+{{ #codeRepository }}
+<strong> Code Repository URL: </strong> <a href='{{ . }}'>{{ . }}</a>
+<br>
+{{ /codeRepository }}
+<br>
+{{ /view.SoftwareSourceCode }}
+
+
+{{ #view.OrganizationMetadata }}
+{{ #contactPoint.0 }}
+<b>Contact Point(s):</b>  <br>
+<ul>
+    {{ #contactPoint }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /contactPoint }}
+</ul>
+{{ /contactPoint.0 }}
+{{ #email }}
+<b>E-Mail:</b> <a href="mailto:{{ . }}">{{ . }}</a>
+<br>
+{{ /email }}
+{{ #memberOf.0 }}
+<b>Host Organization(s)/Person(s):</b>  <br>
+<ul>
+    {{ #memberOf }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /memberOf }}
+</ul>
+{{ /memberOf.0 }}
+{{ #member.0 }}
+<b>Participating Organization(s)/Person(s):</b>  <br>
+<ul>
+    {{ #member }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /member }}
+</ul>
+{{ /member.0 }}
+<br>
+{{ /view.OrganizationMetadata }}
+
+{{ #view.Organization }}
+{{ #parentOrganization.0 }}
+<b>Parent Organization(s):</b>  <br>
+<ul>
+    {{ #parentOrganization }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /parentOrganization }}
+</ul>
+{{ /parentOrganization.0 }}
+{{ #subOrganization.0 }}
+<b>Child Organization(s):</b>  <br>
+<ul>
+    {{ #subOrganization }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /subOrganization }}
+</ul>
+{{ /subOrganization.0 }}
+<br>
+{{ /view.Organization }}
+
+{{ #view.Project }}
+{{ #parentOrganization.0 }}
+<b>Parent Project(s):</b>  <br>
+<ul>
+    {{ #parentOrganization }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /parentOrganization }}
+</ul>
+{{ /parentOrganization.0 }}
+{{ #subOrganization.0 }}
+<b>Child Project(s):</b>  <br>
+<ul>
+    {{ #subOrganization }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /subOrganization }}
+</ul>
+{{ /subOrganization.0 }}
+<br>
+{{ /view.Project }}
+
+{{ #view.DefinedTerm }}
+<b>Within Semantic Artifact(s):</b>  <br>
+<ul>
+    {{ #inDefinedTermSet }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /inDefinedTermSet }}
+</ul>
+
+<b>SKOS Broader Term(s):</b>  <br>
+<ul>
+    {{ #broader }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /broader }}
+</ul>
+
+<b>SKOS Narrower Term(s):</b>  <br>
+<ul>
+    {{ #narrower }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /narrower }}
+</ul>
+
+<b>SKOS Related Term(s):</b>  <br>
+<ul>
+    {{ #related }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /related }}
+</ul>
+
+<b>SKOS Exactly Matching Term(s):</b>  <br>
+<ul>
+    {{ #exactMatch }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /exactMatch }}
+</ul>
+
+<b>SKOS Closely Matching Term(s):</b>  <br>
+<ul>
+    {{ #closeMatch }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /closeMatch }}
+</ul>
+
+To learn more abour SKOS, see: <a href='http://www.w3.org/2004/02/skos/core#' >http://www.w3.org/2004/02/skos/core#</a><br>
+<br>
+{{ /view.DefinedTerm }}
+
+{{ #view.DefinedTermSet }}
+<b>Has Term(s):</b>  <br>
+<ul>
+    {{ #hasDefinedTerm }}
+    <li>
+    <a href='?id={{ @id }}' >{{ name }} </a>
+    {{ #@type }}
+    <div class='badge badge-pill badge-light'>{{ . }}</div>
+    {{ /@type }}
+    </li>
+    {{ /hasDefinedTerm }}
+</ul>
+<br>
+{{ /view.DefinedTermSet }}

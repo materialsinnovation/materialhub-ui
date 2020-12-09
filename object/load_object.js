@@ -42,6 +42,17 @@ async function populateObject(object_id) {
 
 		// if we have params, search for them
 		if (nonEmpty(object_id)) {
+			let link_block = document.getElementById('link_block');
+            var go_to = document.createTextNode('Go To: ');
+            link_block.appendChild(go_to);
+            let grid_link = document.createElement('a');
+            grid_link.href = encodeURI('/resource?id=' + object_id);
+            grid_link.innerHTML = 'Resource View';
+            link_block.appendChild(grid_link);
+            var br = document.createElement('br');
+            link_block.appendChild(br);
+            var hr = document.createElement('hr');
+            link_block.appendChild(hr);
 			populateObject(object_id);
 		} else {
 
