@@ -748,7 +748,7 @@ var prettyPrint = (function(){
 					border: '1px solid #000',
 					verticalAlign: 'top',
 					fontFamily: '"Consolas","Lucida Console",Courier,mono',
-					whiteSpace: 'nowrap'
+					whiteSpace: 'normal'
 				},
 				td_hover: {
 					/* Styles defined here will apply to all tr:hover > td,

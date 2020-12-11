@@ -29,7 +29,7 @@ async function createSearchResult(result) {
 	let name_div = document.createElement("div");
 	let name_header = document.createElement("h5");
 	let name_link = document.createElement("a");
-	name_link.href = encodeURI("/object?id=" + result_id);
+	name_link.href = encodeURI("/resource?id=" + result_id);
 	name_link.innerHTML = result_name;
 
 	// Add tree of elements
