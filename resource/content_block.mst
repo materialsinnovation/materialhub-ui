@@ -1,3 +1,25 @@
+{{ ^view.Thing }}
+{{ #schema }}
+<h2> Schema Name: {{ schema.title }} </h2>
+{{ #schema.description }}
+<br><b>Description:</b> <br>
+<div class="card card-body bg-light">
+{{ . }}
+</div>
+<br><b>View in Cordra:</b><br>
+<a href='https://api.materialhub.org/#objects/{{ identifier }}'>https://api.materialhub.org/#objects/{{ identifier }}</a>
+<br>
+{{ /schema.description }}
+{{ /schema }}
+{{ ^schema }}
+You are viewing a non-conforming object.
+<br><b>View in Cordra:</b><br>
+<a href='https://api.materialhub.org/#objects/{{ identifier }}'>https://api.materialhub.org/#objects/{{ identifier }}</a>
+<br>
+{{ /schema }}
+{{ /view.Thing }}
+
+{{ #view.Thing }}
 <div class='row'>
     <div class="col-md-6">
         {{ #name }}
@@ -165,6 +187,7 @@
     </div>
 </div>
 <br>
+{{ /view.Thing }}
 
 {{ #view.CreativeWork }}
 <div class='row'>
