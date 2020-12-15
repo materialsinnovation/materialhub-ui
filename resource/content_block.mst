@@ -849,7 +849,7 @@
     {{ /closeMatch }}
 </ul>
 
-To learn more abour SKOS, see: <a href='http://www.w3.org/2004/02/skos/core#' >http://www.w3.org/2004/02/skos/core#</a><br>
+To learn more about SKOS, see: <a href='http://www.w3.org/2004/02/skos/core#' >http://www.w3.org/2004/02/skos/core#</a><br>
 <br>
 {{ /view.DefinedTerm }}
 
