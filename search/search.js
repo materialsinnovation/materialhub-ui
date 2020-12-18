@@ -78,6 +78,10 @@ document.addEventListener(
         let pageSize = params.get('pageSize');
         let pageNum = params.get('pageNum');
 
+        if (pageNum == null){
+            pageNum = 1;
+        }
+
         if (nonEmpty(qstr)) {
             const results = runSearch(qstr, pageSize, pageNum);
         }
