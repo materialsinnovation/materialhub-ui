@@ -43,11 +43,6 @@ async function createSearchResult(result) {
     if (nonEmpty(result_thumbnail)) {
         name_div.appendChild(thumbnail_link);
     }
-    let name_div = document.createElement('div');
-    let name_header = document.createElement('h5');
-    let name_link = document.createElement('a');
-    name_link.href = encodeURI('/resource?id=' + result_id);
-    name_link.innerHTML = result_name;
 
     let id_link = document.createElement('a');
     id_link.href = name_link.href;
