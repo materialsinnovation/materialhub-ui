@@ -2,12 +2,43 @@
 layout: default
 title: Full Text Search
 root: .
-description: ""
+description: ''
 ---
 
-<h1>{{ page.title }} </h1>
+<h1>{{ page.title }}</h1>
+<br />
 
 <script src="search.js"></script>
+<div>
+    <form
+        class="form-inline my-2 my-lg-0"
+        action="{{ site.baseurl }}/search/"
+        method="GET"
+    >
+        <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Full Text Search"
+            aria-label="Search"
+            name="query"
+            id="searchBox"
+        />
+        <label for="pageSize">Records per page: </label>
+        <select name="pageSize" id="pageSize">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <br /><br />
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+            Search
+        </button>
+    </form>
+</div>
+<br />
 
-<table id="results_table" class="table table-striped table-bordered table-hover">
-</table>
+<table
+    id="results_table"
+    class="table table-striped table-bordered table-hover"
+></table>
