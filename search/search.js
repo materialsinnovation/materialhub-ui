@@ -1,11 +1,9 @@
 // Forward a search query to cordra and populate search page
-async function runSearch(query, pagesize) {
+async function runSearch(query, pageSize, pageNum) {
     let qstr = '?query=' + query;
-
-    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]'; //&filter=["/id","/content/name","/content/thumbnailUrl"]
-
-    qstr += '&pageSize=' + pagesize; //change this.
-
+    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]'; 
+    qstr += '&pageSize=' + pageSize;
+    qstr += '&pageNum=' + pageNum;
     qstr = encodeURI(qstr);
 
     let response = await getData('/objects' + qstr);
@@ -29,18 +27,18 @@ async function createSearchResult(result) {
     let name_header = document.createElement('h5');
     let name_link = document.createElement('a');
     let thumbnail_link = document.createElement('img');
-    name_link.href = encodeURI('/object?id=' + result_id);
+    name_link.href = encodeURI('/resource?id=' + result_id);
     name_link.innerHTML = result_name;
-    thumbnail_link.src = result_thumbnail;
-    thumbnail_link.height = '50';
-    //$('img').addClass = 'img-fluid img-thumbnail'; //need to figure out how to pass through a class attribute
-
+    
     // Add tree of elements
     row_td.appendChild(name_div);
     name_div.appendChild(name_header);
     name_header.appendChild(name_link);
 
     if (nonEmpty(result_thumbnail)) {
+        thumbnail_link.src = result_thumbnail[0];
+        thumbnail_link.height = '50';
+        //$('img').addClass = 'img-fluid img-thumbnail'; //need to figure out how to pass through a class attribute
         name_div.appendChild(thumbnail_link);
     }
 
@@ -80,27 +78,12 @@ document.addEventListener(
         let pageSize = params.get('pageSize');
         let pageNum = params.get('pageNum');
 
-        console.log(qstr);
-        console.log(pageSize);
-        console.log(pageNum);
+        if (pageNum == null){
+            pageNum = 1;
+        }
 
         if (nonEmpty(qstr)) {
-            const results = runSearch(qstr, pageSize);
+            const results = runSearch(qstr, pageSize, pageNum);
         }
     }
-    // if (nonEmpty(pageSize)) {
-    //     const pageSize = pageSize;
-    //     if (nonEmpty(qstr)) {
-    //         const results = runSearch(qstr, pageSize);
-    //     }
-    // } else {
-    //     //const pageSize = 25;
-    //     if (nonEmpty(qstr)) {
-    //         const results = runSearch(qstr, 25);
-    //     }
-    // }
-    // if we have params, search for them
-    //else {
-    //     const result = runSearch(qstr, 25); //this seems to work for now, but might not account for all possible outcomes/be the best solution
-    //
 );
