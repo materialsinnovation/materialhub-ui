@@ -1,10 +1,6 @@
 // Forward a search query to cordra and populate search page
 async function runSearch(query, pageSize, pageNum) {
-    let qstr = '?query=' + query;
-    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]';
-    qstr += '&pageSize=' + pageSize;
-    qstr += '&pageNum=' + pageNum;
-    qstr = encodeURI(qstr);
+    let qstr = createSearchString(query, pageSize, pageNum);
 
     let response = await getData('/objects' + qstr);
 
@@ -13,8 +9,9 @@ async function runSearch(query, pageSize, pageNum) {
     }
 
     let results = await response.json();
+    let numberOfPages = Math.ceil(results.size / results.pageSize);
     populateTable(results['results']);
-    populateNavigation();
+    populateNavigation(query, pageSize, pageNum, numberOfPages);
 }
 
 async function createSearchResult(result) {
@@ -49,13 +46,13 @@ async function createSearchResult(result) {
 
     row_td.appendChild(id_link);
 
-    console.log(row_td);
+    //console.log(row_td);
 
     return row_td;
 }
 
 async function populateTable(results) {
-    console.log(results);
+    //console.log(results);
     // Guided by here: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
 
     // Get references to the table body
@@ -70,11 +67,37 @@ async function populateTable(results) {
     }
 }
 
-async function populateNavigation() {
+async function populateNavigation(query, pageSize, pageNum, numberOfPages) {
     var nav = document.getElementById('pageNav');
 
-    let new_link = $('<a id="pageNext" href="#">First</a>');
-    nav.appendchild(new_link);
+    for (let i = 0; i < numberOfPages; i++) {
+        let qstr = createNewUrlString(query, pageSize, i);
+        console.log(qstr);
+    }
+}
+
+function createSearchString(query, pageSize, pageNum) {
+    let qstr = '?query=' + query;
+    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]';
+    qstr += '&pageSize=' + pageSize;
+    qstr += '&pageNum=' + pageNum;
+    qstr = encodeURI(qstr);
+
+    return qstr;
+}
+
+function createNewUrlString(query, pageSize, pageNum) {
+    let baseUrl = window.location.host + window.location.pathname;
+    let url =
+        baseUrl +
+        '?query=' +
+        query +
+        '&pageSize=' +
+        pageSize +
+        '&pageNum=' +
+        pageNum;
+
+    return url;
 }
 
 // If we have a query string, search it now
