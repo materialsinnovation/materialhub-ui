@@ -1,7 +1,7 @@
 // Forward a search query to cordra and populate search page
 async function runSearch(query, pageSize, pageNum) {
     let qstr = '?query=' + query;
-    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]'; 
+    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]';
     qstr += '&pageSize=' + pageSize;
     qstr += '&pageNum=' + pageNum;
     qstr = encodeURI(qstr);
@@ -14,6 +14,7 @@ async function runSearch(query, pageSize, pageNum) {
 
     let results = await response.json();
     populateTable(results['results']);
+    populateNavigation();
 }
 
 async function createSearchResult(result) {
@@ -29,7 +30,7 @@ async function createSearchResult(result) {
     let thumbnail_link = document.createElement('img');
     name_link.href = encodeURI('/resource?id=' + result_id);
     name_link.innerHTML = result_name;
-    
+
     // Add tree of elements
     row_td.appendChild(name_div);
     name_div.appendChild(name_header);
@@ -69,21 +70,26 @@ async function populateTable(results) {
     }
 }
 
+async function populateNavigation() {
+    var nav = document.getElementById('pageNav');
+
+    let new_link = $('<a id="pageNext" href="#">First</a>');
+    nav.appendchild(new_link);
+}
+
 // If we have a query string, search it now
-document.addEventListener(
-    'DOMContentLoaded',
-    function () {
-        let params = new URLSearchParams(location.search);
-        let qstr = params.get('query');
-        let pageSize = params.get('pageSize');
-        let pageNum = params.get('pageNum');
+document.addEventListener('DOMContentLoaded', function () {
+    let params = new URLSearchParams(location.search);
+    let qstr = params.get('query');
+    let pageSize = params.get('pageSize');
+    let pageNum = params.get('pageNum');
 
-        if (pageNum == null){
-            pageNum = 1;
-        }
-
-        if (nonEmpty(qstr)) {
-            const results = runSearch(qstr, pageSize, pageNum);
-        }
+    if (pageNum == null) {
+        pageNum = 0;
+        params.set('pageNum', pageNum);
     }
-);
+
+    if (nonEmpty(qstr)) {
+        const results = runSearch(qstr, pageSize, pageNum);
+    }
+});

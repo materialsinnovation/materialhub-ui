@@ -31,13 +31,18 @@ description: ''
             <option value="100">100</option>
         </select>
         <br /><br />
+        <label for="pageNum">Starting Page Results: </label>
+        <select name="pageNum" id="pageNum">
+            <option value="0">1</option>
+            <option value="1">2</option>
+        </select>
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
             Search
         </button>
     </form>
 </div>
 <br />
-
+<div id="pageNav"></div>
 <table
     id="results_table"
     class="table table-striped table-bordered table-hover"
