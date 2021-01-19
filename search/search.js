@@ -82,7 +82,7 @@ async function populateNavigation(query, pageSize, pageNum, size) {
 
     var nav = document.getElementById('pageNav');
     var list = document.createElement('nav');
-    list.setAttribute('class', 'nav nav-pills nav-justified');
+    list.setAttribute('class', 'nav nav-pills');
 
     var startPageNum = startingPaginationNumber(pageNum, numberOfPages);
     //console.log(startPageNum);
