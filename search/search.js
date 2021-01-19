@@ -9,9 +9,10 @@ async function runSearch(query, pageSize, pageNum) {
     }
 
     let results = await response.json();
-    let numberOfPages = Math.ceil(results.size / results.pageSize);
+    let size = results.size;
+    //let numberOfPages = Math.ceil(results.size / results.pageSize);
     populateTable(results['results']);
-    populateNavigation(query, pageSize, pageNum, numberOfPages);
+    populateNavigation(query, pageSize, pageNum, size);
 }
 
 async function createSearchResult(result) {
@@ -67,18 +68,37 @@ async function populateTable(results) {
     }
 }
 
-async function populateNavigation(query, pageSize, pageNum, numberOfPages) {
+async function populateNavigation(query, pageSize, pageNum, size) {
+    let numberOfPages = Math.ceil(size / pageSize);
+
     var nav = document.getElementById('pageNav');
+    var totalResults = document.createElement('p');
+    var numberResults = document.createTextNode('Total Results: ' + size);
+    totalResults.appendChild(numberResults);
+    nav.appendChild(totalResults);
+
+    var list = document.createElement('nav');
+    list.setAttribute('class', 'nav nav-pills');
 
     for (let i = 0; i < numberOfPages; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
-        console.log(qstr);
+        //console.log(qstr);
         var link = document.createElement('a');
+        //bullet.setAttribute('style', 'no-padding')
+
+        if (i == pageNum) {
+            link.setAttribute('class', 'nav-item nav-link active');
+        } else {
+            link.setAttribute('class', 'nav-item nav-link');
+        }
+
         link.setAttribute('href', qstr);
         var node = document.createTextNode(i + 1);
         link.appendChild(node);
-        nav.appendChild(link);
+        list.appendChild(link);
     }
+
+    nav.appendChild(list);
 }
 
 function createSearchString(query, pageSize, pageNum) {
