@@ -84,7 +84,12 @@ async function populateNavigation(query, pageSize, pageNum, size) {
     var list = document.createElement('nav');
     list.setAttribute('class', 'nav nav-pills nav-justified');
 
-    for (let i = 0; i < numberOfPages; i++) {
+    var startPageNum = startingPaginationNumber(pageNum, numberOfPages);
+    //console.log(startPageNum);
+    var endPageNum = endingPaginationNumber(pageNum, numberOfPages);
+    //console.log(endPageNum);
+
+    for (let i = startPageNum; i < endPageNum; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
         //console.log(qstr);
         var link = document.createElement('a');
@@ -136,6 +141,35 @@ function getRangeTextForPage(pageNum, pageSize, size) {
     if (size != -1 && lastResultOnPageNumber > size)
         lastResultOnPageNumber = size;
     return firstResultOnPageNumber + ' to ' + lastResultOnPageNumber;
+}
+
+function startingPaginationNumber(currentPageNumber, totalNumOfPages) {
+    var result = 0;
+    if (currentPageNumber < 5) {
+        result = 0;
+    } else {
+        result = currentPageNumber - 5;
+    }
+    if (totalNumOfPages - result < 10) {
+        result = totalNumOfPages - 10;
+    }
+    if (result < 0) {
+        result = 0;
+    }
+    return result;
+}
+
+function endingPaginationNumber(currentPageNumber, totalNumOfPages) {
+    var result = null;
+    if (currentPageNumber >= 5) {
+        result = currentPageNumber + 5;
+    } else {
+        result = 9;
+    }
+    if (result > totalNumOfPages) {
+        result = totalNumOfPages;
+    }
+    return result;
 }
 
 // If we have a query string, search it now
