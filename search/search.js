@@ -13,6 +13,7 @@ async function runSearch(query, pageSize, pageNum) {
     //let numberOfPages = Math.ceil(results.size / results.pageSize);
     populateTable(results['results']);
     populateNavigation(query, pageSize, pageNum, size);
+    duplicateNavigation();
 }
 
 async function createSearchResult(result) {
@@ -70,15 +71,18 @@ async function populateTable(results) {
 
 async function populateNavigation(query, pageSize, pageNum, size) {
     let numberOfPages = Math.ceil(size / pageSize);
+    var resultsDiv = document.getElementById('resultsShowing');
+    var totalResults = document.createElement('b');
+    var rangeOfTable = getRangeTextForPage(pageNum, pageSize, size);
+    var numberResults = document.createTextNode(
+        'Showing ' + rangeOfTable + ' of ' + size
+    );
+    totalResults.appendChild(numberResults);
+    resultsDiv.appendChild(totalResults);
 
     var nav = document.getElementById('pageNav');
-    var totalResults = document.createElement('p');
-    var numberResults = document.createTextNode('Total Results: ' + size);
-    totalResults.appendChild(numberResults);
-    nav.appendChild(totalResults);
-
     var list = document.createElement('nav');
-    list.setAttribute('class', 'nav nav-pills');
+    list.setAttribute('class', 'nav nav-pills nav-justified');
 
     for (let i = 0; i < numberOfPages; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
@@ -87,9 +91,9 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         //bullet.setAttribute('style', 'no-padding')
 
         if (i == pageNum) {
-            link.setAttribute('class', 'nav-item nav-link active');
+            link.setAttribute('class', 'nav-item nav-link border active');
         } else {
-            link.setAttribute('class', 'nav-item nav-link');
+            link.setAttribute('class', 'nav-item nav-link border');
         }
 
         link.setAttribute('href', qstr);
@@ -99,6 +103,13 @@ async function populateNavigation(query, pageSize, pageNum, size) {
     }
 
     nav.appendChild(list);
+}
+
+function duplicateNavigation() {
+    var pageDiv = document.getElementById('pageNav');
+    var duplicateDiv = pageDiv.cloneNode(true);
+    var secondPageNav = document.getElementById('bottomPageNav');
+    secondPageNav.appendChild(duplicateDiv);
 }
 
 function createSearchString(query, pageSize, pageNum) {
@@ -117,6 +128,14 @@ function createNewUrlString(query, pageSize, pageNum) {
         '?query=' + query + '&pageSize=' + pageSize + '&pageNum=' + pageNum;
 
     return url;
+}
+
+function getRangeTextForPage(pageNum, pageSize, size) {
+    var firstResultOnPageNumber = pageNum * pageSize + 1;
+    var lastResultOnPageNumber = (pageNum + 1) * pageSize;
+    if (size != -1 && lastResultOnPageNumber > size)
+        lastResultOnPageNumber = size;
+    return firstResultOnPageNumber + ' to ' + lastResultOnPageNumber;
 }
 
 // If we have a query string, search it now
