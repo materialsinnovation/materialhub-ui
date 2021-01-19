@@ -73,6 +73,11 @@ async function populateNavigation(query, pageSize, pageNum, numberOfPages) {
     for (let i = 0; i < numberOfPages; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
         console.log(qstr);
+        var link = document.createElement('a');
+        link.setAttribute('href', qstr);
+        var node = document.createTextNode(i + 1);
+        link.appendChild(node);
+        nav.appendChild(link);
     }
 }
 
@@ -87,15 +92,9 @@ function createSearchString(query, pageSize, pageNum) {
 }
 
 function createNewUrlString(query, pageSize, pageNum) {
-    let baseUrl = window.location.host + window.location.pathname;
+    //let baseUrl = window.location.host + window.location.pathname;
     let url =
-        baseUrl +
-        '?query=' +
-        query +
-        '&pageSize=' +
-        pageSize +
-        '&pageNum=' +
-        pageNum;
+        '?query=' + query + '&pageSize=' + pageSize + '&pageNum=' + pageNum;
 
     return url;
 }
