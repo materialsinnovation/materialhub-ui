@@ -95,11 +95,12 @@ async function populateNavigation(query, pageSize, pageNum, size) {
     linkFirst.appendChild(node);
     list.appendChild(linkFirst);
 
-    var linkDots = document.createElement('a');
-    linkDots.setAttribute('class', 'nav-item nav-link');
-    var node = document.createTextNode(' . . . ');
-    linkDots.appendChild(node);
-    list.appendChild(linkDots);
+    //could make this into a function since it is used twice and would simplify code
+    var firstDots = document.createElement('a');
+    firstDots.setAttribute('class', 'nav-item nav-link');
+    var nodeDotsFirst = document.createTextNode(' . . . ');
+    firstDots.appendChild(nodeDotsFirst);
+    list.appendChild(firstDots);
 
     for (let i = startPageNum; i < endPageNum; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
@@ -117,18 +118,18 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         list.appendChild(link);
     }
 
-    var linkDots = document.createElement('a');
-    linkDots.setAttribute('class', 'nav-item nav-link');
-    var node = document.createTextNode(' . . . ');
-    linkDots.appendChild(node);
-    list.appendChild(linkDots);
+    var lastDots = document.createElement('a');
+    lastDots.setAttribute('class', 'nav-item nav-link');
+    var nodeDotsLast = document.createTextNode(' . . . ');
+    lastDots.appendChild(nodeDotsLast);
+    list.appendChild(lastDots);
 
     var qstrLast = createNewUrlString(query, pageSize, numberOfPages - 1);
     var linkLast = document.createElement('a');
     linkLast.setAttribute('class', 'nav-item nav-link border');
     linkLast.setAttribute('href', qstrLast);
-    var node = document.createTextNode('Last');
-    linkLast.appendChild(node);
+    var nodeLast = document.createTextNode('Last');
+    linkLast.appendChild(nodeLast);
     list.appendChild(linkLast);
 
     nav.appendChild(list);
