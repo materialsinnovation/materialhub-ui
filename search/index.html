@@ -34,6 +34,8 @@ description: ''
         <label for="pageNum">Starting Page Results: </label>
         <select name="pageNum" id="pageNum">
             <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
         </select>
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
             Search
@@ -41,8 +43,12 @@ description: ''
     </form>
 </div>
 <br />
-<div id="pageNav"></div>
+<div id="resultsShowing"></div>
+<br />
+<div id="pageNav" class="pagination-container"></div>
+<br />
 <table
     id="results_table"
     class="table table-striped table-bordered table-hover"
 ></table>
+<div id="bottomPageNav" class="pagination-container"></div>
