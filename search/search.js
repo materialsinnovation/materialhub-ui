@@ -87,20 +87,22 @@ async function populateNavigation(query, pageSize, pageNum, size) {
     var startPageNum = startingPaginationNumber(pageNum, numberOfPages);
     var endPageNum = endingPaginationNumber(pageNum, numberOfPages);
 
-    var qstrFirst = createNewUrlString(query, pageSize, 0);
-    var linkFirst = document.createElement('a');
-    linkFirst.setAttribute('class', 'nav-item nav-link border');
-    linkFirst.setAttribute('href', qstrFirst);
-    var node = document.createTextNode('First');
-    linkFirst.appendChild(node);
-    list.appendChild(linkFirst);
+    if (startPageNum != 0) {
+        var qstrFirst = createNewUrlString(query, pageSize, 0);
+        var linkFirst = document.createElement('a');
+        linkFirst.setAttribute('class', 'nav-item nav-link border');
+        linkFirst.setAttribute('href', qstrFirst);
+        var node = document.createTextNode('First');
+        linkFirst.appendChild(node);
+        list.appendChild(linkFirst);
 
-    //could make this into a function since it is used twice and would simplify code
-    var firstDots = document.createElement('a');
-    firstDots.setAttribute('class', 'nav-item nav-link');
-    var nodeDotsFirst = document.createTextNode(' . . . ');
-    firstDots.appendChild(nodeDotsFirst);
-    list.appendChild(firstDots);
+        //could make this into a function since it is used twice and would simplify code
+        var firstDots = document.createElement('a');
+        firstDots.setAttribute('class', 'nav-item nav-link');
+        var nodeDotsFirst = document.createTextNode(' . . . ');
+        firstDots.appendChild(nodeDotsFirst);
+        list.appendChild(firstDots);
+    }
 
     for (let i = startPageNum; i < endPageNum; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
@@ -118,19 +120,21 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         list.appendChild(link);
     }
 
-    var lastDots = document.createElement('a');
-    lastDots.setAttribute('class', 'nav-item nav-link');
-    var nodeDotsLast = document.createTextNode(' . . . ');
-    lastDots.appendChild(nodeDotsLast);
-    list.appendChild(lastDots);
+    if (endPageNum != numberOfPages) {
+        var lastDots = document.createElement('a');
+        lastDots.setAttribute('class', 'nav-item nav-link');
+        var nodeDotsLast = document.createTextNode(' . . . ');
+        lastDots.appendChild(nodeDotsLast);
+        list.appendChild(lastDots);
 
-    var qstrLast = createNewUrlString(query, pageSize, numberOfPages - 1);
-    var linkLast = document.createElement('a');
-    linkLast.setAttribute('class', 'nav-item nav-link border');
-    linkLast.setAttribute('href', qstrLast);
-    var nodeLast = document.createTextNode('Last');
-    linkLast.appendChild(nodeLast);
-    list.appendChild(linkLast);
+        var qstrLast = createNewUrlString(query, pageSize, numberOfPages - 1);
+        var linkLast = document.createElement('a');
+        linkLast.setAttribute('class', 'nav-item nav-link border');
+        linkLast.setAttribute('href', qstrLast);
+        var nodeLast = document.createTextNode('Last');
+        linkLast.appendChild(nodeLast);
+        list.appendChild(linkLast);
+    }
 
     nav.appendChild(list);
 }
