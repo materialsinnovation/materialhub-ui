@@ -176,8 +176,8 @@ function endingPaginationNumber(currentPageNumber, totalNumOfPages) {
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search);
     let qstr = params.get('query');
-    let pageSize = params.get('pageSize');
-    let pageNum = params.get('pageNum');
+    let pageSize = parseInt(params.get('pageSize'));
+    let pageNum = parseInt(params.get('pageNum'));
 
     if (pageNum == null) {
         pageNum = 0;
