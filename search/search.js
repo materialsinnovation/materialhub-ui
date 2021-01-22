@@ -148,7 +148,7 @@ function startingPaginationNumber(currentPageNumber, totalNumOfPages) {
     if (currentPageNumber < 5) {
         result = 0;
     } else {
-        result = currentPageNumber - 5;
+        result = currentPageNumber - 4;
     }
     if (totalNumOfPages - result < 10) {
         result = totalNumOfPages - 10;
