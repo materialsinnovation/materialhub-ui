@@ -85,15 +85,25 @@ async function populateNavigation(query, pageSize, pageNum, size) {
     list.setAttribute('class', 'nav nav-pills');
 
     var startPageNum = startingPaginationNumber(pageNum, numberOfPages);
-    //console.log(startPageNum);
     var endPageNum = endingPaginationNumber(pageNum, numberOfPages);
-    //console.log(endPageNum);
+
+    var qstrFirst = createNewUrlString(query, pageSize, 0);
+    var linkFirst = document.createElement('a');
+    linkFirst.setAttribute('class', 'nav-item nav-link border');
+    linkFirst.setAttribute('href', qstrFirst);
+    var node = document.createTextNode('First');
+    linkFirst.appendChild(node);
+    list.appendChild(linkFirst);
+
+    var linkDots = document.createElement('a');
+    linkDots.setAttribute('class', 'nav-item nav-link');
+    var node = document.createTextNode(' . . . ');
+    linkDots.appendChild(node);
+    list.appendChild(linkDots);
 
     for (let i = startPageNum; i < endPageNum; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
-        //console.log(qstr);
         var link = document.createElement('a');
-        //bullet.setAttribute('style', 'no-padding')
 
         if (i == pageNum) {
             link.setAttribute('class', 'nav-item nav-link border active');
@@ -106,6 +116,20 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         link.appendChild(node);
         list.appendChild(link);
     }
+
+    var linkDots = document.createElement('a');
+    linkDots.setAttribute('class', 'nav-item nav-link');
+    var node = document.createTextNode(' . . . ');
+    linkDots.appendChild(node);
+    list.appendChild(linkDots);
+
+    var qstrLast = createNewUrlString(query, pageSize, numberOfPages - 1);
+    var linkLast = document.createElement('a');
+    linkLast.setAttribute('class', 'nav-item nav-link border');
+    linkLast.setAttribute('href', qstrLast);
+    var node = document.createTextNode('Last');
+    linkLast.appendChild(node);
+    list.appendChild(linkLast);
 
     nav.appendChild(list);
 }
@@ -148,7 +172,7 @@ function startingPaginationNumber(currentPageNumber, totalNumOfPages) {
     if (currentPageNumber < 5) {
         result = 0;
     } else {
-        result = currentPageNumber - 5;
+        result = currentPageNumber - 4;
     }
     if (totalNumOfPages - result < 10) {
         result = totalNumOfPages - 10;
