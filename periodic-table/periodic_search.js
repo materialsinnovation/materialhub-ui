@@ -244,7 +244,7 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         var linkLast = document.createElement('a');
         linkLast.setAttribute('class', 'nav-item nav-link border');
         linkLast.setAttribute('href', qstrLast);
-        var nodeLast = document.createTextNode(numberOfPages + 1);
+        var nodeLast = document.createTextNode(numberOfPages);
         linkLast.appendChild(nodeLast);
         list.appendChild(linkLast);
     }
