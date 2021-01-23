@@ -200,11 +200,26 @@ async function populateNavigation(query, pageSize, pageNum, size) {
     var endPageNum = endingPaginationNumber(pageNum, numberOfPages);
     //console.log(endPageNum);
 
+    if (startPageNum != 0) {
+        var qstrFirst = createNewUrlString(query, pageSize, 0);
+        var linkFirst = document.createElement('a');
+        linkFirst.setAttribute('class', 'nav-item nav-link border');
+        linkFirst.setAttribute('href', qstrFirst);
+        var node = document.createTextNode(1);
+        linkFirst.appendChild(node);
+        list.appendChild(linkFirst);
+
+        //could make this into a function since it is used twice and would simplify code
+        var firstDots = document.createElement('a');
+        firstDots.setAttribute('class', 'nav-item nav-link');
+        var nodeDotsFirst = document.createTextNode(' . . . ');
+        firstDots.appendChild(nodeDotsFirst);
+        list.appendChild(firstDots);
+    }
+
     for (let i = startPageNum; i < endPageNum; i++) {
         let qstr = createNewUrlString(query, pageSize, i);
-        //console.log(qstr);
         var link = document.createElement('a');
-        //bullet.setAttribute('style', 'no-padding')
 
         if (i == pageNum) {
             link.setAttribute('class', 'nav-item nav-link border active');
@@ -216,6 +231,22 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         var node = document.createTextNode(i + 1);
         link.appendChild(node);
         list.appendChild(link);
+    }
+
+    if (endPageNum != numberOfPages) {
+        var lastDots = document.createElement('a');
+        lastDots.setAttribute('class', 'nav-item nav-link');
+        var nodeDotsLast = document.createTextNode(' . . . ');
+        lastDots.appendChild(nodeDotsLast);
+        list.appendChild(lastDots);
+
+        var qstrLast = createNewUrlString(query, pageSize, numberOfPages - 1);
+        var linkLast = document.createElement('a');
+        linkLast.setAttribute('class', 'nav-item nav-link border');
+        linkLast.setAttribute('href', qstrLast);
+        var nodeLast = document.createTextNode(numberOfPages + 1);
+        linkLast.appendChild(nodeLast);
+        list.appendChild(linkLast);
     }
 
     nav.appendChild(list);
