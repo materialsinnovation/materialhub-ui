@@ -92,7 +92,7 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         var linkFirst = document.createElement('a');
         linkFirst.setAttribute('class', 'nav-item nav-link border');
         linkFirst.setAttribute('href', qstrFirst);
-        var node = document.createTextNode('First');
+        var node = document.createTextNode(1);
         linkFirst.appendChild(node);
         list.appendChild(linkFirst);
 
@@ -131,7 +131,7 @@ async function populateNavigation(query, pageSize, pageNum, size) {
         var linkLast = document.createElement('a');
         linkLast.setAttribute('class', 'nav-item nav-link border');
         linkLast.setAttribute('href', qstrLast);
-        var nodeLast = document.createTextNode('Last');
+        var nodeLast = document.createTextNode(numberOfPages);
         linkLast.appendChild(nodeLast);
         list.appendChild(linkLast);
     }
