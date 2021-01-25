@@ -204,16 +204,24 @@ function endingPaginationNumber(currentPageNumber, totalNumOfPages) {
 // If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search);
-    let qstr = params.get('query');
+    let query = params.get('query');
     let pageSize = parseInt(params.get('pageSize'));
     let pageNum = parseInt(params.get('pageNum'));
 
-    if (pageNum == null) {
+    if (isNaN(pageNum)) {
         pageNum = 0;
         params.set('pageNum', pageNum);
     }
 
-    if (nonEmpty(qstr)) {
-        const results = runSearch(qstr, pageSize, pageNum);
+    if (isNaN(pageSize)) {
+        pageSize = 10;
+        params.set('pageSize', pageSize);
+    }
+
+    document.getElementById('searchBox').value = query;
+    document.getElementById('pageSize').value = pageSize;
+
+    if (nonEmpty(query)) {
+        const results = runSearch(query, pageSize, pageNum);
     }
 });
