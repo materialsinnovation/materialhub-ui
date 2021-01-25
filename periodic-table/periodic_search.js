@@ -64,26 +64,26 @@ function add(ev) {
     }
 }
 
-async function search() {
-    var formulabox = document.getElementById('FormulaBox').value;
-    var shortenedStr = formulabox.substring(0, formulabox.length - 1);
-    //var replacedStr = shortenedStr.replace(/-/g, queryParameter);
-    var splitStr = shortenedStr.split('-');
-    //console.log(splitStr);
-    var numStr = matchElementName2Number(splitStr);
-    //console.log(numStr);
-    var searchStr = convertString2Search(numStr);
-    //console.log(searchStr);
-    //searchStr = encodeURI(searchStr);
-    console.log(searchStr);
+// async function search() {
+//     var formulabox = document.getElementById('FormulaBox').value;
+//     var shortenedStr = formulabox.substring(0, formulabox.length - 1);
+//     //var replacedStr = shortenedStr.replace(/-/g, queryParameter);
+//     var splitStr = shortenedStr.split('-');
+//     //console.log(splitStr);
+//     var numStr = matchElementName2Number(splitStr);
+//     //console.log(numStr);
+//     var searchStr = convertString2Search(numStr);
+//     //console.log(searchStr);
+//     //searchStr = encodeURI(searchStr);
+//     console.log(searchStr);
 
-    let response = await getData('/objects' + searchStr);
+//     let response = await getData('/objects' + searchStr);
 
-    if (!response.ok) {
-        alert('Search failed!');
-    }
-    let results = await response.json();
-}
+//     if (!response.ok) {
+//         alert('Search failed!');
+//     }
+//     let results = await response.json();
+// }
 
 // document.getElementById('Search').addEventListener('click', function () {
 //     var formulabox = document.getElementById('FormulaxBox').value;
