@@ -85,14 +85,14 @@ async function search() {
     let results = await response.json();
 }
 
-document.getElementById('Search').addEventListener('click', function () {
-    var formulabox = document.getElementById('FormulaxBox').value;
-    var str = formulabox;
-    var shortenedStr = str.substring(0, str.length - 1);
-    var replacedStr = shortenedStr.replace(/-/g, queryParameter);
-    this.searchstring = replacedStr;
-    console.log(this.searchstring);
-});
+// document.getElementById('Search').addEventListener('click', function () {
+//     var formulabox = document.getElementById('FormulaxBox').value;
+//     var str = formulabox;
+//     var shortenedStr = str.substring(0, str.length - 1);
+//     var replacedStr = shortenedStr.replace(/-/g, queryParameter);
+//     this.searchstring = replacedStr;
+//     console.log(this.searchstring);
+// });
 
 async function matchElementName2Number(string) {
     //var elementsInfo = getElementsInfo();
