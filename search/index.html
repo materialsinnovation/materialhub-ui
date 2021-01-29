@@ -11,7 +11,7 @@ description: ''
 <script src="search.js"></script>
 <div>
     <form
-        class="form-inline my-2 my-lg-0"
+        class="form-inline"
         action="{{ site.baseurl }}/search/"
         method="GET"
     >
@@ -22,24 +22,20 @@ description: ''
             aria-label="Search"
             name="query"
             id="searchBox"
+            size="100"
         />
-        <label for="pageSize">Records per page: </label>
+        
+        <button class="btn btn-outline-dark" type="submit">
+            Search
+        </button>
+        
+        <label for="pageSize">&nbsp;Records per page:&nbsp;</label>
         <select name="pageSize" id="pageSize">
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
         </select>
-        <br /><br />
-        <label for="pageNum">Starting Page Results: </label>
-        <select name="pageNum" id="pageNum">
-            <option value="0">1</option>
-            <option value="1">2</option>
-            <option value="2">3</option>
-        </select>
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-            Search
-        </button>
     </form>
 </div>
 <br />
