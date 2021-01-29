@@ -1,5 +1,8 @@
+const unencodedQueryInitial = 'internal.pointsAt:20.500.12772/elements/';
+const unencodedQueryParameter = ' AND internal.pointsAt:20.500.12772/elements/';
+
 const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
-const queryBase = '?query=internal.pointsAt%3A20.500.12772/elements/';
+const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 
 // ZTT: populate with list of strings in various functions below, e.g., ["Cu", "Ni"]
 // ZTT: Show in HTML page between search box and periodic table
@@ -8,7 +11,7 @@ var elementsExcluded = [];
 
 // create new function or change name to elementClick()
 function add(ev) {
-    var elt_name = ev.target.id + '-';
+    var elt_name = ev.target.id + unencodedQueryParameter;
     var formulabox = document.getElementById('FormulaBox');
     var oldformula = formulabox.value;
     console.log(formulabox.value);
@@ -25,7 +28,7 @@ function add(ev) {
         document.getElementById(ev.target.id).style.backgroundColor = null;
         document.getElementById(ev.target.id).style.color = null;
     } else {
-        formulabox.value = oldformula + elt_name + '';
+        formulabox.value = oldformula + elt_name;
         document.getElementById(ev.target.id).style.backgroundColor = '#000000';
         document.getElementById(ev.target.id).style.color = '#ffffff';
     }
@@ -42,7 +45,6 @@ async function runSearch(query, pageSize, pageNum) {
 
     let results = await response.json();
     let size = results.size;
-    //let numberOfPages = Math.ceil(results.size / results.pageSize);
     populateTable(results['results']);
     populateNavigation(query, pageSize, pageNum, size);
     duplicateNavigation();
@@ -180,7 +182,7 @@ function duplicateNavigation() {
 
 function createSearchString(query, pageSize, pageNum) {
     let qstr = '?query=' + query;
-    qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]';
+    //qstr += '&filter=["/id","/content/name","/content/thumbnailUrl"]';
     qstr += '&pageSize=' + pageSize;
     qstr += '&pageNum=' + pageNum;
     qstr = encodeURI(qstr);
@@ -191,8 +193,15 @@ function createSearchString(query, pageSize, pageNum) {
 function createNewUrlString(query, pageSize, pageNum) {
     //let baseUrl = window.location.host + window.location.pathname;
     let url =
-        '?query=' + query + '&pageSize=' + pageSize + '&pageNum=' + pageNum;
-
+        '?query=' +
+        //this is what is causing me greif
+        //queryInitial +
+        query +
+        '&pageSize=' +
+        pageSize +
+        '&pageNum=' +
+        pageNum;
+    url = encodeURI(url);
     return url;
 }
 
@@ -254,6 +263,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ZTT: needs to become searchBox
+    // if (query != null) {
+    //     document.getElementById('FormulaBox').value = queryInitial + query;
+    // } else {
+    //     document.getElementById('FormulaBox').value = query;
+    // }
     document.getElementById('FormulaBox').value = query;
     document.getElementById('pageSize').value = pageSize;
 

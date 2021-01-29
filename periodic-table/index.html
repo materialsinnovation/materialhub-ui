@@ -23,21 +23,17 @@ description: ''
             aria-label="Search"
             name="query"
             id="FormulaBox"
+            size="100"
         />
         <label for="pageSize">Records per page: </label>
         <select name="pageSize" id="pageSize">
+            <option value="1">1</option>
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
         </select>
         <br /><br />
-        <label for="pageNum">Starting Page Results: </label>
-        <select name="pageNum" id="pageNum">
-            <option value="0">1</option>
-            <option value="1">2</option>
-            <option value="2">3</option>
-        </select>
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
             Search
         </button>
@@ -45,34 +41,6 @@ description: ''
 </div>
 
 <div class="container" id="jarvis">
-    <!-- <button
-        style="display: block; margin: 0 auto"
-        id="Search"
-        onclick="search()"
-    >
-        Search
-    </button>
-    <form
-        onSubmit="return false;"
-        style="display: block; margin: 0 auto"
-        method="post"
-    >
-        <input type="hidden" name="dfghjk" value="hgfdsaSgfd" />
-        <input
-            type="text"
-            style="display: block; margin: 0 auto"
-            placeholder="Enter"
-            id="FormulaBox"
-            name="FormulaBox"
-        />
-        <button
-            style="display: block; margin: 0 auto"
-            onclick="location.reload();"
-        >
-            Refresh Page
-        </button>
-    </form> -->
-
     <div id="container" class="container">
         <div id="numberResults"></div>
         <br /><br />
