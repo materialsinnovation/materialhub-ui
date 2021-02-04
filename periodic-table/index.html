@@ -8,7 +8,6 @@ description: ''
 <h1>{{ page.title }}</h1>
 
 <link rel="stylesheet" href="periodic-table.css" />
-<script type="text/javascript" src="elements.json"></script>
 <script src="periodic_search.js"></script>
 <div>
     <form
@@ -27,20 +26,30 @@ description: ''
         />
         <label for="pageSize">Records per page: </label>
         <select name="pageSize" id="pageSize">
-            <option value="1">1</option>
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
         </select>
-        <br /><br />
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
             Search
         </button>
     </form>
 </div>
+<br />
+<div>
+    Elements included:
+    <div id="elementsRequired">
+        probably use document.getElementById("elementsRequired").innerHTML
+    </div>
+    <br />
+    Elements excluded:
+    <div id="elementsExcluded">
+        probably use document.getElementById("elementsExcluded").innerHTML
+    </div>
+</div>
 
-<div class="container" id="jarvis">
+<div class="container">
     <div id="container" class="container">
         <div id="numberResults"></div>
         <br /><br />
@@ -48,7 +57,12 @@ description: ''
             <tbody>
                 <tr>
                     <td class="element non-metal">
-                        <div id="H" class="symbol" onclick="add(event)">
+                        <div
+                            id="1"
+                            title="H"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             1<br />H
                         </div>
                     </td>
@@ -69,19 +83,34 @@ description: ''
                     <td class="element empty"><br /></td>
                     <td class="element empty"><br /></td>
                     <td class="element noble">
-                        <div id="He" class="symbol" onclick="add(event)">
+                        <div
+                            id="2"
+                            title="He"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             2<br />He
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="element alkali">
-                        <div id="Li" class="symbol" onclick="add(event)">
+                        <div
+                            id="3"
+                            title="Li"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             3<br />Li
                         </div>
                     </td>
                     <td class="element alkaline">
-                        <div id="Be" class="symbol" onclick="add(event)">
+                        <div
+                            id="4"
+                            title="Be"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             4<br />Be
                         </div>
                     </td>
@@ -96,44 +125,84 @@ description: ''
                     <td class="element empty"><br /></td>
                     <td class="element empty"><br /></td>
                     <td class="element metalloid">
-                        <div id="B" class="symbol" onclick="add(event)">
+                        <div
+                            id="5"
+                            title="B"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             5<br />B
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="C" class="symbol" onclick="add(event)">
+                        <div
+                            id="6"
+                            title="C"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             6<br />C
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="N" class="symbol" onclick="add(event)">
+                        <div
+                            id="7"
+                            title="N"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             7<br />N
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="O" class="symbol" onclick="add(event)">
+                        <div
+                            id="8"
+                            title="O"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             8<br />O
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="F" class="symbol" onclick="add(event)">
+                        <div
+                            id="9"
+                            title="F"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             9<br />F
                         </div>
                     </td>
                     <td class="element noble">
-                        <div id="Ne" class="symbol" onclick="add(event)">
+                        <div
+                            id="10"
+                            title="Ne"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             10<br />Ne
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="element alkali">
-                        <div id="Na" class="symbol" onclick="add(event)">
+                        <div
+                            id="11"
+                            title="Na"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             11<br />Na
                         </div>
                     </td>
                     <td class="element alkaline">
-                        <div id="Mg" class="symbol" onclick="add(event)">
+                        <div
+                            id="12"
+                            title="Mg"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             12<br />Mg
                         </div>
                     </td>
@@ -148,392 +217,772 @@ description: ''
                     <td class="element empty"><br /></td>
                     <td class="element empty"><br /></td>
                     <td class="element post-transition">
-                        <div id="Al" class="symbol" onclick="add(event)">
+                        <div
+                            id="13"
+                            title="Al"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             13<br />Al
                         </div>
                     </td>
                     <td class="element metalloid">
-                        <div id="Si" class="symbol" onclick="add(event)">
+                        <div
+                            id="14"
+                            title="Si"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             14<br />Si
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="P" class="symbol" onclick="add(event)">
+                        <div
+                            id="15"
+                            title="P"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             15<br />P
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="S" class="symbol" onclick="add(event)">
+                        <div
+                            id="16"
+                            title="S"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             16<br />S
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="Cl" class="symbol" onclick="add(event)">
+                        <div
+                            id="17"
+                            title="Cl"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             17<br />Cl
                         </div>
                     </td>
                     <td class="element noble">
-                        <div id="Ar" class="symbol" onclick="add(event)">
+                        <div
+                            id="18"
+                            title="Ar"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             18<br />Ar
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="element alkali">
-                        <div id="K" class="symbol" onclick="add(event)">
+                        <div
+                            id="19"
+                            title="K"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             19<br />K
                         </div>
                     </td>
                     <td class="element alkaline">
-                        <div id="Ca" class="symbol" onclick="add(event)">
+                        <div
+                            id="20"
+                            title="Ca"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             20<br />Ca
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Sc" class="symbol" onclick="add(event)">
+                        <div
+                            id="21"
+                            title="Sc"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             21<br />Sc
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Ti" class="symbol" onclick="add(event)">
+                        <div
+                            id="22"
+                            title="Ti"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             22<br />Ti
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="V" class="symbol" onclick="add(event)">
+                        <div
+                            id="23"
+                            title="V"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             23<br />V
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Cr" class="symbol" onclick="add(event)">
+                        <div
+                            id="24"
+                            title="Cr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             24<br />Cr
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Mn" class="symbol" onclick="add(event)">
+                        <div
+                            id="25"
+                            title="Mn"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             25<br />Mn
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Fe" class="symbol" onclick="add(event)">
+                        <div
+                            id="26"
+                            title="Fe"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             26<br />Fe
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Co" class="symbol" onclick="add(event)">
+                        <div
+                            id="27"
+                            title="Co"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             27<br />Co
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Ni" class="symbol" onclick="add(event)">
+                        <div
+                            id="28"
+                            title="Ni"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             28<br />Ni
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Cu" class="symbol" onclick="add(event)">
+                        <div
+                            id="29"
+                            title="Cu"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             29<br />Cu
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Zn" class="symbol" onclick="add(event)">
+                        <div
+                            id="30"
+                            title="Zn"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             30<br />Zn
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Ga" class="symbol" onclick="add(event)">
+                        <div
+                            id="31"
+                            title="Ga"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             31<br />Ga
                         </div>
                     </td>
                     <td class="element metalloid">
-                        <div id="Ge" class="symbol" onclick="add(event)">
+                        <div
+                            id="32"
+                            title="Ge"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             32<br />Ge
                         </div>
                     </td>
                     <td class="element metalloid">
-                        <div id="As" class="symbol" onclick="add(event)">
+                        <div
+                            id="33"
+                            title="As"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             33<br />As
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="Se" class="symbol" onclick="add(event)">
+                        <div
+                            id="34"
+                            title="Se"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             34<br />Se
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="Br" class="symbol" onclick="add(event)">
+                        <div
+                            id="35"
+                            title="Br"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             35<br />Br
                         </div>
                     </td>
                     <td class="element noble">
-                        <div id="Kr" class="symbol" onclick="add(event)">
+                        <div
+                            id="36"
+                            title="Kr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             36<br />Kr
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="element alkali">
-                        <div id="Rb" class="symbol" onclick="add(event)">
+                        <div
+                            id="37"
+                            title="Rb"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             37<br />Rb
                         </div>
                     </td>
                     <td class="element alkaline">
-                        <div id="Sr" class="symbol" onclick="add(event)">
+                        <div
+                            id="38"
+                            title="Sr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             38<br />Sr
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Y" class="symbol" onclick="add(event)">
+                        <div
+                            id="39"
+                            title="Y"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             39<br />Y
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Zr" class="symbol" onclick="add(event)">
+                        <div
+                            id="40"
+                            title="Zr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             40<br />Zr
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Nb" class="symbol" onclick="add(event)">
+                        <div
+                            id="41"
+                            title="Nb"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             41<br />Nb
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Mo" class="symbol" onclick="add(event)">
+                        <div
+                            id="42"
+                            title="Mo"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             42<br />Mo
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Tc" class="symbol" onclick="add(event)">
+                        <div
+                            id="43"
+                            title="Tc"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             43<br />Tc
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Ru" class="symbol" onclick="add(event)">
+                        <div
+                            id="44"
+                            title="Ru"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             44<br />Ru
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Rh" class="symbol" onclick="add(event)">
+                        <div
+                            id="45"
+                            title="Rh"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             45<br />Rh
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Pd" class="symbol" onclick="add(event)">
+                        <div
+                            id="46"
+                            title="Pd"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             46<br />Pd
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Ag" class="symbol" onclick="add(event)">
+                        <div
+                            id="47"
+                            title="Ag"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             47<br />Ag
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Cd" class="symbol" onclick="add(event)">
+                        <div
+                            id="48"
+                            title="Cd"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             48<br />Cd
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="In" class="symbol" onclick="add(event)">
+                        <div
+                            id="49"
+                            title="In"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             49<br />In
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Sn" class="symbol" onclick="add(event)">
+                        <div
+                            id="50"
+                            title="Sn"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             50<br />Sn
                         </div>
                     </td>
                     <td class="element metalloid">
-                        <div id="Sb" class="symbol" onclick="add(event)">
+                        <div
+                            id="51"
+                            title="Sb"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             51<br />Sb
                         </div>
                     </td>
                     <td class="element metalloid">
-                        <div id="Te" class="symbol" onclick="add(event)">
+                        <div
+                            id="52"
+                            title="Te"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             52<br />Te
                         </div>
                     </td>
                     <td class="element non-metal">
-                        <div id="I" class="symbol" onclick="add(event)">
+                        <div
+                            id="53"
+                            title="I"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             53<br />I
                         </div>
                     </td>
                     <td class="element noble">
-                        <div id="Xe" class="symbol" onclick="add(event)">
+                        <div
+                            id="54"
+                            title="Xe"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             54<br />Xe
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="element alkali">
-                        <div id="Cs" class="symbol" onclick="add(event)">
+                        <div
+                            id="55"
+                            title="Cs"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             55<br />Cs
                         </div>
                     </td>
                     <td class="element alkaline">
-                        <div id="Ba" class="symbol" onclick="add(event)">
+                        <div
+                            id="56"
+                            title="Ba"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             56<br />Ba
                         </div>
                     </td>
                     <td class="element star">*<br /></td>
                     <td class="element transition">
-                        <div id="Hf" class="symbol" onclick="add(event)">
+                        <div
+                            id="72"
+                            title="Hf"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             72<br />Hf
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Ta" class="symbol" onclick="add(event)">
+                        <div
+                            id="73"
+                            title="Ta"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             73<br />Ta
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="W" class="symbol" onclick="add(event)">
+                        <div
+                            id="74"
+                            title="W"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             74<br />W
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Re" class="symbol" onclick="add(event)">
+                        <div
+                            id="75"
+                            title="Re"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             75<br />Re
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Os" class="symbol" onclick="add(event)">
+                        <div
+                            id="76"
+                            title="Os"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             76<br />Os
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Ir" class="symbol" onclick="add(event)">
+                        <div
+                            id="77"
+                            title="Ir"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             77<br />Ir
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Pt" class="symbol" onclick="add(event)">
+                        <div
+                            id="78"
+                            title="Pt"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             78<br />Pt
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Au" class="symbol" onclick="add(event)">
+                        <div
+                            id="79"
+                            title="Au"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             79<br />Au
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Hg" class="symbol" onclick="add(event)">
+                        <div
+                            id="80"
+                            title="Hg"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             80<br />Hg
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Tl" class="symbol" onclick="add(event)">
+                        <div
+                            id="81"
+                            title="Tl"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             81<br />Tl
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Pb" class="symbol" onclick="add(event)">
+                        <div
+                            id="82"
+                            title="Pb"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             82<br />Pb
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Bi" class="symbol" onclick="add(event)">
+                        <div
+                            id="83"
+                            title="Bi"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             83<br />Bi
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Po" class="symbol" onclick="add(event)">
+                        <div
+                            id="84"
+                            title="Po"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             84<br />Po
                         </div>
                     </td>
                     <td class="element metalloid">
-                        <div id="At" class="symbol" onclick="add(event)">
+                        <div
+                            id="85"
+                            title="At"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             85<br />At
                         </div>
                     </td>
                     <td class="element noble">
-                        <div id="Rn" class="symbol" onclick="add(event)">
+                        <div
+                            id="86"
+                            title="Rn"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             86<br />Rn
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="element alkali">
-                        <div id="Fr" class="symbol" onclick="add(event)">
+                        <div
+                            id="87"
+                            title="Fr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             87<br />Fr
                         </div>
                     </td>
                     <td class="element alkaline">
-                        <div id="Ra" class="symbol" onclick="add(event)">
+                        <div
+                            id="88"
+                            title="Ra"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             88<br />Ra
                         </div>
                     </td>
                     <td class="element star">**<br /></td>
                     <td class="element transition">
-                        <div id="Rf" class="symbol" onclick="add(event)">
+                        <div
+                            id="104"
+                            title="Rf"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             104<br />Rf
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Db" class="symbol" onclick="add(event)">
+                        <div
+                            id="105"
+                            title="Db"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             105<br />Db
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Sg" class="symbol" onclick="add(event)">
+                        <div
+                            id="106"
+                            title="Sg"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             106<br />Sg
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Bh" class="symbol" onclick="add(event)">
+                        <div
+                            id="107"
+                            title="Bh"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             107<br />Bh
                         </div>
                     </td>
                     <td class="element transition">
-                        <div id="Hs" class="symbol" onclick="add(event)">
+                        <div
+                            id="108"
+                            title="Hs"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             108<br />Hs
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Mt" class="symbol" onclick="add(event)">
+                        <div
+                            id="109"
+                            title="Mt"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             109<br />Mt
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Ds" class="symbol" onclick="add(event)">
+                        <div
+                            id="110"
+                            title="Ds"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             110<br />Ds
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Rg" class="symbol" onclick="add(event)">
+                        <div
+                            id="111"
+                            title="Rg"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             111<br />Rg
                         </div>
                     </td>
                     <td class="element post-transition">
-                        <div id="Cn" class="symbol" onclick="add(event)">
+                        <div
+                            id="112"
+                            title="Cn"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             112<br />Cn
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Nh" class="symbol" onclick="add(event)">
+                        <div
+                            id="113"
+                            title="Nh"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             113<br />Nh
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Fl" class="symbol" onclick="add(event)">
+                        <div
+                            id="114"
+                            title="Fl"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             114<br />Fl
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Mc" class="symbol" onclick="add(event)">
+                        <div
+                            id="115"
+                            title="Mc"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             115<br />Mc
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Lv" class="symbol" onclick="add(event)">
+                        <div
+                            id="116"
+                            title="Lv"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             116<br />Lv
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Ts" class="symbol" onclick="add(event)">
+                        <div
+                            id="117"
+                            title="Ts"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             117<br />Ts
                         </div>
                     </td>
                     <td class="element unclassified">
-                        <div id="Og" class="symbol" onclick="add(event)">
+                        <div
+                            id="118"
+                            title="Og"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             118<br />Og
                         </div>
                     </td>
@@ -562,77 +1011,152 @@ description: ''
                     <td class="element empty"><br /></td>
                     <td class="element star">*</td>
                     <td class="element lanthanide">
-                        <div id="La" class="symbol" onclick="add(event)">
+                        <div
+                            id="57"
+                            title="La"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             57<br />La
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Ce" class="symbol" onclick="add(event)">
+                        <div
+                            id="58"
+                            title="Ce"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             58<br />Ce
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Pr" class="symbol" onclick="add(event)">
+                        <div
+                            id="59"
+                            title="Pr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             59<br />Pr
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Nd" class="symbol" onclick="add(event)">
+                        <div
+                            id="60"
+                            title="Nd"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             60<br />Nd
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Pm" class="symbol" onclick="add(event)">
+                        <div
+                            id="61"
+                            title="Pm"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             61<br />Pm
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Sm" class="symbol" onclick="add(event)">
+                        <div
+                            id="62"
+                            title="Sm"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             62<br />Sm
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Eu" class="symbol" onclick="add(event)">
+                        <div
+                            id="63"
+                            title="Eu"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             63<br />Eu
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Gd" class="symbol" onclick="add(event)">
+                        <div
+                            id="64"
+                            title="Gd"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             64<br />Gd
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Tb" class="symbol" onclick="add(event)">
+                        <div
+                            id="65"
+                            title="Tb"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             65<br />Tb
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Dy" class="symbol" onclick="add(event)">
+                        <div
+                            id="66"
+                            title="Dy"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             66<br />Dy
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Ho" class="symbol" onclick="add(event)">
+                        <div
+                            id="67"
+                            title="Ho"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             67<br />Ho
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Er" class="symbol" onclick="add(event)">
+                        <div
+                            id="68"
+                            title="Er"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             68<br />Er
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Tm" class="symbol" onclick="add(event)">
+                        <div
+                            id="69"
+                            title="Tm"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             69<br />Tm
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Yb" class="symbol" onclick="add(event)">
+                        <div
+                            id="70"
+                            title="Yb"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             70<br />Yb
                         </div>
                     </td>
                     <td class="element lanthanide">
-                        <div id="Lu" class="symbol" onclick="add(event)">
+                        <div
+                            id="71"
+                            title="Lu"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             71<br />Lu
                         </div>
                     </td>
@@ -642,77 +1166,152 @@ description: ''
                     <td class="element empty"><br /></td>
                     <td class="element star">**<br /></td>
                     <td class="element actinide">
-                        <div id="Ac" class="symbol" onclick="add(event)">
+                        <div
+                            id="89"
+                            title="Ac"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             89<br />Ac
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Th" class="symbol" onclick="add(event)">
+                        <div
+                            id="90"
+                            title="Th"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             90<br />Th
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Pa" class="symbol" onclick="add(event)">
+                        <div
+                            id="91"
+                            title="Pa"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             91<br />Pa
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="U" class="symbol" onclick="add(event)">
+                        <div
+                            id="92"
+                            title="U"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             92<br />U
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Np" class="symbol" onclick="add(event)">
+                        <div
+                            id="93"
+                            title="Np"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             93<br />Np
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Pu" class="symbol" onclick="add(event)">
+                        <div
+                            id="94"
+                            title="Pu"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             94<br />Pu
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Am" class="symbol" onclick="add(event)">
+                        <div
+                            id="95"
+                            title="Am"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             95<br />Am
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Cm" class="symbol" onclick="add(event)">
+                        <div
+                            id="96"
+                            title="Cm"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             96<br />Cm
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Bk" class="symbol" onclick="add(event)">
+                        <div
+                            id="97"
+                            title="Bk"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             97<br />Bk
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Cf" class="symbol" onclick="add(event)">
+                        <div
+                            id="98"
+                            title="Cf"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             98<br />Cf
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Es" class="symbol" onclick="add(event)">
+                        <div
+                            id="99"
+                            title="Es"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             99<br />Es
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Fm" class="symbol" onclick="add(event)">
+                        <div
+                            id="100"
+                            title="Fm"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             100<br />Fm
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Md" class="symbol" onclick="add(event)">
+                        <div
+                            id="101"
+                            title="Md"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             101<br />Md
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="No" class="symbol" onclick="add(event)">
+                        <div
+                            id="102"
+                            title="No"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             102<br />No
                         </div>
                     </td>
                     <td class="element actinide">
-                        <div id="Lr" class="symbol" onclick="add(event)">
+                        <div
+                            id="103"
+                            title="Lr"
+                            class="symbol"
+                            onclick="add(event)"
+                        >
                             103<br />Lr
                         </div>
                     </td>
