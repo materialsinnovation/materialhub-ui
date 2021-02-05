@@ -13,11 +13,14 @@ var elementsSelected = [];
 
 // create new function or change name to elementClick()
 function add(ev) {
+    var requiredbox = document.getElementById('requiredbox');
+    var excludedbox = document.getElementById('excludedbox');
     var formulabox = document.getElementById('FormulaBox');
     var elt_num = ev.target.id;
-    var elt_name = ev.target.id + '-';
-    //formulabox.value = unencodedQueryInitial + elt_name;
+    var elt_name = ev.target.id + ', ';
     var oldformula = formulabox.value;
+    var oldrequired = requiredbox.value;
+    var oldexcluded = excludedbox.value;
 
     // ZTT: replace binary logic of clicking on/off with null/included/excluded
     // ZTT: null is default
@@ -25,19 +28,26 @@ function add(ev) {
     // ZTT: need to replace formulabox with searchBox as raw cordra query
     // ZTT: wen the user activates an elementClick need to update searchBox, elementsRequired, elementsExcluded
 
-    if (oldformula.indexOf(elt_name) != -1) {
-        formulabox.value = oldformula.replace(elt_name, '');
-        // ZTT: setting style back to null allows origional color
+    if (oldrequired.indexOf(elt_name) != -1) {
+        requiredbox.value = oldrequired.replace(elt_name, '');
+        document.getElementById(ev.target.id).style.backgroundColor = '#808080';
+        document.getElementById(ev.target.id).style.color = '#ffffff';
+        elementsRequired.splice(elementsRequired.indexOf(elt_num), 1);
+        elementsExcluded.push(elt_num);
+        excludedbox.value = oldexcluded + elt_name;
+    } else if (oldexcluded.indexOf(elt_name) != -1) {
+        excludedbox.value = oldexcluded.replace(elt_name, '');
         document.getElementById(ev.target.id).style.backgroundColor = null;
         document.getElementById(ev.target.id).style.color = null;
-        elementsSelected.splice(elementsSelected.indexOf(elt_num), 1);
+        elementsExcluded.splice(elementsExcluded.indexOf(elt_num), 1);
     } else {
-        formulabox.value = oldformula + elt_name;
+        requiredbox.value = oldrequired + elt_name;
         document.getElementById(ev.target.id).style.backgroundColor = '#000000';
         document.getElementById(ev.target.id).style.color = '#ffffff';
-        elementsSelected.push(elt_num);
+        elementsRequired.push(elt_num);
     }
-    //console.log(elementsSelected);
+    //console.log('Required ' + elementsRequired);
+    //console.log('Excluded ' + elementsExcluded);
 }
 
 async function runSearch(query, pageSize, pageNum) {
