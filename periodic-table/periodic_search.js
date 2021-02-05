@@ -9,12 +9,15 @@ const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 var elementsRequired = [];
 var elementsExcluded = [];
 
+var elementsSelected = [];
+
 // create new function or change name to elementClick()
 function add(ev) {
-    var elt_name = ev.target.id + unencodedQueryParameter;
     var formulabox = document.getElementById('FormulaBox');
+    var elt_num = ev.target.id;
+    var elt_name = ev.target.id + '-';
+    //formulabox.value = unencodedQueryInitial + elt_name;
     var oldformula = formulabox.value;
-    console.log(formulabox.value);
 
     // ZTT: replace binary logic of clicking on/off with null/included/excluded
     // ZTT: null is default
@@ -27,11 +30,14 @@ function add(ev) {
         // ZTT: setting style back to null allows origional color
         document.getElementById(ev.target.id).style.backgroundColor = null;
         document.getElementById(ev.target.id).style.color = null;
+        elementsSelected.splice(elementsSelected.indexOf(elt_num), 1);
     } else {
         formulabox.value = oldformula + elt_name;
         document.getElementById(ev.target.id).style.backgroundColor = '#000000';
         document.getElementById(ev.target.id).style.color = '#ffffff';
+        elementsSelected.push(elt_num);
     }
+    //console.log(elementsSelected);
 }
 
 async function runSearch(query, pageSize, pageNum) {
