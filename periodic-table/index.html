@@ -21,11 +21,12 @@ description: ''
             placeholder="Periodic Table Search"
             aria-label="Search"
             name="query"
-            id="FormulaBox"
+            id="searchBox"
             size="100"
         />
         <label for="pageSize">Records per page: </label>
         <select name="pageSize" id="pageSize">
+            <option value="1">1</option>
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
@@ -77,7 +78,7 @@ description: ''
                             id="1"
                             title="H"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             1<br />H
                         </div>
@@ -103,7 +104,7 @@ description: ''
                             id="2"
                             title="He"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             2<br />He
                         </div>
@@ -115,7 +116,7 @@ description: ''
                             id="3"
                             title="Li"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             3<br />Li
                         </div>
@@ -125,7 +126,7 @@ description: ''
                             id="4"
                             title="Be"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             4<br />Be
                         </div>
@@ -145,7 +146,7 @@ description: ''
                             id="5"
                             title="B"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             5<br />B
                         </div>
@@ -155,7 +156,7 @@ description: ''
                             id="6"
                             title="C"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             6<br />C
                         </div>
@@ -165,7 +166,7 @@ description: ''
                             id="7"
                             title="N"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             7<br />N
                         </div>
@@ -175,7 +176,7 @@ description: ''
                             id="8"
                             title="O"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             8<br />O
                         </div>
@@ -185,7 +186,7 @@ description: ''
                             id="9"
                             title="F"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             9<br />F
                         </div>
@@ -195,7 +196,7 @@ description: ''
                             id="10"
                             title="Ne"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             10<br />Ne
                         </div>
@@ -207,7 +208,7 @@ description: ''
                             id="11"
                             title="Na"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             11<br />Na
                         </div>
@@ -217,7 +218,7 @@ description: ''
                             id="12"
                             title="Mg"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             12<br />Mg
                         </div>
@@ -237,7 +238,7 @@ description: ''
                             id="13"
                             title="Al"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             13<br />Al
                         </div>
@@ -247,7 +248,7 @@ description: ''
                             id="14"
                             title="Si"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             14<br />Si
                         </div>
@@ -257,7 +258,7 @@ description: ''
                             id="15"
                             title="P"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             15<br />P
                         </div>
@@ -267,7 +268,7 @@ description: ''
                             id="16"
                             title="S"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             16<br />S
                         </div>
@@ -277,7 +278,7 @@ description: ''
                             id="17"
                             title="Cl"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             17<br />Cl
                         </div>
@@ -287,7 +288,7 @@ description: ''
                             id="18"
                             title="Ar"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             18<br />Ar
                         </div>
@@ -299,7 +300,7 @@ description: ''
                             id="19"
                             title="K"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             19<br />K
                         </div>
@@ -309,7 +310,7 @@ description: ''
                             id="20"
                             title="Ca"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             20<br />Ca
                         </div>
@@ -319,7 +320,7 @@ description: ''
                             id="21"
                             title="Sc"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             21<br />Sc
                         </div>
@@ -329,7 +330,7 @@ description: ''
                             id="22"
                             title="Ti"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             22<br />Ti
                         </div>
@@ -339,7 +340,7 @@ description: ''
                             id="23"
                             title="V"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             23<br />V
                         </div>
@@ -349,7 +350,7 @@ description: ''
                             id="24"
                             title="Cr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             24<br />Cr
                         </div>
@@ -359,7 +360,7 @@ description: ''
                             id="25"
                             title="Mn"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             25<br />Mn
                         </div>
@@ -369,7 +370,7 @@ description: ''
                             id="26"
                             title="Fe"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             26<br />Fe
                         </div>
@@ -379,7 +380,7 @@ description: ''
                             id="27"
                             title="Co"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             27<br />Co
                         </div>
@@ -389,7 +390,7 @@ description: ''
                             id="28"
                             title="Ni"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             28<br />Ni
                         </div>
@@ -399,7 +400,7 @@ description: ''
                             id="29"
                             title="Cu"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             29<br />Cu
                         </div>
@@ -409,7 +410,7 @@ description: ''
                             id="30"
                             title="Zn"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             30<br />Zn
                         </div>
@@ -419,7 +420,7 @@ description: ''
                             id="31"
                             title="Ga"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             31<br />Ga
                         </div>
@@ -429,7 +430,7 @@ description: ''
                             id="32"
                             title="Ge"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             32<br />Ge
                         </div>
@@ -439,7 +440,7 @@ description: ''
                             id="33"
                             title="As"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             33<br />As
                         </div>
@@ -449,7 +450,7 @@ description: ''
                             id="34"
                             title="Se"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             34<br />Se
                         </div>
@@ -459,7 +460,7 @@ description: ''
                             id="35"
                             title="Br"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             35<br />Br
                         </div>
@@ -469,7 +470,7 @@ description: ''
                             id="36"
                             title="Kr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             36<br />Kr
                         </div>
@@ -481,7 +482,7 @@ description: ''
                             id="37"
                             title="Rb"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             37<br />Rb
                         </div>
@@ -491,7 +492,7 @@ description: ''
                             id="38"
                             title="Sr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             38<br />Sr
                         </div>
@@ -501,7 +502,7 @@ description: ''
                             id="39"
                             title="Y"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             39<br />Y
                         </div>
@@ -511,7 +512,7 @@ description: ''
                             id="40"
                             title="Zr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             40<br />Zr
                         </div>
@@ -521,7 +522,7 @@ description: ''
                             id="41"
                             title="Nb"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             41<br />Nb
                         </div>
@@ -531,7 +532,7 @@ description: ''
                             id="42"
                             title="Mo"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             42<br />Mo
                         </div>
@@ -541,7 +542,7 @@ description: ''
                             id="43"
                             title="Tc"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             43<br />Tc
                         </div>
@@ -551,7 +552,7 @@ description: ''
                             id="44"
                             title="Ru"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             44<br />Ru
                         </div>
@@ -561,7 +562,7 @@ description: ''
                             id="45"
                             title="Rh"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             45<br />Rh
                         </div>
@@ -571,7 +572,7 @@ description: ''
                             id="46"
                             title="Pd"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             46<br />Pd
                         </div>
@@ -581,7 +582,7 @@ description: ''
                             id="47"
                             title="Ag"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             47<br />Ag
                         </div>
@@ -591,7 +592,7 @@ description: ''
                             id="48"
                             title="Cd"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             48<br />Cd
                         </div>
@@ -601,7 +602,7 @@ description: ''
                             id="49"
                             title="In"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             49<br />In
                         </div>
@@ -611,7 +612,7 @@ description: ''
                             id="50"
                             title="Sn"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             50<br />Sn
                         </div>
@@ -621,7 +622,7 @@ description: ''
                             id="51"
                             title="Sb"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             51<br />Sb
                         </div>
@@ -631,7 +632,7 @@ description: ''
                             id="52"
                             title="Te"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             52<br />Te
                         </div>
@@ -641,7 +642,7 @@ description: ''
                             id="53"
                             title="I"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             53<br />I
                         </div>
@@ -651,7 +652,7 @@ description: ''
                             id="54"
                             title="Xe"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             54<br />Xe
                         </div>
@@ -663,7 +664,7 @@ description: ''
                             id="55"
                             title="Cs"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             55<br />Cs
                         </div>
@@ -673,7 +674,7 @@ description: ''
                             id="56"
                             title="Ba"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             56<br />Ba
                         </div>
@@ -684,7 +685,7 @@ description: ''
                             id="72"
                             title="Hf"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             72<br />Hf
                         </div>
@@ -694,7 +695,7 @@ description: ''
                             id="73"
                             title="Ta"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             73<br />Ta
                         </div>
@@ -704,7 +705,7 @@ description: ''
                             id="74"
                             title="W"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             74<br />W
                         </div>
@@ -714,7 +715,7 @@ description: ''
                             id="75"
                             title="Re"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             75<br />Re
                         </div>
@@ -724,7 +725,7 @@ description: ''
                             id="76"
                             title="Os"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             76<br />Os
                         </div>
@@ -734,7 +735,7 @@ description: ''
                             id="77"
                             title="Ir"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             77<br />Ir
                         </div>
@@ -744,7 +745,7 @@ description: ''
                             id="78"
                             title="Pt"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             78<br />Pt
                         </div>
@@ -754,7 +755,7 @@ description: ''
                             id="79"
                             title="Au"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             79<br />Au
                         </div>
@@ -764,7 +765,7 @@ description: ''
                             id="80"
                             title="Hg"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             80<br />Hg
                         </div>
@@ -774,7 +775,7 @@ description: ''
                             id="81"
                             title="Tl"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             81<br />Tl
                         </div>
@@ -784,7 +785,7 @@ description: ''
                             id="82"
                             title="Pb"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             82<br />Pb
                         </div>
@@ -794,7 +795,7 @@ description: ''
                             id="83"
                             title="Bi"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             83<br />Bi
                         </div>
@@ -804,7 +805,7 @@ description: ''
                             id="84"
                             title="Po"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             84<br />Po
                         </div>
@@ -814,7 +815,7 @@ description: ''
                             id="85"
                             title="At"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             85<br />At
                         </div>
@@ -824,7 +825,7 @@ description: ''
                             id="86"
                             title="Rn"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             86<br />Rn
                         </div>
@@ -836,7 +837,7 @@ description: ''
                             id="87"
                             title="Fr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             87<br />Fr
                         </div>
@@ -846,7 +847,7 @@ description: ''
                             id="88"
                             title="Ra"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             88<br />Ra
                         </div>
@@ -857,7 +858,7 @@ description: ''
                             id="104"
                             title="Rf"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             104<br />Rf
                         </div>
@@ -867,7 +868,7 @@ description: ''
                             id="105"
                             title="Db"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             105<br />Db
                         </div>
@@ -877,7 +878,7 @@ description: ''
                             id="106"
                             title="Sg"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             106<br />Sg
                         </div>
@@ -887,7 +888,7 @@ description: ''
                             id="107"
                             title="Bh"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             107<br />Bh
                         </div>
@@ -897,7 +898,7 @@ description: ''
                             id="108"
                             title="Hs"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             108<br />Hs
                         </div>
@@ -907,7 +908,7 @@ description: ''
                             id="109"
                             title="Mt"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             109<br />Mt
                         </div>
@@ -917,7 +918,7 @@ description: ''
                             id="110"
                             title="Ds"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             110<br />Ds
                         </div>
@@ -927,7 +928,7 @@ description: ''
                             id="111"
                             title="Rg"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             111<br />Rg
                         </div>
@@ -937,7 +938,7 @@ description: ''
                             id="112"
                             title="Cn"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             112<br />Cn
                         </div>
@@ -947,7 +948,7 @@ description: ''
                             id="113"
                             title="Nh"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             113<br />Nh
                         </div>
@@ -957,7 +958,7 @@ description: ''
                             id="114"
                             title="Fl"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             114<br />Fl
                         </div>
@@ -967,7 +968,7 @@ description: ''
                             id="115"
                             title="Mc"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             115<br />Mc
                         </div>
@@ -977,7 +978,7 @@ description: ''
                             id="116"
                             title="Lv"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             116<br />Lv
                         </div>
@@ -987,7 +988,7 @@ description: ''
                             id="117"
                             title="Ts"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             117<br />Ts
                         </div>
@@ -997,7 +998,7 @@ description: ''
                             id="118"
                             title="Og"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             118<br />Og
                         </div>
@@ -1031,7 +1032,7 @@ description: ''
                             id="57"
                             title="La"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             57<br />La
                         </div>
@@ -1041,7 +1042,7 @@ description: ''
                             id="58"
                             title="Ce"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             58<br />Ce
                         </div>
@@ -1051,7 +1052,7 @@ description: ''
                             id="59"
                             title="Pr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             59<br />Pr
                         </div>
@@ -1061,7 +1062,7 @@ description: ''
                             id="60"
                             title="Nd"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             60<br />Nd
                         </div>
@@ -1071,7 +1072,7 @@ description: ''
                             id="61"
                             title="Pm"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             61<br />Pm
                         </div>
@@ -1081,7 +1082,7 @@ description: ''
                             id="62"
                             title="Sm"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             62<br />Sm
                         </div>
@@ -1091,7 +1092,7 @@ description: ''
                             id="63"
                             title="Eu"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             63<br />Eu
                         </div>
@@ -1101,7 +1102,7 @@ description: ''
                             id="64"
                             title="Gd"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             64<br />Gd
                         </div>
@@ -1111,7 +1112,7 @@ description: ''
                             id="65"
                             title="Tb"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             65<br />Tb
                         </div>
@@ -1121,7 +1122,7 @@ description: ''
                             id="66"
                             title="Dy"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             66<br />Dy
                         </div>
@@ -1131,7 +1132,7 @@ description: ''
                             id="67"
                             title="Ho"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             67<br />Ho
                         </div>
@@ -1141,7 +1142,7 @@ description: ''
                             id="68"
                             title="Er"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             68<br />Er
                         </div>
@@ -1151,7 +1152,7 @@ description: ''
                             id="69"
                             title="Tm"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             69<br />Tm
                         </div>
@@ -1161,7 +1162,7 @@ description: ''
                             id="70"
                             title="Yb"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             70<br />Yb
                         </div>
@@ -1171,7 +1172,7 @@ description: ''
                             id="71"
                             title="Lu"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             71<br />Lu
                         </div>
@@ -1186,7 +1187,7 @@ description: ''
                             id="89"
                             title="Ac"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             89<br />Ac
                         </div>
@@ -1196,7 +1197,7 @@ description: ''
                             id="90"
                             title="Th"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             90<br />Th
                         </div>
@@ -1206,7 +1207,7 @@ description: ''
                             id="91"
                             title="Pa"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             91<br />Pa
                         </div>
@@ -1216,7 +1217,7 @@ description: ''
                             id="92"
                             title="U"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             92<br />U
                         </div>
@@ -1226,7 +1227,7 @@ description: ''
                             id="93"
                             title="Np"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             93<br />Np
                         </div>
@@ -1236,7 +1237,7 @@ description: ''
                             id="94"
                             title="Pu"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             94<br />Pu
                         </div>
@@ -1246,7 +1247,7 @@ description: ''
                             id="95"
                             title="Am"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             95<br />Am
                         </div>
@@ -1256,7 +1257,7 @@ description: ''
                             id="96"
                             title="Cm"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             96<br />Cm
                         </div>
@@ -1266,7 +1267,7 @@ description: ''
                             id="97"
                             title="Bk"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             97<br />Bk
                         </div>
@@ -1276,7 +1277,7 @@ description: ''
                             id="98"
                             title="Cf"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             98<br />Cf
                         </div>
@@ -1286,7 +1287,7 @@ description: ''
                             id="99"
                             title="Es"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             99<br />Es
                         </div>
@@ -1296,7 +1297,7 @@ description: ''
                             id="100"
                             title="Fm"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             100<br />Fm
                         </div>
@@ -1306,7 +1307,7 @@ description: ''
                             id="101"
                             title="Md"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             101<br />Md
                         </div>
@@ -1316,7 +1317,7 @@ description: ''
                             id="102"
                             title="No"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             102<br />No
                         </div>
@@ -1326,7 +1327,7 @@ description: ''
                             id="103"
                             title="Lr"
                             class="symbol"
-                            onclick="add(event)"
+                            onclick="elementClick(event)"
                         >
                             103<br />Lr
                         </div>

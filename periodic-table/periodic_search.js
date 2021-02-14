@@ -3,32 +3,21 @@ const unencodedQueryParameter = ' AND internal.pointsAt:20.500.12772/elements/';
 const unencodedNotQueryParamter =
     ' AND NOT internal.pointsAt:20.500.12772/elements/';
 
-const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
-const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
+//not needed, leaving for if needed in the future
+//const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
+//const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 
-// ZTT: populate with list of strings in various functions below, e.g., ["Cu", "Ni"]
-// ZTT: Show in HTML page between search box and periodic table
-var elementsRequired = [unencodedQueryInitial];
-var elementsExcluded = [unencodedNotQueryParamter];
+var elementsRequired = [];
+var elementsExcluded = [];
 
-var elementsSelected = [];
-
-// create new function or change name to elementClick()
-function add(ev) {
+function elementClick(ev) {
     var requiredbox = document.getElementById('requiredbox');
     var excludedbox = document.getElementById('excludedbox');
-    var formulabox = document.getElementById('FormulaBox');
+    var searchBox = document.getElementById('searchBox');
     var elt_num = ev.target.id;
-    var elt_name = ev.target.id + ', ';
-    var oldformula = formulabox.value;
+    var elt_name = ev.target.title + ', ';
     var oldrequired = requiredbox.value;
     var oldexcluded = excludedbox.value;
-
-    // ZTT: replace binary logic of clicking on/off with null/included/excluded
-    // ZTT: null is default
-    // ZTT: see word doc on workflow
-    // ZTT: need to replace formulabox with searchBox as raw cordra query
-    // ZTT: wen the user activates an elementClick need to update searchBox, elementsRequired, elementsExcluded
 
     if (oldrequired.indexOf(elt_name) != -1) {
         requiredbox.value = oldrequired.replace(elt_name, '');
@@ -48,8 +37,20 @@ function add(ev) {
         document.getElementById(ev.target.id).style.color = '#ffffff';
         elementsRequired.push(elt_num);
     }
-    console.log('Required ' + elementsRequired);
-    console.log('Excluded ' + elementsExcluded);
+    var requiredStr = elementsRequired.toString();
+    var reqRepStr = requiredStr.replace(/,/g, unencodedQueryParameter);
+    var excludedStr = elementsExcluded.toString();
+    var excRepStr = excludedStr.replace(/,/g, unencodedNotQueryParamter);
+
+    if (elementsExcluded.length === 0) {
+        searchBox.value = unencodedQueryInitial + reqRepStr;
+    } else {
+        searchBox.value =
+            unencodedQueryInitial +
+            reqRepStr +
+            unencodedNotQueryParamter +
+            excRepStr;
+    }
 }
 
 async function runSearch(query, pageSize, pageNum) {
@@ -209,16 +210,8 @@ function createSearchString(query, pageSize, pageNum) {
 }
 
 function createNewUrlString(query, pageSize, pageNum) {
-    //let baseUrl = window.location.host + window.location.pathname;
     let url =
-        '?query=' +
-        //this is what is causing me greif
-        //queryInitial +
-        query +
-        '&pageSize=' +
-        pageSize +
-        '&pageNum=' +
-        pageNum;
+        '?query=' + query + '&pageSize=' + pageSize + '&pageNum=' + pageNum;
     url = encodeURI(url);
     return url;
 }
@@ -279,14 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pageSize = 10;
         params.set('pageSize', pageSize);
     }
-
-    // ZTT: needs to become searchBox
-    // if (query != null) {
-    //     document.getElementById('FormulaBox').value = queryInitial + query;
-    // } else {
-    //     document.getElementById('FormulaBox').value = query;
-    // }
-    document.getElementById('FormulaBox').value = query;
+    document.getElementById('searchBox').value = query;
     document.getElementById('pageSize').value = pageSize;
 
     if (nonEmpty(query)) {
