@@ -1,13 +1,15 @@
 const unencodedQueryInitial = 'internal.pointsAt:20.500.12772/elements/';
 const unencodedQueryParameter = ' AND internal.pointsAt:20.500.12772/elements/';
+const unencodedNotQueryParamter =
+    ' AND NOT internal.pointsAt:20.500.12772/elements/';
 
 const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 
 // ZTT: populate with list of strings in various functions below, e.g., ["Cu", "Ni"]
 // ZTT: Show in HTML page between search box and periodic table
-var elementsRequired = [];
-var elementsExcluded = [];
+var elementsRequired = [unencodedQueryInitial];
+var elementsExcluded = [unencodedNotQueryParamter];
 
 var elementsSelected = [];
 
@@ -46,8 +48,8 @@ function add(ev) {
         document.getElementById(ev.target.id).style.color = '#ffffff';
         elementsRequired.push(elt_num);
     }
-    //console.log('Required ' + elementsRequired);
-    //console.log('Excluded ' + elementsExcluded);
+    console.log('Required ' + elementsRequired);
+    console.log('Excluded ' + elementsExcluded);
 }
 
 async function runSearch(query, pageSize, pageNum) {
