@@ -3,6 +3,8 @@ const unencodedQueryParameter = ' AND internal.pointsAt:20.500.12772/elements/';
 const unencodedNotQueryParamter =
     ' AND NOT internal.pointsAt:20.500.12772/elements/';
 
+let qParam = new RegExp(unencodedQueryParameter, 'g');
+let qNotParam = new RegExp(unencodedNotQueryParamter, 'g');
 //not needed, leaving for if needed in the future
 //const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 //const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
@@ -262,6 +264,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ZTT: need to parse query convert to list of element strings
     // ZTT: need to populate elementsRequired and elementsExcluded variables
+
+    let thing = query
+        .replace(unencodedQueryInitial, '')
+        .replace(qParam, ',')
+        .replace(qNotParam, '-');
+    console.log('Thing: ' + thing);
+
+    let dumb = thing;
 
     if (isNaN(pageNum)) {
         pageNum = 0;
