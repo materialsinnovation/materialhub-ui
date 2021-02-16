@@ -3,6 +3,8 @@ const unencodedDelimiter = ' AND internal.pointsAt:20.500.12772/elements/';
 const unencodedNotDelimiter =
     ' AND NOT internal.pointsAt:20.500.12772/elements/';
 
+//delimiter to exclude elements only *:*
+
 let qParam = new RegExp(unencodedDelimiter, 'g');
 let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
 //not needed, leaving for if needed in the future
