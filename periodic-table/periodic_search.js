@@ -1,10 +1,10 @@
 const unencodedQueryInitial = 'internal.pointsAt:20.500.12772/elements/';
-const unencodedQueryParameter = ' AND internal.pointsAt:20.500.12772/elements/';
-const unencodedNotQueryParamter =
+const unencodedDelimiter = ' AND internal.pointsAt:20.500.12772/elements/';
+const unencodedNotDelimiter =
     ' AND NOT internal.pointsAt:20.500.12772/elements/';
 
-let qParam = new RegExp(unencodedQueryParameter, 'g');
-let qNotParam = new RegExp(unencodedNotQueryParamter, 'g');
+let qParam = new RegExp(unencodedDelimiter, 'g');
+let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
 //not needed, leaving for if needed in the future
 //const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 //const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
@@ -23,7 +23,7 @@ function elementClick(ev) {
 
     if (oldrequired.indexOf(elt_name) != -1) {
         requiredbox.value = oldrequired.replace(elt_name, '');
-        document.getElementById(ev.target.id).style.backgroundColor = '#808080';
+        document.getElementById(ev.target.id).style.backgroundColor = '#C0111F';
         document.getElementById(ev.target.id).style.color = '#ffffff';
         elementsRequired.splice(elementsRequired.indexOf(elt_num), 1);
         elementsExcluded.push(elt_num);
@@ -39,10 +39,11 @@ function elementClick(ev) {
         document.getElementById(ev.target.id).style.color = '#ffffff';
         elementsRequired.push(elt_num);
     }
+    //find a way to run outside the click event
     var requiredStr = elementsRequired.toString();
-    var reqRepStr = requiredStr.replace(/,/g, unencodedQueryParameter);
+    var reqRepStr = requiredStr.replace(/,/g, unencodedDelimiter);
     var excludedStr = elementsExcluded.toString();
-    var excRepStr = excludedStr.replace(/,/g, unencodedNotQueryParamter);
+    var excRepStr = excludedStr.replace(/,/g, unencodedNotDelimiter);
 
     if (elementsExcluded.length === 0) {
         searchBox.value = unencodedQueryInitial + reqRepStr;
@@ -50,7 +51,7 @@ function elementClick(ev) {
         searchBox.value =
             unencodedQueryInitial +
             reqRepStr +
-            unencodedNotQueryParamter +
+            unencodedNotDelimiter +
             excRepStr;
     }
 }
@@ -266,12 +267,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // ZTT: need to populate elementsRequired and elementsExcluded variables
 
     let thing = query
-        .replace(unencodedQueryInitial, '')
-        .replace(qParam, ',')
-        .replace(qNotParam, '-');
+        .replace(unencodedQueryInitial, '+')
+        .replace(qParam, ',+')
+        .replace(qNotParam, ',-');
     console.log('Thing: ' + thing);
 
-    let dumb = thing;
+    let dumb = thing.split(',');
+    console.log(dumb);
 
     if (isNaN(pageNum)) {
         pageNum = 0;
