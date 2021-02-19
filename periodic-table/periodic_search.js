@@ -7,12 +7,15 @@ const unencodedNotDelimiter =
 
 let qParam = new RegExp(unencodedDelimiter, 'g');
 let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
+// let plus = '+';
+// let plusParam = new RegExp(plus, 'g');
 //not needed, leaving for if needed in the future
 //const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 //const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 
 var elementsRequired = [];
 var elementsExcluded = [];
+var elementsSelected = [];
 
 function elementClick(ev) {
     var requiredbox = document.getElementById('requiredbox');
@@ -49,6 +52,8 @@ function elementClick(ev) {
 
     if (elementsExcluded.length === 0) {
         searchBox.value = unencodedQueryInitial + reqRepStr;
+    } else if (elementsRequired.length === 0) {
+        searchBox.value = '*:*' + unencodedNotDelimiter + excRepStr;
     } else {
         searchBox.value =
             unencodedQueryInitial +
@@ -257,6 +262,11 @@ function endingPaginationNumber(currentPageNumber, totalNumOfPages) {
     }
     return result;
 }
+function filterElements(arr, term) {
+    return arr.filter(function (el) {
+        return el.indexOf(term) !== -1;
+    });
+}
 
 // If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
@@ -268,14 +278,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // ZTT: need to parse query convert to list of element strings
     // ZTT: need to populate elementsRequired and elementsExcluded variables
 
-    let thing = query
+    let deconstructedQueryStr = query
         .replace(unencodedQueryInitial, '+')
         .replace(qParam, ',+')
         .replace(qNotParam, ',-');
-    console.log('Thing: ' + thing);
+    console.log('deconstructedQueryStr: ' + deconstructedQueryStr);
 
-    let dumb = thing.split(',');
-    console.log(dumb);
+    if (query != null) {
+        elementsSelected = deconstructedQueryStr.split(',');
+        elementsRequired = filterElements(elementsSelected, '+')
+            .toString()
+            .replace(/[.*+?^${}()|[\]\\]/g, '')
+            .split(',');
+        elementsExcluded = filterElements(elementsSelected, '-')
+            .toString()
+            .replace(/-/g, '')
+            .split(',');
+    }
 
     if (isNaN(pageNum)) {
         pageNum = 0;
