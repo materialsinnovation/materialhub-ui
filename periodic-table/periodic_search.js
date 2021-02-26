@@ -76,7 +76,6 @@ function elementClick(ev) {
 
 async function runSearch(query, pageSize, pageNum, elmReq, elmEx) {
     let qstr = createSearchString(query, pageSize, pageNum);
-
     let response = await getData('/objects' + qstr);
 
     if (!response.ok) {
@@ -317,8 +316,25 @@ document.addEventListener('DOMContentLoaded', function () {
     let query = params.get('query');
     let pageSize = parseInt(params.get('pageSize'));
     let pageNum = parseInt(params.get('pageNum'));
-    let elmReq = params.get('elementsRequired');
-    let elmEx = params.get('elementsExcluded');
+
+    if (elementsRequired.length != 0) {
+        var elmReq = params.set(
+            'elementsRequired',
+            elementsRequired.toString()
+        );
+        return elmReq;
+    } else {
+        var elmReq = params.get('elementsRequired');
+    }
+
+    if (elementsExcluded.length != 0) {
+        var elmEx = params.set('elementsExcluded', elementsExcluded.toString());
+    } else {
+        var elmEx = params.get('elementsExcluded');
+    }
+
+    // let elmReq = params.get('elementsRequired');
+    // let elmEx = params.get('elementsExcluded');
 
     // ZTT: need to parse query convert to list of element strings
     // ZTT: need to populate elementsRequired and elementsExcluded variables
@@ -364,4 +380,5 @@ document.addEventListener('DOMContentLoaded', function () {
     if (nonEmpty(query)) {
         const results = runSearch(query, pageSize, pageNum, elmReq, elmEx);
     }
+    console.log(elementsRequired);
 });
