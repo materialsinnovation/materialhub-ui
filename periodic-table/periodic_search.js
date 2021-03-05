@@ -16,7 +16,6 @@ var elementsRequired = [];
 var elementsNameRequired = [];
 var elementsExcluded = [];
 var elementsNameExcluded = [];
-var elementsSelected = [];
 
 function elementClick(ev) {
     var requiredbox = document.getElementById('elementsRequired');
@@ -310,21 +309,17 @@ function resetPage() {
     elementsSelected = [];
 }
 
-function submitSearch() {
-    //need to write this function to make the current working more explicity not implicit
-    let query = document.getElementById('searchBox').value;
-    let elmReq = elementsNameRequired;
-    let elmEx = elementsNameExcluded;
-    let pageSize = document.getElementById('pageSize').value;
-    let pageNum = 0;
+// function submitSearch() {
+//     //need to write this function to make the current working more explicity not implicit
+//     let query = document.getElementById('searchBox').value;
+//     let elmReq = elementsNameRequired;
+//     let elmEx = elementsNameExcluded;
+//     let pageSize = document.getElementById('pageSize').value;
+//     let pageNum = 0;
 
-    let newURL = createNewUrlString(query, pageSize, pageNum, elmReq, elmEx);
-    window.location.href = newURL;
-
-    if (nonEmpty(query)) {
-        const results = runSearch(query, pageSize, pageNum, elmReq, elmEx);
-    }
-}
+//     let newURL = createNewUrlString(query, pageSize, pageNum, elmReq, elmEx);
+//     window.location.href = newURL;
+// }
 
 // If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
@@ -332,43 +327,11 @@ document.addEventListener('DOMContentLoaded', function () {
     let query = params.get('query');
     let pageSize = parseInt(params.get('pageSize'));
     let pageNum = parseInt(params.get('pageNum'));
-
-    if (elementsRequired.length != 0) {
-        var elmReq = params.set(
-            'elementsRequired',
-            elementsRequired.toString()
-        );
-        return elmReq;
-    } else {
-        var elmReq = params.get('elementsRequired');
-    }
-
-    if (elementsExcluded.length != 0) {
-        var elmEx = params.set('elementsExcluded', elementsExcluded.toString());
-    } else {
-        var elmEx = params.get('elementsExcluded');
-    }
+    let elmReq = params.get('elementsRequired');
+    let elmEx = params.get('elementsExcluded');
 
     // ZTT: need to parse query convert to list of element strings
     // ZTT: need to populate elementsRequired and elementsExcluded variables
-
-    let deconstructedQueryStr = query
-        .replace(unencodedQueryInitial, '+')
-        .replace(qParam, ',+')
-        .replace(qNotParam, ',-');
-    console.log('deconstructedQueryStr: ' + deconstructedQueryStr);
-
-    // if (query != null) {
-    //     elementsSelected = deconstructedQueryStr.split(',');
-    //     elementsRequired = filterElements(elementsSelected, '+')
-    //         .toString()
-    //         .replace(/[.*+?^${}()|[\]\\]/g, '')
-    //         .split(',');
-    //     elementsExcluded = filterElements(elementsSelected, '-')
-    //         .toString()
-    //         .replace(/-/g, '')
-    //         .split(',');
-    // }
 
     if (isNaN(pageNum)) {
         pageNum = 0;
@@ -380,49 +343,31 @@ document.addEventListener('DOMContentLoaded', function () {
         params.set('pageSize', pageSize);
     }
 
-    // if (elmReq === null) {
-    //     elmReq = document.getElementById('elementsRequired').value;
-    //     params.set('elementsRequired', elmReq);
-    // }
-
     document.getElementById('searchBox').value = query;
     document.getElementById('pageSize').value = pageSize;
     document.getElementById('elementsRequired').value = elmReq;
     document.getElementById('elementsExcluded').value = elmEx;
-
-    let elementsNameRequired = elmReq.split(',');
 
     if (nonEmpty(query)) {
         const results = runSearch(query, pageSize, pageNum, elmReq, elmEx);
     }
 });
 
-// let params = new URLSearchParams(location.search);
-//     let query = params.get('query');
-//     let pageSize = parseInt(params.get('pageSize'));
-//     let pageNum = parseInt(params.get('pageNum'));
-//     let elmReq = params.get('elementsRequired');
-//     let elmEx = params.get('elementsExcluded');
+//work on deconstructing the query given in the URL parameters
+// let deconstructedQueryStr = query
+// .replace(unencodedQueryInitial, '+')
+// .replace(qParam, ',+')
+// .replace(qNotParam, ',-');
+// console.log('deconstructedQueryStr: ' + deconstructedQueryStr);
 
-//     if (isNaN(pageNum)) {
-//         pageNum = 0;
-//         params.set('pageNum', pageNum);
-//     }
-
-//     if (isNaN(pageSize)) {
-//         pageSize = 10;
-//         params.set('pageSize', pageSize);
-//     }
-
-//     if (typeof elmReq === 'undefined') {
-//         elmReq = elementsNameRequired;
-//     }
-
-//     if (typeof elmEx === 'undefined') {
-//         elmEx = elementsNameExcluded;
-//     }
-
-//     document.getElementById('searchBox').value = query;
-//     document.getElementById('pageSize').value = pageSize;
-//     document.getElementById('elementsRequired').value = elmReq;
-//     document.getElementById('elementsExcluded').value = elmEx;
+// if (query != null) {
+//     elementsSelected = deconstructedQueryStr.split(',');
+//     elementsRequired = filterElements(elementsSelected, '+')
+//         .toString()
+//         .replace(/[.*+?^${}()|[\]\\]/g, '')
+//         .split(',');
+//     elementsExcluded = filterElements(elementsSelected, '-')
+//         .toString()
+//         .replace(/-/g, '')
+//         .split(',');
+// }
