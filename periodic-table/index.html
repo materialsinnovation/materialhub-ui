@@ -32,7 +32,12 @@ description: ''
             <option value="50">50</option>
             <option value="100">100</option>
         </select>
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+        <button
+            class="btn btn-outline-dark my-2 my-sm-0"
+            type="button"
+            value="Submit"
+            onClick="submitSearch()"
+        >
             Search
         </button>
         <button
@@ -43,6 +48,8 @@ description: ''
         >
             Reset
         </button>
+    </form>
+    <div>
         <label for="elementsRequired">Elements Included: </label>
         <input
             class="form-control mr-sm-2"
@@ -66,7 +73,7 @@ description: ''
             size="50"
             disabled
         />
-    </form>
+    </div>
 </div>
 <br />
 <!-- <div>

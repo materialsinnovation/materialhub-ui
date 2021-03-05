@@ -23,7 +23,7 @@ function elementClick(ev) {
     var excludedbox = document.getElementById('elementsExcluded');
     var searchBox = document.getElementById('searchBox');
     var elt_num = ev.target.id;
-    var elt_name = ev.target.title + ', ';
+    var elt_name = ev.target.title + ',';
     var oldrequired = requiredbox.value;
     var oldexcluded = excludedbox.value;
 
@@ -310,6 +310,22 @@ function resetPage() {
     elementsSelected = [];
 }
 
+function submitSearch() {
+    //need to write this function to make the current working more explicity not implicit
+    let query = document.getElementById('searchBox').value;
+    let elmReq = elementsNameRequired;
+    let elmEx = elementsNameExcluded;
+    let pageSize = document.getElementById('pageSize').value;
+    let pageNum = 0;
+
+    let newURL = createNewUrlString(query, pageSize, pageNum, elmReq, elmEx);
+    window.location.href = newURL;
+
+    if (nonEmpty(query)) {
+        const results = runSearch(query, pageSize, pageNum, elmReq, elmEx);
+    }
+}
+
 // If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search);
@@ -332,9 +348,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         var elmEx = params.get('elementsExcluded');
     }
-
-    // let elmReq = params.get('elementsRequired');
-    // let elmEx = params.get('elementsExcluded');
 
     // ZTT: need to parse query convert to list of element strings
     // ZTT: need to populate elementsRequired and elementsExcluded variables
@@ -377,8 +390,39 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('elementsRequired').value = elmReq;
     document.getElementById('elementsExcluded').value = elmEx;
 
+    let elementsNameRequired = elmReq.split(',');
+
     if (nonEmpty(query)) {
         const results = runSearch(query, pageSize, pageNum, elmReq, elmEx);
     }
-    console.log(elementsRequired);
 });
+
+// let params = new URLSearchParams(location.search);
+//     let query = params.get('query');
+//     let pageSize = parseInt(params.get('pageSize'));
+//     let pageNum = parseInt(params.get('pageNum'));
+//     let elmReq = params.get('elementsRequired');
+//     let elmEx = params.get('elementsExcluded');
+
+//     if (isNaN(pageNum)) {
+//         pageNum = 0;
+//         params.set('pageNum', pageNum);
+//     }
+
+//     if (isNaN(pageSize)) {
+//         pageSize = 10;
+//         params.set('pageSize', pageSize);
+//     }
+
+//     if (typeof elmReq === 'undefined') {
+//         elmReq = elementsNameRequired;
+//     }
+
+//     if (typeof elmEx === 'undefined') {
+//         elmEx = elementsNameExcluded;
+//     }
+
+//     document.getElementById('searchBox').value = query;
+//     document.getElementById('pageSize').value = pageSize;
+//     document.getElementById('elementsRequired').value = elmReq;
+//     document.getElementById('elementsExcluded').value = elmEx;
