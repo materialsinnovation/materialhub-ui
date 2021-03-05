@@ -73,7 +73,15 @@ function elementClick(ev) {
     }
 }
 
-async function runSearch(query, pageSize, pageNum, elmReq, elmEx) {
+async function runSearch(
+    query,
+    pageSize,
+    pageNum,
+    elmReq,
+    elmEx,
+    namesReq,
+    namesEx
+) {
     let qstr = createSearchString(query, pageSize, pageNum);
     let response = await getData('/objects' + qstr);
 
@@ -84,7 +92,16 @@ async function runSearch(query, pageSize, pageNum, elmReq, elmEx) {
     let results = await response.json();
     let size = results.size;
     populateTable(results['results']);
-    populateNavigation(query, pageSize, pageNum, size, elmReq, elmEx);
+    populateNavigation(
+        query,
+        pageSize,
+        pageNum,
+        size,
+        elmReq,
+        elmEx,
+        namesReq,
+        namesEx
+    );
     duplicateNavigation();
 }
 
@@ -147,7 +164,9 @@ async function populateNavigation(
     pageNum,
     size,
     elmReq,
-    elmEx
+    elmEx,
+    namesReq,
+    namesEx
 ) {
     let numberOfPages = Math.ceil(size / pageSize);
     var resultsDiv = document.getElementById('resultsShowing');
@@ -167,7 +186,15 @@ async function populateNavigation(
     var endPageNum = endingPaginationNumber(pageNum, numberOfPages);
 
     if (startPageNum != 0) {
-        var qstrFirst = createNewUrlString(query, pageSize, 0, elmReq, elmEx);
+        var qstrFirst = createNewUrlString(
+            query,
+            pageSize,
+            0,
+            elmReq,
+            elmEx,
+            namesReq,
+            namesEx
+        );
         var linkFirst = document.createElement('a');
         linkFirst.setAttribute('class', 'nav-item nav-link border');
         linkFirst.setAttribute('href', qstrFirst);
@@ -184,7 +211,15 @@ async function populateNavigation(
     }
 
     for (let i = startPageNum; i < endPageNum; i++) {
-        let qstr = createNewUrlString(query, pageSize, i, elmReq, elmEx);
+        let qstr = createNewUrlString(
+            query,
+            pageSize,
+            i,
+            elmReq,
+            elmEx,
+            namesReq,
+            namesEx
+        );
         var link = document.createElement('a');
 
         if (i == pageNum) {
@@ -211,7 +246,9 @@ async function populateNavigation(
             pageSize,
             numberOfPages - 1,
             elmReq,
-            elmEx
+            elmEx,
+            namesReq,
+            namesEx
         );
         var linkLast = document.createElement('a');
         linkLast.setAttribute('class', 'nav-item nav-link border');
@@ -241,7 +278,15 @@ function createSearchString(query, pageSize, pageNum) {
     return qstr;
 }
 
-function createNewUrlString(query, pageSize, pageNum, elmReq, elmEx) {
+function createNewUrlString(
+    query,
+    pageSize,
+    pageNum,
+    elmReq,
+    elmEx,
+    namesReq,
+    namesEx
+) {
     let url =
         '?query=' +
         query +
@@ -252,7 +297,11 @@ function createNewUrlString(query, pageSize, pageNum, elmReq, elmEx) {
         '&elementsRequired=' +
         elmReq +
         '&elementsExcluded=' +
-        elmEx;
+        elmEx +
+        '&namesRequired=' +
+        namesReq +
+        '&namesExcluded=' +
+        namesEx;
     url = encodeURI(url);
     return url;
 }
@@ -309,17 +358,26 @@ function resetPage() {
     elementsSelected = [];
 }
 
-// function submitSearch() {
-//     //need to write this function to make the current working more explicity not implicit
-//     let query = document.getElementById('searchBox').value;
-//     let elmReq = elementsNameRequired;
-//     let elmEx = elementsNameExcluded;
-//     let pageSize = document.getElementById('pageSize').value;
-//     let pageNum = 0;
+function submitSearch() {
+    let query = document.getElementById('searchBox').value;
+    let elmReq = elementsRequired;
+    let elmEx = elementsExcluded;
+    let pageSize = document.getElementById('pageSize').value;
+    let pageNum = 0;
+    let namesReq = elementsNameRequired;
+    let namesEx = elementsNameExcluded;
 
-//     let newURL = createNewUrlString(query, pageSize, pageNum, elmReq, elmEx);
-//     window.location.href = newURL;
-// }
+    let newURL = createNewUrlString(
+        query,
+        pageSize,
+        pageNum,
+        elmReq,
+        elmEx,
+        namesReq,
+        namesEx
+    );
+    window.location.href = newURL;
+}
 
 // If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
@@ -329,9 +387,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let pageNum = parseInt(params.get('pageNum'));
     let elmReq = params.get('elementsRequired');
     let elmEx = params.get('elementsExcluded');
-
-    // ZTT: need to parse query convert to list of element strings
-    // ZTT: need to populate elementsRequired and elementsExcluded variables
+    let namesReq = params.get('namesRequired');
+    let namesEx = params.get('namesExcluded');
 
     if (isNaN(pageNum)) {
         pageNum = 0;
@@ -345,11 +402,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('searchBox').value = query;
     document.getElementById('pageSize').value = pageSize;
-    document.getElementById('elementsRequired').value = elmReq;
-    document.getElementById('elementsExcluded').value = elmEx;
+    //document.getElementById('elementsRequired').value = namesReq;
+    //document.getElementById('elementsExcluded').value = namesEx;
 
     if (nonEmpty(query)) {
-        const results = runSearch(query, pageSize, pageNum, elmReq, elmEx);
+        const results = runSearch(
+            query,
+            pageSize,
+            pageNum,
+            elmReq,
+            elmEx,
+            namesReq,
+            namesEx
+        );
     }
 });
 
