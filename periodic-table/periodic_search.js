@@ -12,10 +12,10 @@ let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
 //const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 //const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 
-var elementsRequired = [];
-var elementsNameRequired = [];
-var elementsExcluded = [];
-var elementsNameExcluded = [];
+let elementsRequired = [];
+let elementsNameRequired = [];
+let elementsExcluded = [];
+let elementsNameExcluded = [];
 
 function elementClick(ev) {
     var requiredbox = document.getElementById('elementsRequired');
@@ -379,7 +379,7 @@ function submitSearch() {
     window.location.href = newURL;
 }
 
-// If we have a query string, search it now
+//If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search);
     let query = params.get('query');
@@ -402,8 +402,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('searchBox').value = query;
     document.getElementById('pageSize').value = pageSize;
-    //document.getElementById('elementsRequired').value = namesReq;
-    //document.getElementById('elementsExcluded').value = namesEx;
+    document.getElementById('elementsRequired').value = namesReq;
+    document.getElementById('elementsExcluded').value = namesEx;
 
     if (nonEmpty(query)) {
         const results = runSearch(

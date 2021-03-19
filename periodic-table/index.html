@@ -10,44 +10,38 @@ description: ''
 <link rel="stylesheet" href="periodic-table.css" />
 <script src="periodic_search.js"></script>
 <div>
-    <form
-        class="form-inline my-2 my-lg-0"
-        action="{{ site.baseurl }}/periodic-table/"
-        method="GET"
+    <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Periodic Table Search"
+        aria-label="Search"
+        name="query"
+        id="searchBox"
+        size="100"
+    />
+    <label for="pageSize">Records per page: </label>
+    <select name="pageSize" id="pageSize">
+        <option value="1">1</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    <button
+        class="btn btn-outline-dark my-2 my-sm-0"
+        type="button"
+        onClick="submitSearch()"
     >
-        <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Periodic Table Search"
-            aria-label="Search"
-            name="query"
-            id="searchBox"
-            size="100"
-        />
-        <label for="pageSize">Records per page: </label>
-        <select name="pageSize" id="pageSize">
-            <option value="1">1</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-        <button
-            class="btn btn-outline-dark my-2 my-sm-0"
-            type="button"
-            onClick="submitSearch()"
-        >
-            Search
-        </button>
-        <button
-            class="btn btn-outline-dark my-2 my-sm-0"
-            type="reset"
-            name="reset"
-            onClick="resetPage()"
-        >
-            Reset
-        </button>
-    </form>
+        Search
+    </button>
+    <button
+        class="btn btn-outline-dark my-2 my-sm-0"
+        type="reset"
+        name="reset"
+        onClick="resetPage()"
+    >
+        Reset
+    </button>
     <div>
         <label for="elementsRequired">Elements Included: </label>
         <input
