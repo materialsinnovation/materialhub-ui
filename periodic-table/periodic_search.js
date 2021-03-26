@@ -5,12 +5,88 @@ const unencodedNotDelimiter =
 
 //delimiter to exclude elements only *:*
 
-let qParam = new RegExp(unencodedDelimiter, 'g');
-let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
+// let qParam = new RegExp(unencodedDelimiter, 'g');
+// let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
 
 //not needed, leaving for if needed in the future
 //const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 //const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
+
+//If we have a query string, search it now
+document.addEventListener('DOMContentLoaded', function () {
+    let params = new URLSearchParams(location.search);
+    let query = params.get('query');
+    let pageSize = parseInt(params.get('pageSize'));
+    let pageNum = parseInt(params.get('pageNum'));
+    let elmReq = params.get('elementsRequired');
+    let elmEx = params.get('elementsExcluded');
+    let namesReq = params.get('namesRequired');
+    let namesEx = params.get('namesExcluded');
+
+    if (isNaN(pageNum)) {
+        pageNum = 0;
+        params.set('pageNum', pageNum);
+    }
+
+    if (isNaN(pageSize)) {
+        pageSize = 10;
+        params.set('pageSize', pageSize);
+    }
+
+    document.getElementById('searchBox').value = query;
+    document.getElementById('pageSize').value = pageSize;
+
+    if (namesReq !== '') {
+        document.getElementById('elementsRequired').value =
+            namesReq.split(',') + ',';
+    }
+    if (namesEx !== '') {
+        document.getElementById('elementsExcluded').value =
+            namesEx.split(',') + ',';
+    }
+
+    //this throws an error, but I don't know why. Doesn't impact performance (that I can tell yet)
+    if (elmReq !== '') {
+        let elmReqArray = elmReq.split(',');
+        for (i = 0; i < elmReqArray.length; i++) {
+            document.getElementById(elmReqArray[i]).style.backgroundColor =
+                '#000000';
+            document.getElementById(elmReqArray[i]).style.color = '#ffffff';
+        }
+    }
+
+    if (elmEx !== '') {
+        let elmExArray = elmEx.split(',');
+        for (i = 0; i < elmExArray.length; i++) {
+            document.getElementById(elmExArray[i]).style.backgroundColor =
+                '#C0111F';
+            document.getElementById(elmExArray[i]).style.color = '#ffffff';
+        }
+    }
+
+    if (nonEmpty(query)) {
+        const results = runSearch(
+            query,
+            pageSize,
+            pageNum,
+            elmReq,
+            elmEx,
+            namesReq,
+            namesEx
+        );
+    }
+    // let elementsNameRequired = namesReq.split(',');
+    // let elementsNameExcluded = namesEx.split(',');
+    // let elementsRequired = elmReq.split(',');
+    // let elementsExcluded = elmEx.split(',');
+
+    // return (
+    //     elementsNameExcluded,
+    //     elementsNameRequired,
+    //     elementsExcluded,
+    //     elementsRequired
+    // );
+});
 
 let elementsRequired = [];
 let elementsNameRequired = [];
@@ -378,45 +454,6 @@ function submitSearch() {
     );
     window.location.href = newURL;
 }
-
-//If we have a query string, search it now
-document.addEventListener('DOMContentLoaded', function () {
-    let params = new URLSearchParams(location.search);
-    let query = params.get('query');
-    let pageSize = parseInt(params.get('pageSize'));
-    let pageNum = parseInt(params.get('pageNum'));
-    let elmReq = params.get('elementsRequired');
-    let elmEx = params.get('elementsExcluded');
-    let namesReq = params.get('namesRequired');
-    let namesEx = params.get('namesExcluded');
-
-    if (isNaN(pageNum)) {
-        pageNum = 0;
-        params.set('pageNum', pageNum);
-    }
-
-    if (isNaN(pageSize)) {
-        pageSize = 10;
-        params.set('pageSize', pageSize);
-    }
-
-    document.getElementById('searchBox').value = query;
-    document.getElementById('pageSize').value = pageSize;
-    document.getElementById('elementsRequired').value = namesReq;
-    document.getElementById('elementsExcluded').value = namesEx;
-
-    if (nonEmpty(query)) {
-        const results = runSearch(
-            query,
-            pageSize,
-            pageNum,
-            elmReq,
-            elmEx,
-            namesReq,
-            namesEx
-        );
-    }
-});
 
 //work on deconstructing the query given in the URL parameters
 // let deconstructedQueryStr = query
