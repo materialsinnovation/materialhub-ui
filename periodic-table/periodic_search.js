@@ -42,14 +42,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pageSize').value = pageSize;
 
     if (namesReq !== '') {
-        document.getElementById('elementsRequired').value = namesReq + ',';
+        document.getElementById('elementsRequired').value =
+            namesReq.split(',') + ',';
     }
     if (namesEx !== '') {
         document.getElementById('elementsExcluded').value = namesEx.split(',');
     }
 
     //this throws an error, but I don't know why. Doesn't impact performance (that I can tell yet)
-    if (elmReq !== '') {
+    if (elmReq !== null) {
         let elmReqArray = elmReq.split(',');
         for (i = 0; i < elmReqArray.length; i++) {
             document.getElementById(elmReqArray[i]).style.backgroundColor =
