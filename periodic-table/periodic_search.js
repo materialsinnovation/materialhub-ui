@@ -12,6 +12,11 @@ const unencodedNotDelimiter =
 //const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
 //const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
 
+let elementsRequired = [];
+let elementsNameRequired = [];
+let elementsExcluded = [];
+let elementsNameExcluded = [];
+
 //If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search);
@@ -37,12 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pageSize').value = pageSize;
 
     if (namesReq !== '') {
-        document.getElementById('elementsRequired').value =
-            namesReq.split(',') + ',';
+        document.getElementById('elementsRequired').value = namesReq + ',';
     }
     if (namesEx !== '') {
-        document.getElementById('elementsExcluded').value =
-            namesEx.split(',') + ',';
+        document.getElementById('elementsExcluded').value = namesEx.split(',');
     }
 
     //this throws an error, but I don't know why. Doesn't impact performance (that I can tell yet)
@@ -75,10 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
             namesEx
         );
     }
-    // let elementsNameRequired = namesReq.split(',');
-    // let elementsNameExcluded = namesEx.split(',');
-    // let elementsRequired = elmReq.split(',');
-    // let elementsExcluded = elmEx.split(',');
+    elementsNameRequired = namesReq.split(',');
+    elementsNameExcluded = namesEx.split(',');
+    elementsRequired = elmReq.split(',');
+    elementsExcluded = elmEx.split(',');
 
     // return (
     //     elementsNameExcluded,
@@ -87,11 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //     elementsRequired
     // );
 });
-
-let elementsRequired = [];
-let elementsNameRequired = [];
-let elementsExcluded = [];
-let elementsNameExcluded = [];
 
 function elementClick(ev) {
     var requiredbox = document.getElementById('elementsRequired');
