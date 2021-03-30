@@ -436,7 +436,8 @@ function filterElements(arr, term) {
 }
 
 function resetPage() {
-    window.location.href = '?query=&pageSize=1';
+    let resetURL = createNewUrlString('', 10, 0, '', '', '', '');
+    window.location.href = resetURL;
     elementsRequired = [];
     elementsNameRequired = [];
     elementsExcluded = [];
