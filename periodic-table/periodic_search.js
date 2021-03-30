@@ -5,13 +5,7 @@ const unencodedNotDelimiter =
 
 //delimiter to exclude elements only *:*
 
-// let qParam = new RegExp(unencodedDelimiter, 'g');
-// let qNotParam = new RegExp(unencodedNotDelimiter, 'g');
-
-//not needed, leaving for if needed in the future
-//const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
-//const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
-
+//Defining the global arrays
 let elementsRequired = [];
 let elementsNameRequired = [];
 let elementsExcluded = [];
@@ -41,16 +35,18 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('searchBox').value = query;
     document.getElementById('pageSize').value = pageSize;
 
+    //This section throws an error whenever namesReq = null (aka there are no search parameters in the URL yet)
+    //I don't know how to fix this error, but it does not seem to be affecting the function of the search
     if (namesReq !== '') {
         document.getElementById('elementsRequired').value =
             namesReq.split(',') + ',';
     }
     if (namesEx !== '') {
-        document.getElementById('elementsExcluded').value = namesEx.split(',');
+        document.getElementById('elementsExcluded').value =
+            namesEx.split(',') + ',';
     }
 
-    //this throws an error, but I don't know why. Doesn't impact performance (that I can tell yet)
-    if (elmReq !== null) {
+    if (elmReq !== '') {
         let elmReqArray = elmReq.split(',');
         for (i = 0; i < elmReqArray.length; i++) {
             document.getElementById(elmReqArray[i]).style.backgroundColor =
@@ -79,19 +75,31 @@ document.addEventListener('DOMContentLoaded', function () {
             namesEx
         );
     }
-    elementsNameRequired = namesReq.split(',');
-    elementsNameExcluded = namesEx.split(',');
-    elementsRequired = elmReq.split(',');
-    elementsExcluded = elmEx.split(',');
 
-    // return (
-    //     elementsNameExcluded,
-    //     elementsNameRequired,
-    //     elementsExcluded,
-    //     elementsRequired
-    // );
+    //This could probably be streamlined in the future, but currently does the job fine
+    if (namesReq !== '') {
+        elementsNameRequired = namesReq.split(',');
+    } else {
+        elementsNameRequired = [];
+    }
+    if (namesEx !== '') {
+        elementsNameExcluded = namesEx.split(',');
+    } else {
+        elementsNameExcluded = [];
+    }
+    if (elmReq !== '') {
+        elementsRequired = elmReq.split(',');
+    } else {
+        elementsRequired = [];
+    }
+    if (elmEx !== '') {
+        elementsExcluded = elmEx.split(',');
+    } else {
+        elementsExcluded = [];
+    }
 });
 
+//Function to add/remove elements to the global arrays required or excluded
 function elementClick(ev) {
     var requiredbox = document.getElementById('elementsRequired');
     var excludedbox = document.getElementById('elementsExcluded');
@@ -129,7 +137,6 @@ function elementClick(ev) {
         elementsRequired.push(elt_num);
         elementsNameRequired.push(ev.target.title);
     }
-    //find a way to run outside the click event
     var requiredStr = elementsRequired.toString();
     var reqRepStr = requiredStr.replace(/,/g, unencodedDelimiter);
     var excludedStr = elementsExcluded.toString();
@@ -148,6 +155,7 @@ function elementClick(ev) {
     }
 }
 
+//Function to search the Cordra database once given all the necesary information
 async function runSearch(
     query,
     pageSize,
@@ -180,6 +188,8 @@ async function runSearch(
     duplicateNavigation();
 }
 
+//Function to create the search result table
+//Can and should be reworked to be more streamlined
 async function createSearchResult(result) {
     const result_id = result.id;
     const result_name = result.content.name;
@@ -217,6 +227,7 @@ async function createSearchResult(result) {
     return row_td;
 }
 
+//Function called within the createSearchResult function to create all necessary entries in the table
 async function populateTable(results) {
     //console.log(results);
     // Guided by here: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
@@ -454,21 +465,6 @@ function submitSearch() {
     window.location.href = newURL;
 }
 
-//work on deconstructing the query given in the URL parameters
-// let deconstructedQueryStr = query
-// .replace(unencodedQueryInitial, '+')
-// .replace(qParam, ',+')
-// .replace(qNotParam, ',-');
-// console.log('deconstructedQueryStr: ' + deconstructedQueryStr);
-
-// if (query != null) {
-//     elementsSelected = deconstructedQueryStr.split(',');
-//     elementsRequired = filterElements(elementsSelected, '+')
-//         .toString()
-//         .replace(/[.*+?^${}()|[\]\\]/g, '')
-//         .split(',');
-//     elementsExcluded = filterElements(elementsSelected, '-')
-//         .toString()
-//         .replace(/-/g, '')
-//         .split(',');
-// }
+//not needed, leaving for if needed in the future
+//const queryParameter = '%20AND%20internal.pointsAt%3A20.500.12772/elements/';
+//const queryInitial = 'internal.pointsAt%3A20.500.12772/elements/';
