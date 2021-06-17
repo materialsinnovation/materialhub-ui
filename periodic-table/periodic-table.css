@@ -66,3 +66,18 @@ table {
 .element.star {
     border: 1px solid black;
 }
+
+/* Default symbol is white font, background set by element */
+.symbol {
+    color: #000000;
+}
+
+.symbol.required {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.symbol.excluded {
+    background-color: #C0111F;
+    color: #FFFFFF;
+}

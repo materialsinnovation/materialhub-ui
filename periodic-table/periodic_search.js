@@ -1,7 +1,6 @@
-const unencodedQueryInitial = 'internal.pointsAt:20.500.12772/elements/';
-const unencodedDelimiter = ' AND internal.pointsAt:20.500.12772/elements/';
-const unencodedNotDelimiter =
-    ' AND NOT internal.pointsAt:20.500.12772/elements/';
+const ELEM_QUERY_BASE = 'internal.pointsAt:20.500.12772/elements/'
+const UNENCODED_AND_DELIMITER = ' AND ' + ELEM_QUERY_BASE;
+const UNENCODED_NOT_DELIMITER = ' AND NOT ' + ELEM_QUERY_BASE;
 
 //delimiter to exclude elements only *:*
 
@@ -10,6 +9,14 @@ let elementsRequired = [];
 let elementsNameRequired = [];
 let elementsExcluded = [];
 let elementsNameExcluded = [];
+
+// //  Colors to mark required and excluded elements
+// const COLOR_REQUIRED = '#000000';
+// const COLOR_EXCLUDED = '#C0111F';
+
+// // Start with black font, but when we require/exclude, use white font
+// const PT_FONT_COLOR_DEFAULT = '#000000';
+// const PT_FONT_COLOR_MODIFIED = '#FFFFFF';
 
 //If we have a query string, search it now
 document.addEventListener('DOMContentLoaded', function () {
@@ -35,37 +42,20 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('searchBox').value = query;
     document.getElementById('pageSize').value = pageSize;
 
-    //This section throws an error whenever namesReq = null (aka there are no search parameters in the URL yet)
-    //I don't know how to fix this error, but it does not seem to be affecting the function of the search
-    if (namesReq !== '') {
-        document.getElementById('elementsRequired').value =
-            namesReq.split(',') + ',';
-    }
-    if (namesEx !== '') {
-        document.getElementById('elementsExcluded').value =
-            namesEx.split(',') + ',';
-    }
+    // populate global arrays
+    elementsNameRequired = split_str(namesReq);
+    elementsNameExcluded = split_str(namesEx);
+    elementsRequired = split_str(elmReq);
+    elementsExcluded = split_str(elmEx);
 
-    if (elmReq !== '') {
-        let elmReqArray = elmReq.split(',');
-        for (i = 0; i < elmReqArray.length; i++) {
-            document.getElementById(elmReqArray[i]).style.backgroundColor =
-                '#000000';
-            document.getElementById(elmReqArray[i]).style.color = '#ffffff';
-        }
-    }
 
-    if (elmEx !== '') {
-        let elmExArray = elmEx.split(',');
-        for (i = 0; i < elmExArray.length; i++) {
-            document.getElementById(elmExArray[i]).style.backgroundColor =
-                '#C0111F';
-            document.getElementById(elmExArray[i]).style.color = '#ffffff';
-        }
-    }
+    // now populate the chart from these arrays
+    populateElementLists();
+    populatePeriodicTable();
 
+    // now run the query itself and get the results
     if (nonEmpty(query)) {
-        const results = runSearch(
+        runSearch(
             query,
             pageSize,
             pageNum,
@@ -75,83 +65,146 @@ document.addEventListener('DOMContentLoaded', function () {
             namesEx
         );
     }
-
-    //This could probably be streamlined in the future, but currently does the job fine
-    if (namesReq !== '') {
-        elementsNameRequired = namesReq.split(',');
-    } else {
-        elementsNameRequired = [];
-    }
-    if (namesEx !== '') {
-        elementsNameExcluded = namesEx.split(',');
-    } else {
-        elementsNameExcluded = [];
-    }
-    if (elmReq !== '') {
-        elementsRequired = elmReq.split(',');
-    } else {
-        elementsRequired = [];
-    }
-    if (elmEx !== '') {
-        elementsExcluded = elmEx.split(',');
-    } else {
-        elementsExcluded = [];
-    }
 });
 
-//Function to add/remove elements to the global arrays required or excluded
+function split_str(str_to_split) {
+    /// Split a string (by commas) into an array, or return and empty array if the string is empty
+    if (nonEmpty(str_to_split)) {
+        return str_to_split.split(',');
+    }
+    return [];
+}
+
+function populateElementLists() {
+    /// Populate the periodic table colorings and element lists using the global arrays
+    if (elementsNameRequired.length > 0) {
+        document.getElementById('elementsRequired').value = String(elementsNameRequired);
+    }
+    else {
+        // unset value to let placeholder fall back
+        document.getElementById('elementsRequired').value = null;
+    }
+    if (elementsNameExcluded.length > 0) {
+        document.getElementById('elementsExcluded').value = String(elementsNameExcluded);
+    }
+    else {
+        // unset value to let placeholder fall back
+        document.getElementById('elementsExcluded').value = null;
+    }
+}
+
+function populatePeriodicTable() {
+    // Mark those elements are required or excluded
+    for (i = 0; i < elementsRequired.length; i++) {
+        markRequired(elementsRequired[i]);
+    }
+
+    for (i = 0; i < elementsExcluded.length; i++) {
+        markExcluded(elementsExcluded[i]);
+    }
+}
+
+function markRequired(elem) {
+    /// mark element as required in the periodic table
+    document.getElementById(elem).classList.add('required');
+    document.getElementById(elem).classList.remove('excluded');
+}
+
+function markExcluded(elem) {
+    /// mark element as excluded in the periodic table
+    document.getElementById(elem).classList.add('excluded');
+    document.getElementById(elem).classList.remove('required');
+}
+
+function unmarkElement(elem) {
+    /// remove element markings in the periodic table
+    document.getElementById(elem).classList.remove('excluded');
+    document.getElementById(elem).classList.remove('required');
+}
+
 function elementClick(ev) {
+    // Function to add/remove elements to the global arrays required or excluded
     var requiredbox = document.getElementById('elementsRequired');
     var excludedbox = document.getElementById('elementsExcluded');
     var searchBox = document.getElementById('searchBox');
     var elt_num = ev.target.id;
-    var elt_name = ev.target.title + ',';
+    var elt_name = ev.target.title;
     var oldrequired = requiredbox.value;
     var oldexcluded = excludedbox.value;
 
-    if (oldrequired.indexOf(elt_name) != -1) {
-        requiredbox.value = oldrequired.replace(elt_name, '');
-        document.getElementById(ev.target.id).style.backgroundColor = '#C0111F';
-        document.getElementById(ev.target.id).style.color = '#ffffff';
-        elementsRequired.splice(elementsRequired.indexOf(elt_num), 1);
-        elementsNameRequired.splice(
-            elementsNameRequired.indexOf(ev.target.title),
-            1
-        );
+
+    // is the element required? if so, mark it excluded    
+    if (elementsRequired.indexOf(elt_num) != -1) {
+        // delete from required elements lists
+        removeArrayElem(elementsRequired, elt_num);
+        removeArrayElem(elementsNameRequired, elt_name);
+
+        // and add to excluded lists
         elementsExcluded.push(elt_num);
         elementsNameExcluded.push(ev.target.title);
-        excludedbox.value = oldexcluded + elt_name;
-    } else if (oldexcluded.indexOf(elt_name) != -1) {
-        excludedbox.value = oldexcluded.replace(elt_name, '');
-        document.getElementById(ev.target.id).style.backgroundColor = null;
-        document.getElementById(ev.target.id).style.color = null;
-        elementsExcluded.splice(elementsExcluded.indexOf(elt_num), 1);
-        elementsNameExcluded.splice(
-            elementsNameExcluded.indexOf(ev.target.title),
-            1
-        );
-    } else {
-        requiredbox.value = oldrequired + elt_name;
-        document.getElementById(ev.target.id).style.backgroundColor = '#000000';
-        document.getElementById(ev.target.id).style.color = '#ffffff';
-        elementsRequired.push(elt_num);
-        elementsNameRequired.push(ev.target.title);
-    }
-    var requiredStr = elementsRequired.toString();
-    var reqRepStr = requiredStr.replace(/,/g, unencodedDelimiter);
-    var excludedStr = elementsExcluded.toString();
-    var excRepStr = excludedStr.replace(/,/g, unencodedNotDelimiter);
 
-    if (elementsExcluded.length === 0) {
-        searchBox.value = unencodedQueryInitial + reqRepStr;
-    } else if (elementsRequired.length === 0) {
-        searchBox.value = '*:*' + unencodedNotDelimiter + excRepStr;
+        // now mark as excluded in the table
+        markExcluded(elt_num);
+    } else if (elementsExcluded.indexOf(elt_num) != -1) {
+        // if the element was excluded, mark it as nothing now
+        removeArrayElem(elementsExcluded, elt_num);
+        removeArrayElem(elementsNameExcluded, elt_name);
+
+        unmarkElement(elt_num);
     } else {
-        searchBox.value =
-            unencodedQueryInitial +
-            reqRepStr +
-            unencodedNotDelimiter +
-            excRepStr;
+        // add element to required list
+        elementsRequired.push(elt_num);
+        elementsNameRequired.push(elt_name);
+        markRequired(elt_num);
+    }
+
+    // now repopulate the element list boxes
+    populateElementLists();
+
+    console.log('elt_num', elt_name, elt_num);
+    console.log(elementsRequired);
+    console.log(elementsExcluded);
+
+    // now build a new search box string
+    var requiredStr = elementsRequired.toString();
+    var reqRepStr = ELEM_QUERY_BASE + requiredStr.replace(/,/g, UNENCODED_AND_DELIMITER);
+
+    var excludedStr = elementsExcluded.toString();
+    var excRepStr = UNENCODED_NOT_DELIMITER + excludedStr.replace(/,/g, UNENCODED_NOT_DELIMITER);
+
+    // default to empty search string
+    var search_str = "";
+
+
+    // TODO this logic kinda sucks
+
+    // are any elements required?
+    if (elementsRequired.length === 0) {
+        // if no elements are required but some are excluded, make sure we start with a wildcard
+        if (elementsExcluded.length > 0) {
+            search_str = '*:*' + excRepStr;
+        }
+    }
+    else {
+        // we know we have elements required
+        search_str = reqRepStr;
+
+        // if elements are excluded, add that 
+        if (elementsExcluded.length > 0) {
+            search_str = search_str + excRepStr;
+        }
+    }
+
+    // Now set the search box string
+    searchBox.value = search_str;
+}
+
+function removeArrayElem(arr, elem_to_del) {
+    /// Use splice to remove the element elem in the array 'arr'
+    // Does nothing if the element does not exist
+    var ind = arr.indexOf(elem_to_del);
+    if (ind != -1) {
+        arr.splice(ind, 1);
     }
 }
 
@@ -254,7 +307,10 @@ async function populateNavigation(
     namesReq,
     namesEx
 ) {
+    // How many pages did we get back
     let numberOfPages = Math.ceil(size / pageSize);
+
+    // Add a count of the number of results
     var resultsDiv = document.getElementById('resultsShowing');
     var totalResults = document.createElement('b');
     var rangeOfTable = getRangeTextForPage(pageNum, pageSize, size);
@@ -264,6 +320,7 @@ async function populateNavigation(
     totalResults.appendChild(numberResults);
     resultsDiv.appendChild(totalResults);
 
+    // now create navbar
     var nav = document.getElementById('pageNav');
     var list = document.createElement('nav');
     list.setAttribute('class', 'nav nav-pills');
@@ -442,7 +499,6 @@ function resetPage() {
     elementsNameRequired = [];
     elementsExcluded = [];
     elementsNameExcluded = [];
-    elementsSelected = [];
 }
 
 function submitSearch() {
