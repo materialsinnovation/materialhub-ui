@@ -9,12 +9,9 @@ description: ''
 <br />
 
 <script src="search.js"></script>
+<script src="static\js\pagination.js"></script>
 <div>
-    <form
-        class="form-inline"
-        action="{{ site.baseurl }}/search/"
-        method="GET"
-    >
+    <form class="form-inline" action="{{ site.baseurl }}/search/" method="GET">
         <input
             class="form-control mr-sm-2"
             type="search"
@@ -24,11 +21,9 @@ description: ''
             id="searchBox"
             size="100"
         />
-        
-        <button class="btn btn-outline-dark" type="submit">
-            Search
-        </button>
-        
+
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+
         <label for="pageSize">&nbsp;Records per page:&nbsp;</label>
         <select name="pageSize" id="pageSize">
             <option value="10">10</option>
