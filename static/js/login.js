@@ -21,7 +21,7 @@ async function loginUser(username, password) {
 
 	if (!response.ok) {
 		console.log('auth failed');
-		alert("Login failed: bad request!");
+		alert("Login failed!");
 		return false;
 	}
 
@@ -39,7 +39,7 @@ async function loginUser(username, password) {
 	}
 
 	// check token
-	const intro_ret = postData('/auth/introspect', { 'token': access_token });
+	// const intro_ret = await postData ('/auth/introspect', { 'token': access_token });
 
 	// write back access token to global store
 	saveAuthToken(username, access_token);
@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
 // Listener for the shared button
 document.getElementById('loginToggleButton').addEventListener('click', (event) => {
 	event.preventDefault();
-	console.log("button pressed!")
 	if (loggedIn) {
 		// if we're logged in, then we should be trying to log out
 		logoutUser();
@@ -133,7 +132,6 @@ document.getElementById('loginSubmitForm').addEventListener('submit', (event) =>
 // Capture enter key for login form
 $(function () {
 	$('#modalLoginForm').keypress(function (e) {
-		console.log("Key pressed")
 		if (e.which == 13) {
 			// if enter key pressed, process data
 			processModalLogin();
