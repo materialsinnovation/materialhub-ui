@@ -51,8 +51,10 @@ description: 'Schemas are used to add structure to data. This schema is based of
                 schemasContainer.appendChild(schemaHeader);
                 schemasContainer.appendChild(schemaSection);
                 var props = s.content.schema.properties;
-                Object.keys(props).forEach(k => addElement(props[k], schemaList));
-                // s.content.schema.properties.forEach(p => addElement(p, schemaList) );
+
+                if (props) {
+                    Object.keys(props).forEach(k => addElement(props[k], schemaList));
+                }
             })
         });
 
