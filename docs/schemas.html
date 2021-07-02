@@ -2,7 +2,7 @@
 layout: default
 title: Schema Documentation
 root: .
-description: 'Schemas are used to add structure to data. This schema is based off the <a href="https://pages.nist.gov/material-schema/Material/">Material Schema</a> and represents a guide for how to structure data for materialhub and how to interpret data seen on materialhub. This helps ensure that the meaning of the data is preserved, ensures the data remains FAIR, and assists collaboration. The schemas only serve as a guide and materialhub is flexible enough to accept any data. However, to add meaning to new materialhub properties requires creating DefinedTerms, a slightly more complicated process. Therefore, the schema helps with rapid data ingestion.'
+description: 'Schemas are used to add structure to data. The origin of the schema is described at the <a href="https://pages.nist.gov/material-schema/Material/">Material Schema page</a>. The schema represents a guide for how to structure data for materialhub and how to interpret data seen on materialhub. This helps ensure that the meaning of the data is preserved, ensures the data remains FAIR, and assists collaboration. The schemas only serve as a guide and materialhub is flexible enough to accept any data. However, to add meaning to new materialhub properties requires creating DefinedTerms, a slightly more complicated process. Therefore, the schema helps with rapid data ingestion.'
 ---
 
 <h1>{{ page.title }} </h1>
@@ -46,6 +46,7 @@ description: 'Schemas are used to add structure to data. This schema is based of
                 schemaHeader.innerHTML = `${s.content.name} &#8711`;
                 schemaHeader.onclick = collapseNext;
                 schemaHeader.style.cursor = "pointer";
+                schemaHeader.style.borderBottom = "solid lightgray";
                 schemaSection.style.display = "block";
                 schemaSection.appendChild(schemaList);
                 schemasContainer.appendChild(schemaHeader);
