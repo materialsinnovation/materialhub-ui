@@ -1,0 +1,496 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "mat": "https://pages.nist.gov/material-schema/"
+  },
+  "@graph": [
+    {
+      "@id": "schema:Collection",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Collection",
+      "rdfs:subClassOf": [
+        "schema:Thing",
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:Dataset",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Dataset",
+      "rdfs:subClassOf": [
+        "schema:Thing",
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:DefinedTerm",
+      "@type": "rdfs:Class",
+      "rdfs:label": "DefinedTerm",
+      "rdfs:subClassOf": [
+        "schema:Thing"
+      ]
+    },
+    {
+      "@id": "schema:DefinedTermSet",
+      "@type": "rdfs:Class",
+      "rdfs:label": "DefinedTermSet",
+      "rdfs:subClassOf": [
+        "schema:Thing",
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "mat:Experiment",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Experiment",
+      "rdfs:subClassOf": [
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "mat:File",
+      "@type": "rdfs:Class",
+      "rdfs:label": "File",
+      "rdfs:subClassOf": [
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "mat:Instrument",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Instrument",
+      "rdfs:subClassOf": [
+        "schema:CreativeWork",
+        "schema:Product"
+      ]
+    },
+    {
+      "@id": "mat:Material",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Material",
+      "rdfs:subClassOf": [
+        "schema:CreativeWork",
+        "schema:Product"
+      ]
+    },
+    {
+      "@id": "mat:MaterialProperty",
+      "@type": "rdfs:Class",
+      "rdfs:label": "MaterialProperty",
+      "rdfs:subClassOf": [
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:Organization",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Organization",
+      "rdfs:subClassOf": [
+        "schema:Thing"
+      ]
+    },
+    {
+      "@id": "schema:Person",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Person",
+      "rdfs:subClassOf": [
+        "mat:CordraUser",
+        "schema:Thing"
+      ]
+    },
+    {
+      "@id": "schema:Place",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Place",
+      "rdfs:subClassOf": [
+        "schema:Thing"
+      ]
+    },
+    {
+      "@id": "schema:Project",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Project",
+      "rdfs:subClassOf": [
+        "schema:Thing"
+      ]
+    },
+    {
+      "@id": "schema:SoftwareApplication",
+      "@type": "rdfs:Class",
+      "rdfs:label": "SoftwareApplication",
+      "rdfs:subClassOf": [
+        "schema:Thing",
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "mat:Study",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Study",
+      "rdfs:subClassOf": [
+        "schema:CreativeWork"
+      ]
+    },
+    {
+      "@id": "mat:UnitOfMeasurement",
+      "@type": "rdfs:Class",
+      "rdfs:label": "UnitOfMeasurement",
+      "rdfs:subClassOf": [
+        "schema:Thing"
+      ]
+    },
+    {
+      "@id": "schema:identifier",
+      "@type": "rdfs:Property",
+      "rdfs:label": "identifier",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:name",
+      "@type": "rdfs:Property",
+      "rdfs:label": "name",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:alternateName",
+      "@type": "rdfs:Property",
+      "rdfs:label": "alternateName",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:description",
+      "@type": "rdfs:Property",
+      "rdfs:label": "description",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:url",
+      "@type": "rdfs:Property",
+      "rdfs:label": "url",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:image",
+      "@type": "rdfs:Property",
+      "rdfs:label": "image",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:subjectOf",
+      "@type": "rdfs:Property",
+      "rdfs:label": "subjectOf",
+      "schema:domainIncludes": [
+        "Thing"
+      ]
+    },
+    {
+      "@id": "schema:about",
+      "@type": "rdfs:Property",
+      "rdfs:label": "about",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:keywords",
+      "@type": "rdfs:Property",
+      "rdfs:label": "keywords",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:citation",
+      "@type": "rdfs:Property",
+      "rdfs:label": "citation",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:funder",
+      "@type": "rdfs:Property",
+      "rdfs:label": "funder",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:accountablePerson",
+      "@type": "rdfs:Property",
+      "rdfs:label": "accountablePerson",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:author",
+      "@type": "rdfs:Property",
+      "rdfs:label": "author",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:editor",
+      "@type": "rdfs:Property",
+      "rdfs:label": "editor",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:creator",
+      "@type": "rdfs:Property",
+      "rdfs:label": "creator",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:contributor",
+      "@type": "rdfs:Property",
+      "rdfs:label": "contributor",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:provider",
+      "@type": "rdfs:Property",
+      "rdfs:label": "provider",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:publisher",
+      "@type": "rdfs:Property",
+      "rdfs:label": "publisher",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:copyrightHolder",
+      "@type": "rdfs:Property",
+      "rdfs:label": "copyrightHolder",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:license",
+      "@type": "rdfs:Property",
+      "rdfs:label": "license",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:thumbnailUrl",
+      "@type": "rdfs:Property",
+      "rdfs:label": "thumbnailUrl",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:dateCreated",
+      "@type": "rdfs:Property",
+      "rdfs:label": "dateCreated",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:dateModified",
+      "@type": "rdfs:Property",
+      "rdfs:label": "dateModified",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:datePublished",
+      "@type": "rdfs:Property",
+      "rdfs:label": "datePublished",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ]
+    },
+    {
+      "@id": "schema:comment",
+      "@type": "rdfs:Property",
+      "rdfs:label": "comment",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Comment"
+      ]
+    },
+    {
+      "@id": "schema:spatial",
+      "@type": "rdfs:Property",
+      "rdfs:label": "spatial",
+      "schema:domainIncludes": [
+        "CreativeWork"
+      ],
+      "schema:rangeIncludes": [
+        "Place"
+      ]
+    },
+    {
+      "@id": "schema:manufacturer",
+      "@type": "rdfs:Property",
+      "rdfs:label": "manufacturer",
+      "schema:domainIncludes": [
+        "Product"
+      ],
+      "schema:rangeIncludes": [
+        "Organization",
+        "Person",
+        "User"
+      ]
+    },
+    {
+      "@id": "schema:brand",
+      "@type": "rdfs:Property",
+      "rdfs:label": "brand",
+      "schema:domainIncludes": [
+        "Product"
+      ]
+    },
+    {
+      "@id": "schema:model",
+      "@type": "rdfs:Property",
+      "rdfs:label": "model",
+      "schema:domainIncludes": [
+        "Product"
+      ]
+    },
+    {
+      "@id": "schema:productID",
+      "@type": "rdfs:Property",
+      "rdfs:label": "productID",
+      "schema:domainIncludes": [
+        "Product"
+      ]
+    },
+    {
+      "@id": "schema:productionDate",
+      "@type": "rdfs:Property",
+      "rdfs:label": "productionDate",
+      "schema:domainIncludes": [
+        "Product"
+      ]
+    },
+    {
+      "@id": "schema:purchaseDate",
+      "@type": "rdfs:Property",
+      "rdfs:label": "purchaseDate",
+      "schema:domainIncludes": [
+        "Product"
+      ]
+    },
+    {
+      "@id": "schema:serialNumber",
+      "@type": "rdfs:Property",
+      "rdfs:label": "serialNumber",
+      "schema:domainIncludes": [
+        "Product"
+      ]
+    },
+    {
+      "@id": "mat:username",
+      "@type": "rdfs:Property",
+      "rdfs:label": "username",
+      "schema:domainIncludes": [
+        "CordraUser"
+      ]
+    },
+    {
+      "@id": "mat:password",
+      "@type": "rdfs:Property",
+      "rdfs:label": "password",
+      "schema:domainIncludes": [
+        "CordraUser"
+      ]
+    },
+    {
+      "@id": "mat:requirePasswordChange",
+      "@type": "rdfs:Property",
+      "rdfs:label": "requirePasswordChange",
+      "schema:domainIncludes": [
+        "CordraUser"
+      ]
+    },
+    {
+      "@id": "mat:publicKey",
+      "@type": "rdfs:Property",
+      "rdfs:label": "publicKey",
+      "schema:domainIncludes": [
+        "CordraUser"
+      ]
+    }
+  ]
+}
