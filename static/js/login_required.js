@@ -7,5 +7,5 @@ if (null !== authdata) {
 } else {
 	// FORCE LOGIN HERE
 	alert("Please log in to use this page!");
-	window.location.replace("/materialhub-ui/login");
+	window.location.replace("/login");
 }
