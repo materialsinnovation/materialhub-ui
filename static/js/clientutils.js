@@ -1,7 +1,7 @@
 /// Set of helper utilities to manage a Cordra client
 
 // TODO this belongs somewhere not here
-const CORDRA_HTTPS_URL = 'https://api.materialhub.org'
+var CORDRA_HTTPS_URL = 'https://api.materialhub.org'
 
 /// Check if a string is nonempty
 function nonEmpty(str) {
