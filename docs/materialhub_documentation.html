@@ -1,0 +1,3561 @@
+---
+layout: default
+title: Documentation
+description: ""
+stylesheet: pylode
+---
+
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+<span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+<span style="font-size:smaller;">2.12.0</span>
+</div>
+<h1>The materialhub ontology</h1>
+<section id="metadata">
+<h2 style="display:none;">Metadata</h2>
+<dl>
+    <dt>URI</dt>
+    <dd><code>http://materialhub.org/schema/</code></dd>
+    <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
+    <dd>
+        NIST (https://nist.gov), MINED Research Group (https://matin.gatech.edu/)<br/>
+    </dd>
+    <dt>Version Information</dt>
+    <dd>0.2</dd>
+    <dt>Ontology RDF</dt>
+    <dd><a href="materialhub.ttl">RDF (turtle)</a></dd>
+</dl>
+<h2>Description</h2>
+<div id="description">
+    <p>Materialhub is a digital object repository for materials science data that combines the power of ontologies and databases. It employs an expanded subset of the schema.org vocabulary to describe materials and topics necessary for databases such as authors, dates, citations, etc. The NIST material-schema is used to supplement schema.org for more materials science specific terminology.</p>
+</div>
+</section>
+<section id="toc">
+<h2>Table of Contents</h2>
+<ol>
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#namespaces">Namespaces</a></li>
+    <li><a href="#legend">Legend</a></li>
+</ol>
+</section>
+<section id="overview">
+<h2>Overview</h2>
+<div class="figure">
+    <div style="width:1000px; height:650px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;"><img src="/static/img/material-schema.svg" width="1000px" height="650px"></div>
+    <div class="caption"><strong>Figure 1:</strong> Material-Schema Ontology overview</div>
+</div>
+</section>
+<section id="classes">
+<h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+<ul class="hlist">
+    <li><a href="https://materialhub.org/schema/#Group">mathub:Group</a></li>
+    <li><a href="https://materialhub.org/schema/#User">mathub:User</a></li>
+    <li><a href="#Experiment">mat:Experiment</a></li>
+    <li><a href="#File">mat:File</a></li>
+    <li><a href="#Form">mat:Form</a></li>
+    <li><a href="#Instrument">mat:Instrument</a></li>
+    <li><a href="#InstrumentAction">mat:InstrumentAction</a></li>
+    <li><a href="#Material">mat:Material</a></li>
+    <li><a href="#MaterialPerformance">mat:MaterialPerformance</a></li>
+    <li><a href="#MaterialProperty">mat:MaterialProperty</a></li>
+    <li><a href="#MaterialStructure">mat:MaterialStructure</a></li>
+    <li><a href="#Process">mat:Process</a></li>
+    <li><a href="#ProcessHistory">mat:ProcessHistory</a></li>
+    <li><a href="#ProcessProtocol">mat:ProcessProtocol</a></li>
+    <li><a href="#UnitOfMeasurement">mat:UnitOfMeasurement</a></li>
+    <li><a href="#Action">schema:Action</a></li>
+    <li><a href="#Collection">schema:Collection</a></li>
+    <li><a href="#Comment">schema:Comment</a></li>
+    <li><a href="#CreativeWork">schema:CreativeWork</a></li>
+    <li><a href="#Dataset">schema:Dataset</a></li>
+    <li><a href="#DefinedTerm">schema:DefinedTerm</a></li>
+    <li><a href="#DefinedTermSet">schema:DefinedTermSet</a></li>
+    <li><a href="#Organization">schema:Organization</a></li>
+    <li><a href="#Person">schema:Person</a></li>
+    <li><a href="#Place">schema:Place</a></li>
+    <li><a href="#Project">schema:Project</a></li>
+    <li><a href="#SoftwareApplication">schema:SoftwareApplication</a></li>
+    <li><a href="#SoftwareSourceCode">schema:SoftwareSourceCode</a></li>
+    <li><a href="#Thing">schema:Thing</a></li>
+</ul>
+<div class="entity class" id="Group">
+    <h3>
+        Group<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Group" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://materialhub.org/schema/#Group</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A group of registered materialhub users.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="https://materialhub.org/schema/#users">mathub:users</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="User">
+    <h3>
+        User<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#User" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://materialhub.org/schema/#User</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A registered user of the materialhub site.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="https://materialhub.org/schema/#users">mathub:users</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Experiment">
+    <h3>
+        Experiment<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Experiment" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/Experiment</code></td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="File">
+    <h3>
+        File<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#File" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/File</code></td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Form">
+    <h3>
+        Form<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Form" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/Form</code></td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#File">schema:File</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Instrument">
+    <h3>
+        Instrument<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Instrument" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/Instrument</code></td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#measurementTechnique">schema:measurementTechnique</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="InstrumentAction">
+    <h3>
+        InstrumentAction<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#InstrumentAction" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/InstrumentAction</code></td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Material">
+    <h3>
+        Material<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Material" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/Material</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Real or simulated matter with prescribed and actual composition, structure, properties, and performance. Created by a Process.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#supplyTo">mat:supplyTo</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#material">schema:material</a><br/>
+                <a href="#materialReferenceExtent">schema:materialReferenceExtent</a><br/>
+                <a href="#materialExtent">schema:materialExtent</a><br/>
+                <a href="#materialReference">schema:materialReference</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="MaterialPerformance">
+    <h3>
+        MaterialPerformance<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MaterialPerformance" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/MaterialPerformance</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The ability of a material to perform in a given application. Includes the materials response to a complex environment usually as a component or in some other end use application.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="MaterialProperty">
+    <h3>
+        MaterialProperty<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MaterialProperty" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/MaterialProperty</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The physical properties of a material. Includes first-principles type properties and those determined through precise testing.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="MaterialStructure">
+    <h3>
+        MaterialStructure<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MaterialStructure" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/MaterialStructure</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The structure of a material constitutes the many physical and chemical components of the material and their spatial inter-relationships.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Process">
+    <h3>
+        Process<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Process" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/Process</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A change in a material due to an environment controlled by natural processes (e.g., solidification, precipitation, grain coarsening, corrosion, etc.), instruments (e.g., furnace, etc.), or simulations (e.g., phase field, etc.).</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#HowTo">schema:HowTo</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#ProcessHistory">mat:ProcessHistory</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#ProcessProtocol">mat:ProcessProtocol</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#supplyTo">mat:supplyTo</a><br/>
+                <a href="#processReference">mat:processReference</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="ProcessHistory">
+    <h3>
+        ProcessHistory<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ProcessHistory" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/ProcessHistory</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The actual process as determined by measurements.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Process">mat:Process</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#process">mat:process</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="ProcessProtocol">
+    <h3>
+        ProcessProtocol<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ProcessProtocol" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/ProcessProtocol</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The intended or prescribed process.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Process">mat:Process</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="UnitOfMeasurement">
+    <h3>
+        UnitOfMeasurement<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#UnitOfMeasurement" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/UnitOfMeasurement</code></td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#unitCode">mat:unitCode</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Action">
+    <h3>
+        Action<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Action" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Action</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>An action performed by a direct agent and indirect participants upon a direct object. Optionally happens at a location with the help of an inanimate instrument. The execution of the action may produce a result. Specific action sub-type documentation specifies the exact expectation of each argument/role.</p>
+<p>See also <a href="http://blog.schema.org/2014/04/announcing-schemaorg-actions.html">blog post</a> and <a href="schema:docs/actions.html">Actions overview document</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#InstrumentAction">mat:InstrumentAction</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#instrument">schema:instrument</a><br/>
+                <a href="#location">schema:location</a><br/>
+                <a href="#object">schema:object</a><br/>
+                <a href="#startTime">schema:startTime</a><br/>
+                <a href="#target">schema:target</a><br/>
+                <a href="#agent">schema:agent</a><br/>
+                <a href="#result">schema:result</a><br/>
+                <a href="#endTime">schema:endTime</a><br/>
+                <a href="#participant">schema:participant</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Collection">
+    <h3>
+        Collection<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Collection" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Collection</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A collection of items e.g. creative works or products.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Comment">
+    <h3>
+        Comment<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Comment" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Comment</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the [[text]] property, and its topic via [[about]], properties shared with all CreativeWorks.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#comment">schema:comment</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="CreativeWork">
+    <h3>
+        CreativeWork<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CreativeWork" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/CreativeWork</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The most generic kind of creative work, including books, movies, photographs, software programs, etc.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#Comment">schema:Comment</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Instrument">mat:Instrument</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#SoftwareSourceCode">schema:SoftwareSourceCode</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Material">mat:Material</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#DefinedTermSet">schema:DefinedTermSet</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#SoftwareApplication">schema:SoftwareApplication</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Collection">schema:Collection</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#contributor">schema:contributor</a><br/>
+                <a href="#dateModified">schema:dateModified</a><br/>
+                <a href="#creator">schema:creator</a><br/>
+                <a href="#comment">schema:comment</a><br/>
+                <a href="#funder">schema:funder</a><br/>
+                <a href="#provider">schema:provider</a><br/>
+                <a href="#accountablePerson">schema:accountablePerson</a><br/>
+                <a href="#citation">schema:citation</a><br/>
+                <a href="#author">schema:author</a><br/>
+                <a href="#publisher">schema:publisher</a><br/>
+                <a href="#dateCreated">schema:dateCreated</a><br/>
+                <a href="#about">schema:about</a><br/>
+                <a href="#hasPart">schema:hasPart</a><br/>
+                <a href="#keywords">schema:keywords</a><br/>
+                <a href="#license">schema:license</a><br/>
+                <a href="#thumbnailUrl">schema:thumbnailUrl</a><br/>
+                <a href="#isPartOf">schema:isPartOf</a><br/>
+                <a href="#exampleOfWork">schema:exampleOfWork</a><br/>
+                <a href="#editor">schema:editor</a><br/>
+                <a href="#workExample">schema:workExample</a><br/>
+                <a href="#material">schema:material</a><br/>
+                <a href="#copyrightHolder">schema:copyrightHolder</a><br/>
+                <a href="#datePublished">schema:datePublished</a><br/>
+                <a href="#spatial">schema:spatial</a><br/>
+                <a href="#materialExtent">schema:materialExtent</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#subjectOf">schema:subjectOf</a><br/>
+                <a href="#license">schema:license</a><br/>
+                <a href="#citation">schema:citation</a><br/>
+                <a href="#isPartOf">schema:isPartOf</a><br/>
+                <a href="#exampleOfWork">schema:exampleOfWork</a><br/>
+                <a href="#workExample">schema:workExample</a><br/>
+                <a href="#hasPart">schema:hasPart</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Dataset">
+    <h3>
+        Dataset<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Dataset" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Dataset</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A body of structured information describing some topic(s) of interest.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#Process">mat:Process</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#MaterialStructure">mat:MaterialStructure</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#MaterialProperty">mat:MaterialProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Experiment">mat:Experiment</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#MaterialPerformance">mat:MaterialPerformance</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#File">mat:File</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#process">mat:process</a><br/>
+                <a href="#parameterControlled">mat:parameterControlled</a><br/>
+                <a href="#conditionObserved">mat:conditionObserved</a><br/>
+                <a href="#measurementTechnique">schema:measurementTechnique</a><br/>
+                <a href="#materialReferenceExtent">schema:materialReferenceExtent</a><br/>
+                <a href="#processReference">mat:processReference</a><br/>
+                <a href="#materialReference">schema:materialReference</a><br/>
+                <a href="#variableMeasured">schema:variableMeasured</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="DefinedTerm">
+    <h3>
+        DefinedTerm<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#DefinedTerm" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/DefinedTerm</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A word, name, acronym, phrase, etc. with a formal definition. Often used in the context of category or subject classification, glossaries or dictionaries, product or creative work types, etc. Use the name property for the term being defined, use termCode if the term has an alpha-numeric code allocated, use description to provide the definition of the term.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Intangible">schema:Intangible</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#UnitOfMeasurement">mat:UnitOfMeasurement</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#termCode">schema:termCode</a><br/>
+                <a href="#measurementTechnique">schema:measurementTechnique</a><br/>
+                <a href="#inDefinedTermSet">schema:inDefinedTermSet</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#parameterControlled">mat:parameterControlled</a><br/>
+                <a href="#conditionObserved">mat:conditionObserved</a><br/>
+                <a href="#keywords">schema:keywords</a><br/>
+                <a href="#valueReference">schema:valueReference</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="DefinedTermSet">
+    <h3>
+        DefinedTermSet<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#DefinedTermSet" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/DefinedTermSet</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A set of defined terms for example a set of categories or a classification scheme, a glossary, dictionary or enumeration.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#inDefinedTermSet">schema:inDefinedTermSet</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Organization">
+    <h3>
+        Organization<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Organization" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Organization</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>An organization such as a school, NGO, corporation, club, etc.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#Project">schema:Project</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="https://materialhub.org/schema/#Group">mathub:Group</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#funder">schema:funder</a><br/>
+                <a href="#email">schema:email</a><br/>
+                <a href="#location">schema:location</a><br/>
+                <a href="#brand">schema:brand</a><br/>
+                <a href="#telephone">schema:telephone</a><br/>
+                <a href="#address">schema:address</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#manufacturer">schema:manufacturer</a><br/>
+                <a href="#contributor">schema:contributor</a><br/>
+                <a href="#creator">schema:creator</a><br/>
+                <a href="#participant">schema:participant</a><br/>
+                <a href="#provider">schema:provider</a><br/>
+                <a href="#funder">schema:funder</a><br/>
+                <a href="#author">schema:author</a><br/>
+                <a href="#publisher">schema:publisher</a><br/>
+                <a href="#agent">schema:agent</a><br/>
+                <a href="#affiliation">schema:affiliation</a><br/>
+                <a href="#brand">schema:brand</a><br/>
+                <a href="#copyrightHolder">schema:copyrightHolder</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Person">
+    <h3>
+        Person<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Person" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Person</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A person (alive, dead, undead, or fictional).</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="https://materialhub.org/schema/#User">mathub:User</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#brand">schema:brand</a><br/>
+                <a href="#givenName">schema:givenName</a><br/>
+                <a href="#familyName">schema:familyName</a><br/>
+                <a href="#funder">schema:funder</a><br/>
+                <a href="#email">schema:email</a><br/>
+                <a href="#affiliation">schema:affiliation</a><br/>
+                <a href="#telephone">schema:telephone</a><br/>
+                <a href="#address">schema:address</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#author">schema:author</a><br/>
+                <a href="#publisher">schema:publisher</a><br/>
+                <a href="#contributor">schema:contributor</a><br/>
+                <a href="#participant">schema:participant</a><br/>
+                <a href="#editor">schema:editor</a><br/>
+                <a href="#copyrightHolder">schema:copyrightHolder</a><br/>
+                <a href="#funder">schema:funder</a><br/>
+                <a href="#accountablePerson">schema:accountablePerson</a><br/>
+                <a href="#creator">schema:creator</a><br/>
+                <a href="#provider">schema:provider</a><br/>
+                <a href="#agent">schema:agent</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Place">
+    <h3>
+        Place<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Place" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Place</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Entities that have a somewhat fixed, physical extension.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#telephone">schema:telephone</a><br/>
+                <a href="#address">schema:address</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#location">schema:location</a><br/>
+                <a href="#spatial">schema:spatial</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Project">
+    <h3>
+        Project<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Project" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Project</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>An enterprise (potentially individual but typically collaborative), planned to achieve a particular aim. Use properties from [[Organization]], [[subOrganization]]/[[parentOrganization]] to indicate project sub-structures. </p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="SoftwareApplication">
+    <h3>
+        SoftwareApplication<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#SoftwareApplication" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/SoftwareApplication</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A software application.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#operatingSystem">schema:operatingSystem</a><br/>
+                <a href="#softwareRequirements">schema:softwareRequirements</a><br/>
+                <a href="#measurementTechnique">schema:measurementTechnique</a><br/>
+                <a href="#softwareVersion">schema:softwareVersion</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#targetProduct">schema:targetProduct</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="SoftwareSourceCode">
+    <h3>
+        SoftwareSourceCode<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#SoftwareSourceCode" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/SoftwareSourceCode</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-classes</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#programmingLanguage">schema:programmingLanguage</a><br/>
+                <a href="#targetProduct">schema:targetProduct</a><br/>
+                <a href="#measurementTechnique">schema:measurementTechnique</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity class" id="Thing">
+    <h3>
+        Thing<sup title="class" class="sup-c">c</sup>
+        <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Thing" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/Thing</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The most generic type of item.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Sub-classes</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup><br/>
+                <a href="#Place">schema:Place</a><sup class="sup-c" title="class">c</sup><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In domain of</th>
+            <td>
+                <a href="#identifier">schema:identifier</a><br/>
+                <a href="#url">schema:url</a><br/>
+                <a href="#subjectOf">schema:subjectOf</a><br/>
+                <a href="#name">schema:name</a><br/>
+                <a href="#alternateName">schema:alternateName</a><br/>
+                <a href="#description">schema:description</a><br/>
+                <a href="#image">schema:image</a><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>In range of</th>
+            <td>
+                <a href="#target">schema:target</a><br/>
+                <a href="#result">schema:result</a><br/>
+                <a href="#object">schema:object</a><br/>
+                <a href="#instrument">schema:instrument</a><br/>
+                <a href="#about">schema:about</a><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+</section>
+<section id="properties">
+<h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+<ul class="hlist">
+    <li><a href="#users">users</a></li>
+    <li><a href="#conditionObserved">conditionObserved</a></li>
+    <li><a href="#materialReference">materialReference</a></li>
+    <li><a href="#materialReferenceExtent">materialReferenceExtent</a></li>
+    <li><a href="#parameterControlled">parameterControlled</a></li>
+    <li><a href="#process">process</a></li>
+    <li><a href="#processReference">processReference</a></li>
+    <li><a href="#supplyTo">supplyTo</a></li>
+    <li><a href="#uncertainty">uncertainty</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#accountablePerson">accountablePerson</a></li>
+    <li><a href="#address">address</a></li>
+    <li><a href="#affiliation">affiliation</a></li>
+    <li><a href="#agent">agent</a></li>
+    <li><a href="#alternateName">alternateName</a></li>
+    <li><a href="#author">author</a></li>
+    <li><a href="#brand">brand</a></li>
+    <li><a href="#citation">citation</a></li>
+    <li><a href="#comment">comment</a></li>
+    <li><a href="#contributor">contributor</a></li>
+    <li><a href="#copyrightHolder">copyrightHolder</a></li>
+    <li><a href="#creator">creator</a></li>
+    <li><a href="#dateCreated">dateCreated</a></li>
+    <li><a href="#dateModified">dateModified</a></li>
+    <li><a href="#datePublished">datePublished</a></li>
+    <li><a href="#description">description</a></li>
+    <li><a href="#editor">editor</a></li>
+    <li><a href="#email">email</a></li>
+    <li><a href="#endTime">endTime</a></li>
+    <li><a href="#exampleOfWork">exampleOfWork</a></li>
+    <li><a href="#familyName">familyName</a></li>
+    <li><a href="#funder">funder</a></li>
+    <li><a href="#givenName">givenName</a></li>
+    <li><a href="#hasPart">hasPart</a></li>
+    <li><a href="#identifier">identifier</a></li>
+    <li><a href="#image">image</a></li>
+    <li><a href="#inDefinedTermSet">inDefinedTermSet</a></li>
+    <li><a href="#instrument">instrument</a></li>
+    <li><a href="#isPartOf">isPartOf</a></li>
+    <li><a href="#keywords">keywords</a></li>
+    <li><a href="#license">license</a></li>
+    <li><a href="#location">location</a></li>
+    <li><a href="#manufacturer">manufacturer</a></li>
+    <li><a href="#material">material</a></li>
+    <li><a href="#materialExtent">materialExtent</a></li>
+    <li><a href="#maxValue">maxValue</a></li>
+    <li><a href="#measurementTechnique">measurementTechnique</a></li>
+    <li><a href="#minValue">minValue</a></li>
+    <li><a href="#model">model</a></li>
+    <li><a href="#name">name</a></li>
+    <li><a href="#object">object</a></li>
+    <li><a href="#operatingSystem">operatingSystem</a></li>
+    <li><a href="#participant">participant</a></li>
+    <li><a href="#productID">productID</a></li>
+    <li><a href="#productionDate">productionDate</a></li>
+    <li><a href="#programmingLanguage">programmingLanguage</a></li>
+    <li><a href="#provider">provider</a></li>
+    <li><a href="#publisher">publisher</a></li>
+    <li><a href="#purchaseDate">purchaseDate</a></li>
+    <li><a href="#result">result</a></li>
+    <li><a href="#serialNumber">serialNumber</a></li>
+    <li><a href="#softwareRequirements">softwareRequirements</a></li>
+    <li><a href="#softwareVersion">softwareVersion</a></li>
+    <li><a href="#spatial">spatial</a></li>
+    <li><a href="#startTime">startTime</a></li>
+    <li><a href="#subjectOf">subjectOf</a></li>
+    <li><a href="#target">target</a></li>
+    <li><a href="#targetProduct">targetProduct</a></li>
+    <li><a href="#telephone">telephone</a></li>
+    <li><a href="#termCode">termCode</a></li>
+    <li><a href="#thumbnailUrl">thumbnailUrl</a></li>
+    <li><a href="#unitCode">unitCode</a></li>
+    <li><a href="#unitText">unitText</a></li>
+    <li><a href="#url">url</a></li>
+    <li><a href="#value">value</a></li>
+    <li><a href="#valueReference">valueReference</a></li>
+    <li><a href="#variableMeasured">variableMeasured</a></li>
+    <li><a href="#workExample">workExample</a></li>
+</ul>
+<div class="entity property" id="users">
+    <h3>users<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#users" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://materialhub.org/schema/#users</code></td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="https://materialhub.org/schema/#Group">mathub:Group</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="https://materialhub.org/schema/#User">mathub:User</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="conditionObserved">
+    <h3>conditionObserved<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#conditionObserved" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/conditionObserved</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The conditions observed while studying a process, studying a material, or taking some type of measurement.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#HowTo">schema:HowTo</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="materialReference">
+    <h3>materialReference<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#materialReference" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/materialReference</code></td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="materialReferenceExtent">
+    <h3>materialReferenceExtent<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#materialReferenceExtent" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/materialReferenceExtent</code></td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="parameterControlled">
+    <h3>parameterControlled<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#parameterControlled" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/parameterControlled</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A parameter that can be controlled by an instrument, simulation parameter, or other means.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#HowTo">schema:HowTo</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="process">
+    <h3>process<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#process" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/process</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A process history that has occured and which this object describes.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#ProcessHistory">mat:ProcessHistory</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="processReference">
+    <h3>processReference<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#processReference" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/processReference</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A control process or process protocol to which this object is related to.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Process">mat:Process</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="supplyTo">
+    <h3>supplyTo<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#supplyTo" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/supplyTo</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The material supply for a process.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Material">mat:Material</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Process">mat:Process</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="uncertainty">
+    <h3>uncertainty<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#uncertainty" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://pages.nist.gov/material-schema/uncertainty</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>uncertainty in some measured property</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Number">schema:Number</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="about">
+    <h3>about<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#about" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/about</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The subject matter of the content.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="accountablePerson">
+    <h3>accountablePerson<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#accountablePerson" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/accountablePerson</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Specifies the Person that is legally accountable for the CreativeWork.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="address">
+    <h3>address<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#address" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/address</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Physical address of the item.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Place">schema:Place</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PostalAddress">schema:PostalAddress</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="affiliation">
+    <h3>affiliation<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#affiliation" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/affiliation</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>An organization that this person is affiliated with. For example, a school/university, a club, or a team.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="agent">
+    <h3>agent<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#agent" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/agent</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The direct performer or driver of the action (animate or inanimate). e.g. <em>John</em> wrote a book.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="alternateName">
+    <h3>alternateName<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#alternateName" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/alternateName</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>An alias for the item.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="author">
+    <h3>author<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#author" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/author</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="brand">
+    <h3>brand<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#brand" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/brand</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Brand">schema:Brand</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="citation">
+    <h3>citation<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#citation" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/citation</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="comment">
+    <h3>comment<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#comment" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/comment</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Comments, typically from users.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Comment">schema:Comment</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="contributor">
+    <h3>contributor<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#contributor" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/contributor</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A secondary contributor to the CreativeWork or Event.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="copyrightHolder">
+    <h3>copyrightHolder<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#copyrightHolder" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/copyrightHolder</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The party holding the legal copyright to the CreativeWork.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="creator">
+    <h3>creator<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#creator" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/creator</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="dateCreated">
+    <h3>dateCreated<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#dateCreated" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/dateCreated</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The date on which the CreativeWork was created or the item was added to a DataFeed.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Date">schema:Date</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DateTime">schema:DateTime</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="dateModified">
+    <h3>dateModified<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#dateModified" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/dateModified</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Date">schema:Date</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DateTime">schema:DateTime</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="datePublished">
+    <h3>datePublished<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#datePublished" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/datePublished</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Date of first broadcast/publication.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Date">schema:Date</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DateTime">schema:DateTime</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="description">
+    <h3>description<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#description" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/description</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A description of the item.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Equivalent properties</th>
+            <td>
+                <a href="http://purl.org/dc/terms/description">dc:description</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="editor">
+    <h3>editor<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#editor" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/editor</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Specifies the Person who edited the CreativeWork.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="email">
+    <h3>email<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#email" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/email</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Email address.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="endTime">
+    <h3>endTime<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#endTime" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/endTime</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to <em>December</em>. For media, including audio and video, it's the time offset of the end of a clip within a larger file.</p>
+<p>Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Time">schema:Time</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DateTime">schema:DateTime</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="exampleOfWork">
+    <h3>exampleOfWork<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#exampleOfWork" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/exampleOfWork</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A creative work that this work is an example/instance/realization/derivation of.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="familyName">
+    <h3>familyName<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#familyName" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/familyName</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Family name. In the U.S., the last name of a Person.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="funder">
+    <h3>funder<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#funder" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/funder</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A person or organization that supports (sponsors) something through some kind of financial contribution.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-properties</th>
+            <td>
+                <a href="#sponsor">schema:sponsor</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="givenName">
+    <h3>givenName<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#givenName" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/givenName</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Given name. In the U.S., the first name of a Person.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="hasPart">
+    <h3>hasPart<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#hasPart" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/hasPart</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense).</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="identifier">
+    <h3>identifier<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#identifier" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/identifier</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See <a href="/docs/datamodel.html#identifierBg">background notes</a> for more details.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Equivalent properties</th>
+            <td>
+                <a href="http://purl.org/dc/terms/identifier">dc:identifier</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="image">
+    <h3>image<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#image" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/image</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>An image of the item. This can be a [[URL]] or a fully described [[ImageObject]].</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="inDefinedTermSet">
+    <h3>inDefinedTermSet<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#inDefinedTermSet" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/inDefinedTermSet</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A [[DefinedTermSet]] that contains this term.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-properties</th>
+            <td>
+                <a href="#isPartOf">schema:isPartOf</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DefinedTermSet">schema:DefinedTermSet</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="instrument">
+    <h3>instrument<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#instrument" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/instrument</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The object that helped the agent perform the action. e.g. John wrote a book with <em>a pen</em>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="isPartOf">
+    <h3>isPartOf<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#isPartOf" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/isPartOf</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="keywords">
+    <h3>keywords<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#keywords" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/keywords</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="license">
+    <h3>license<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#license" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/license</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A license document that applies to this content, typically indicated by URL.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="location">
+    <h3>location<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#location" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/location</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The location of, for example, where an event is happening, where an organization is located, or where an action takes place.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Place">schema:Place</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PostalAddress">schema:PostalAddress</a><sup class="sup-c" title="class">c</sup>
+                <a href="#VirtualLocation">schema:VirtualLocation</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="manufacturer">
+    <h3>manufacturer<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#manufacturer" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/manufacturer</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The manufacturer of the product.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="material">
+    <h3>material<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#material" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/material</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A material that something is made from, e.g. leather, wool, cotton, paper.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Material">mat:Material</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="materialExtent">
+    <h3>materialExtent<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#materialExtent" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/materialExtent</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The quantity of the materials being described or an expression of the physical space they occupy.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Material">mat:Material</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="maxValue">
+    <h3>maxValue<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#maxValue" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/maxValue</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The upper value of some characteristic or property.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Number">schema:Number</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="measurementTechnique">
+    <h3>measurementTechnique<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#measurementTechnique" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/measurementTechnique</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A technique or technology used in a [[Dataset]] (or [[DataDownload]], [[DataCatalog]]), corresponding to the method used for measuring the corresponding variable(s) (described using [[variableMeasured]]). This is oriented towards scientific and scholarly dataset publication but may have broader applicability; it is not intended as a full representation of measurement, but rather as a high level summary for dataset discovery. For example, if [[variableMeasured]] is: molecule concentration, [[measurementTechnique]] could be: 'mass spectrometry' or 'nmr spectroscopy' or 'colorimetry' or 'immunofluorescence'. If the [[variableMeasured]] is 'depression rating', the [[measurementTechnique]] could be 'Zung Scale' or 'HAM-D' or 'Beck Depression Inventory'. If there are several [[variableMeasured]] properties recorded for some given data object, use a [[PropertyValue]] for each [[variableMeasured]] and attach the corresponding [[measurementTechnique]].</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+                <a href="#SoftwareApplication">schema:SoftwareApplication</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DataDownload">schema:DataDownload</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Instrument">mat:Instrument</a><sup class="sup-c" title="class">c</sup>
+                <a href="#SoftwareSourceCode">schema:SoftwareSourceCode</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="minValue">
+    <h3>minValue<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#minValue" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/minValue</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The lower value of some characteristic or property.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Number">schema:Number</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="model">
+    <h3>model<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#model" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/model</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#ProductModel">schema:ProductModel</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="name">
+    <h3>name<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#name" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/name</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The name of the item.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-properties</th>
+            <td>
+                <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Equivalent properties</th>
+            <td>
+                <a href="http://purl.org/dc/terms/title">dc:title</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="object">
+    <h3>object<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#object" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/object</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read <em>a book</em>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="operatingSystem">
+    <h3>operatingSystem<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#operatingSystem" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/operatingSystem</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Operating systems supported (Windows 7, OSX 10.6, Android 1.6, etc.).</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#SoftwareApplication">schema:SoftwareApplication</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="participant">
+    <h3>participant<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#participant" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/participant</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Other co-agents that participated in the action indirectly. e.g. John wrote a book with <em>Steve</em>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="productID">
+    <h3>productID<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#productID" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/productID</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The product identifier, such as ISBN. For example: <code>meta itemprop='productID' content='isbn:123-456-789'</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-properties</th>
+            <td>
+                <a href="#identifier">schema:identifier</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="productionDate">
+    <h3>productionDate<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#productionDate" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/productionDate</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The date of production of the item, e.g. vehicle.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Date">schema:Date</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="programmingLanguage">
+    <h3>programmingLanguage<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#programmingLanguage" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/programmingLanguage</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The computer programming language.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#SoftwareSourceCode">schema:SoftwareSourceCode</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="provider">
+    <h3>provider<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#provider" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/provider</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="publisher">
+    <h3>publisher<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#publisher" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/publisher</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The publisher of the creative work.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="purchaseDate">
+    <h3>purchaseDate<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#purchaseDate" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/purchaseDate</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The date the item e.g. vehicle was purchased by the current owner.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Date">schema:Date</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="result">
+    <h3>result<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#result" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/result</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The result produced in the action. e.g. John wrote <em>a book</em>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="serialNumber">
+    <h3>serialNumber<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#serialNumber" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/serialNumber</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Super-properties</th>
+            <td>
+                <a href="#identifier">schema:identifier</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Product">schema:Product</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="softwareRequirements">
+    <h3>softwareRequirements<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#softwareRequirements" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/softwareRequirements</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#SoftwareApplication">schema:SoftwareApplication</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="softwareVersion">
+    <h3>softwareVersion<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#softwareVersion" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/softwareVersion</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Version of the software instance.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#SoftwareApplication">schema:SoftwareApplication</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="spatial">
+    <h3>spatial<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#spatial" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/spatial</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The 'spatial' property can be used in cases when more specific properties
+(e.g. [[locationCreated]], [[spatialCoverage]], [[contentLocation]]) are not known to be appropriate.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Equivalent properties</th>
+            <td>
+                <a href="http://purl.org/dc/terms/spatial">dc:spatial</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Place">schema:Place</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="startTime">
+    <h3>startTime<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#startTime" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/startTime</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from <em>January</em> to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.</p>
+<p>Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#DateTime">schema:DateTime</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Time">schema:Time</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="subjectOf">
+    <h3>subjectOf<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#subjectOf" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/subjectOf</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A CreativeWork or Event about this Thing.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="target">
+    <h3>target<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#target" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/target</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Indicates a target EntryPoint for an Action.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Action">schema:Action</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="targetProduct">
+    <h3>targetProduct<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#targetProduct" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/targetProduct</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#SoftwareSourceCode">schema:SoftwareSourceCode</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#SoftwareApplication">schema:SoftwareApplication</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="telephone">
+    <h3>telephone<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#telephone" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/telephone</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The telephone number.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Place">schema:Place</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Organization">schema:Organization</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Person">schema:Person</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="termCode">
+    <h3>termCode<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#termCode" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/termCode</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A code that identifies this [[DefinedTerm]] within a [[DefinedTermSet]]</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="thumbnailUrl">
+    <h3>thumbnailUrl<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#thumbnailUrl" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/thumbnailUrl</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A thumbnail image relevant to the Thing.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="unitCode">
+    <h3>unitCode<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#unitCode" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/unitCode</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="unitText">
+    <h3>unitText<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#unitText" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/unitText</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for <a href='unitCode'>unitCode</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="url">
+    <h3>url<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#url" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/url</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>URL of the item.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Thing">schema:Thing</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#URL">schema:URL</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="value">
+    <h3>value<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#value" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/value</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The value of the quantitative value or property value node.</p>
+<ul>
+<li>For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type for values is 'Number'.</li>
+<li>For [[PropertyValue]], it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.</li>
+<li>Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.</li>
+<li>Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.</li>
+</ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Boolean">schema:Boolean</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Number">schema:Number</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="valueReference">
+    <h3>valueReference<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#valueReference" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/valueReference</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>A secondary value that provides additional information on the original value, e.g. a reference temperature or a type of measurement.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#QuantitativeValue">schema:QuantitativeValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+                <a href="#DefinedTerm">schema:DefinedTerm</a><sup class="sup-c" title="class">c</sup>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="variableMeasured">
+    <h3>variableMeasured<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#variableMeasured" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/variableMeasured</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#Dataset">schema:Dataset</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#Text">schema:Text</a><sup class="sup-c" title="class">c</sup>
+                <a href="#PropertyValue">schema:PropertyValue</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entity property" id="workExample">
+    <h3>workExample<sup title="property" class="sup-p">p</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+        <a href="#workExample" title="fragment link to here">#</a>&nbsp;<a href="#properties" title="Properties Index">Props</a></span>
+    </h3>
+    <table>
+        <tr>
+            <th>URI</th>
+            <td><code>https://schema.org/workExample</code></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <p>Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Domain(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+        <tr>
+            <th>Range(s)</th>
+            <td>
+                <a href="#CreativeWork">schema:CreativeWork</a><sup class="sup-c" title="class">c</sup>
+            </td>
+        </tr>
+    </table>
+</div>
+</section>
+
+
+<section id="namespaces">
+<h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+<dl>
+    <dt>default (:)</dt>
+    <dd><code>http://materialhub.org/schema/</code></dd>
+    <dt>dc</dt>
+    <dd><code>http://purl.org/dc/terms/</code></dd>
+    <dt>dcat</dt>
+    <dd><code>http://www.w3.org/ns/dcat#</code></dd>
+    <dt>dcmit</dt>
+    <dd><code>http://purl.org/dc/dcmitype/</code></dd>
+    <dt>foaf</dt>
+    <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+    <dt>mat</dt>
+    <dd><code>https://pages.nist.gov/material-schema/</code></dd>
+    <dt>mathub</dt>
+    <dd><code>https://materialhub.org/schema/#</code></dd>
+    <dt>owl</dt>
+    <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+    <dt>prov</dt>
+    <dd><code>http://www.w3.org/ns/prov#</code></dd>
+    <dt>rdf</dt>
+    <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+    <dt>rdfs</dt>
+    <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+    <dt>schema</dt>
+    <dd><code>https://schema.org/</code></dd>
+    <dt>sdo</dt>
+    <dd><code>http://schema.org/</code></dd>
+    <dt>skos</dt>
+    <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+    <dt>void</dt>
+    <dd><code>http://rdfs.org/ns/void#</code></dd>
+    <dt>xsd</dt>
+    <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+</dl>
+</section>
+<section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+</section>
