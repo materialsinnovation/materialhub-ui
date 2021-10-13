@@ -1,0 +1,63 @@
+---
+layout: default
+title: Schema Documentation
+root: .
+description: 'Schemas are used to add structure to data. The origin of the schema is described at the <a href="https://pages.nist.gov/material-schema/Material/">Material Schema page</a>. The schema represents a guide for how to structure data for materialhub and how to interpret data seen on materialhub. This helps ensure that the meaning of the data is preserved, ensures the data remains FAIR, and assists collaboration. The schemas only serve as a guide and materialhub is flexible enough to accept any data. However, to add meaning to new materialhub properties requires creating DefinedTerms, a slightly more complicated process. Therefore, the schema helps with rapid data ingestion.'
+---
+
+<h1>{{ page.title }} </h1>
+<p>{{ page.description }}</p>
+<div id="schemasContainer"></div>
+
+<script>
+    var schemasContainer = document.getElementById("schemasContainer");
+
+    addElement = function(prop, parentList) {
+        if ('description' in prop) {
+            var description = document.createElement('li');
+            description.innerHTML = `<b>${prop.title}:</b> ${prop.description}`;
+
+            parentList.appendChild(description);
+        }
+    }
+
+    collapseNext = function() {
+        console.log('collapseNext called');
+        var schemaList = this.nextElementSibling;
+        if (schemaList.style.display == "none") {
+            this.innerHTML = `${this.id} &#8711`;
+            schemaList.style.display = "block";
+        } else if (schemaList.style.display == "block") {
+            this.innerHTML = `${this.id} &#8882`;
+            schemaList.style.display = "none";
+        }
+    }
+
+    sendHTTPRequest('/objects/?query=type:"Schema"', "GET")
+        .then( response => response.json())
+        .then( schemas => {
+            console.log(schemas)
+
+            schemas.results.forEach(s => {
+                var schemaSection = document.createElement('div');
+                var schemaHeader = document.createElement('h2');
+                var schemaList = document.createElement('ul');
+                schemaHeader.id = s.content.name;
+                schemaHeader.innerHTML = `${s.content.name} &#8711`;
+                schemaHeader.onclick = collapseNext;
+                schemaHeader.style.cursor = "pointer";
+                schemaHeader.style.borderBottom = "solid lightgray";
+                schemaSection.style.display = "block";
+                schemaSection.appendChild(schemaList);
+                schemasContainer.appendChild(schemaHeader);
+                schemasContainer.appendChild(schemaSection);
+                var props = s.content.schema.properties;
+
+                if (props) {
+                    Object.keys(props).forEach(k => addElement(props[k], schemaList));
+                }
+            })
+        });
+
+
+</script>

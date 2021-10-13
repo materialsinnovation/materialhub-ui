@@ -1,0 +1,846 @@
+@prefix mat:    <https://pages.nist.gov/material-schema/> .
+@prefix mathub: <https://materialhub.org/schema/#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+
+<http://materialhub.org/schema/> rdf:type owl:Ontology ;
+    rdfs:label "The materialhub schema"@en ;
+    owl:versionInfo "0.2"@en ;
+    rdfs:comment "Materialhub is a digital object repository for materials science data that combines the power of ontologies and databases. It employs an expanded subset of the schema.org vocabulary to describe materials and topics necessary for databases such as authors, dates, citations, etc. The NIST material-schema is used to supplement schema.org for more materials science specific terminology."@en ;
+    dc:publisher "NIST (https://nist.gov), MINED Research Group (https://matin.gatech.edu/)" .
+
+### Material-Schema Class Declarations ###
+# ------------------------------ #
+
+mat:Experiment          a rdfs:Class .
+mat:File                a rdfs:Class .
+mat:Form                a rdfs:Class .
+mat:Instrument          a rdfs:Class .
+mat:InstrumentAction    a rdfs:Class .
+mat:Material            a rdfs:Class .
+mat:MaterialPerformance a rdfs:Class .
+mat:MaterialProperty    a rdfs:Class .
+mat:MaterialStructure   a rdfs:Class .
+mat:Process             a rdfs:Class .
+mat:ProcessHistory      a rdfs:Class .
+mat:ProcessProtocol     a rdfs:Class .
+mat:UnitOfMeasurement   a rdfs:Class .
+
+
+### MaterialHub Class Declarations ###
+# ------------------------------ #
+
+mathub:User     a rdfs:Class .
+mathub:Group    a rdfs:Class .
+
+
+### MaterialHub Subset of Schema.org Classes ###
+# ------------------------------ #
+
+schema:Thing                a rdfs:Class .
+schema:CreativeWork         a rdfs:Class .
+schema:Action               a rdfs:Class .
+schema:Collection           a rdfs:Class .
+schema:Comment              a rdfs:Class .
+schema:Dataset              a rdfs:Class .
+schema:DefinedTerm          a rdfs:Class .
+schema:DefinedTermSet       a rdfs:Class .
+schema:Organization         a rdfs:Class .
+schema:Person               a rdfs:Class .
+schema:Place                a rdfs:Class .
+schema:Project              a rdfs:Class .
+schema:SoftwareApplication  a rdfs:Class .
+schema:SoftwareSourceCode   a rdfs:Class .
+
+
+### Material-Schema Property Declarations ###
+# ------------------------------ #
+
+mat:conditionObserved       a rdf:Property .
+mat:materialReference       a rdf:Property .
+mat:materialReferenceExtent a rdf:Property .
+mat:parameterControlled     a rdf:Property .
+mat:process                 a rdf:Property .
+mat:processReference        a rdf:Property .
+mat:supplyTo                a rdf:Property .
+mat:uncertainty             a rdf:Property .
+
+
+### MaterialHub Property Definitions ###
+# ------------------------------ #
+
+mathub:users a rdf:Property .
+
+
+### MaterialHub Subset of Schema.org Properties ###
+# ------------------------------ #
+
+# Thing
+schema:alternateName    a rdf:Property .
+schema:description      a rdf:Property .
+schema:identifier       a rdf:Property .
+schema:image            a rdf:Property .
+schema:name             a rdf:Property .
+schema:subjectOf        a rdf:Property .
+schema:url              a rdf:Property .
+
+# Creative Work
+schema:about                a rdf:Property .
+schema:accountablePerson    a rdf:Property .
+schema:author               a rdf:Property .
+schema:citation             a rdf:Property .
+schema:comment              a rdf:Property .
+schema:contributor          a rdf:Property .
+schema:copyrightHolder      a rdf:Property .
+schema:creator              a rdf:Property .
+schema:dateCreated          a rdf:Property .
+schema:dateModified         a rdf:Property .
+schema:datePublished        a rdf:Property .
+schema:editor               a rdf:Property .
+schema:exampleOfWork        a rdf:Property .
+schema:funder               a rdf:Property .
+schema:hasPart              a rdf:Property .
+schema:isPartOf             a rdf:Property .
+schema:keywords             a rdf:Property .
+schema:license              a rdf:Property .
+schema:material             a rdf:Property .
+schema:materialExtent       a rdf:Property .
+schema:provider             a rdf:Property .
+schema:publisher            a rdf:Property .
+schema:spatial              a rdf:Property .
+schema:thumbnailUrl         a rdf:Property .
+schema:workExample          a rdf:Property .
+
+# Action
+schema:agent                a rdf:Property .
+schema:endTime              a rdf:Property .
+schema:instrument           a rdf:Property .
+schema:location             a rdf:Property .
+schema:object               a rdf:Property .
+schema:participant          a rdf:Property .
+schema:result               a rdf:Property .
+schema:startTime            a rdf:Property .
+schema:target               a rdf:Property .
+
+# Dataset
+schema:measurementTechnique     a rdf:Property .
+schema:variableMeasured         a rdf:Property .
+
+# Defined Term
+schema:inDefinedTermSet a rdf:Property .
+schema:termCode         a rdf:Property .
+
+# Person, Place
+schema:address      a rdf:Property .
+schema:affiliation  a rdf:Property .
+schema:email        a rdf:Property .
+schema:familyName   a rdf:Property .
+schema:givenName    a rdf:Property .
+schema:telephone    a rdf:Property .
+
+# Product
+schema:brand            a rdf:Property .
+schema:manufacturer     a rdf:Property .
+schema:model            a rdf:Property .
+schema:productID        a rdf:Property .
+schema:productionDate   a rdf:Property .
+schema:purchaseDate     a rdf:Property .
+schema:serialNumber     a rdf:Property .
+
+# PropertyValue
+schema:maxValue         a rdf:Property .
+schema:minValue         a rdf:Property .
+schema:unitText         a rdf:Property .
+schema:unitCode         a rdf:Property .
+schema:value            a rdf:Property .
+schema:valueReference   a rdf:Property .
+
+# SoftwareApplication
+schema:operatingSystem      a rdf:Property .
+schema:softwareRequirements a rdf:Property .
+schema:softwareVersion      a rdf:Property .
+
+#SoftwareSourceCode
+schema:programmingLanguage  a rdf:Property .
+schema:targetProduct        a rdf:Property .
+
+
+### Material-Schema Class Definitions ###
+# ------------------------------ #
+
+mat:Experiment rdfs:label "Experiment" ;
+    rdfs:subClassOf schema:Dataset .
+
+mat:File rdfs:label "File" ;
+    rdfs:subClassOf schema:Dataset .
+
+mat:Form rdfs:label "Form" ;
+    rdfs:subClassOf schema:File .
+
+mat:Instrument rdfs:label "Instrument" ;
+    rdfs:subClassOf schema:Product , schema:CreativeWork .
+
+mat:InstrumentAction rdfs:subClassOf schema:Action .
+
+mat:Material rdfs:label "Material" ;
+    rdfs:comment "Real or simulated matter with prescribed and actual composition, structure, properties, and performance. Created by a Process." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+mat:MaterialPerformance rdfs:label "MaterialPerformance" ;
+    rdfs:comment "The ability of a material to perform in a given application. Includes the materials response to a complex environment usually as a component or in some other end use application." ;
+    rdfs:subClassOf schema:Dataset .
+
+mat:MaterialProperty rdfs:label "MaterialProperty" ;
+    rdfs:comment "The physical properties of a material. Includes first-principles type properties and those determined through precise testing." ;
+    rdfs:subClassOf schema:Dataset .
+
+mat:MaterialStructure rdfs:label "MaterialStructure" ;
+    rdfs:comment "The structure of a material constitutes the many physical and chemical components of the material and their spatial inter-relationships." ;
+    rdfs:subClassOf schema:Dataset .
+
+mat:Process rdfs:label "Process" ;
+    rdfs:comment "A change in a material due to an environment controlled by natural processes (e.g., solidification, precipitation, grain coarsening, corrosion, etc.), instruments (e.g., furnace, etc.), or simulations (e.g., phase field, etc.)." ;
+    rdfs:subClassOf schema:HowTo , schema:Dataset .
+
+mat:ProcessProtocol rdfs:label "ProcessProtocol" ;
+    rdfs:comment "The intended or prescribed process." ;
+    rdfs:subClassOf mat:Process .
+    
+mat:ProcessHistory rdfs:label "ProcessHistory" ;
+    rdfs:comment "The actual process as determined by measurements." ;
+    rdfs:subClassOf mat:Process .
+
+mat:UnitOfMeasurement rdfs:label "UnitOfMeasurement" ;
+    rdfs:subClassOf schema:DefinedTerm .
+
+
+### MaterialHub Class Definitions ###
+# ------------------------------ #
+
+mathub:User rdfs:label "User" ;
+    rdfs:comment "A registered user of the materialhub site." ;
+    rdfs:subClassOf schema:Person .
+
+mathub:Group rdfs:label "Group" ;
+    rdfs:comment "A group of registered materialhub users." ;
+    rdfs:subClassOf schema:Organization .
+
+
+### MaterialHub Subset of Schema.org Classes ###
+# ------------------------------ #
+
+schema:Thing rdfs:label "Thing" ;
+    rdfs:comment "The most generic type of item." .
+
+schema:CreativeWork rdfs:label "CreativeWork" ;
+    rdfs:comment "The most generic kind of creative work, including books, movies, photographs, software programs, etc." ;
+    rdfs:subClassOf schema:Thing ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews> .
+
+schema:Action rdfs:label "Action" ;
+    rdfs:comment "An action performed by a direct agent and indirect participants upon a direct object. Optionally happens at a location with the help of an inanimate instrument. The execution of the action may produce a result. Specific action sub-type documentation specifies the exact expectation of each argument/role.\n\nSee also [blog post](http://blog.schema.org/2014/04/announcing-schemaorg-actions.html) and [Actions overview document](schema:docs/actions.html)." ;
+    rdfs:subClassOf schema:Thing ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass> .
+
+schema:Collection rdfs:label "Collection" ;
+    rdfs:comment "A collection of items e.g. creative works or products." ;
+    rdfs:subClassOf schema:CreativeWork ;
+    schema:isPartOf <https://bib.schema.org> .
+
+schema:Comment rdfs:label "Comment" ;
+    rdfs:comment "A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the [[text]] property, and its topic via [[about]], properties shared with all CreativeWorks." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+schema:Dataset rdfs:label "Dataset" ;
+    rdfs:comment "A body of structured information describing some topic(s) of interest." ;
+    rdfs:subClassOf schema:CreativeWork ;
+    owl:equivalentClass <http://purl.org/dc/dcmitype/Dataset> ;
+    owl:equivalentClass <http://rdfs.org/ns/void#Dataset> ;
+    owl:equivalentClass <http://www.w3.org/ns/dcat#Dataset> ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClass> .
+
+schema:DefinedTerm rdfs:label "DefinedTerm" ;
+    rdfs:comment "A word, name, acronym, phrase, etc. with a formal definition. Often used in the context of category or subject classification, glossaries or dictionaries, product or creative work types, etc. Use the name property for the term being defined, use termCode if the term has an alpha-numeric code allocated, use description to provide the definition of the term." ;
+    rdfs:subClassOf schema:Intangible ;
+    schema:isPartOf <https://pending.schema.org> ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/894> .
+
+schema:DefinedTermSet rdfs:label "DefinedTermSet" ;
+    rdfs:comment "A set of defined terms for example a set of categories or a classification scheme, a glossary, dictionary or enumeration." ;
+    rdfs:subClassOf schema:CreativeWork ;
+    schema:isPartOf <https://pending.schema.org> ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/894> .
+
+schema:Organization rdfs:label "Organization" ;
+    rdfs:comment "An organization such as a school, NGO, corporation, club, etc." ;
+    rdfs:subClassOf schema:Thing .
+
+schema:Person rdfs:label "Person" ;
+    rdfs:comment "A person (alive, dead, undead, or fictional)." ;
+    rdfs:subClassOf schema:Thing ;
+    owl:equivalentClass <http://xmlns.com/foaf/0.1/Person> ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews> .
+
+schema:Place rdfs:label "Place" ;
+    rdfs:comment "Entities that have a somewhat fixed, physical extension." ;
+    rdfs:subClassOf schema:Thing .
+
+schema:Project rdfs:label "Project" ;
+    rdfs:comment "An enterprise (potentially individual but typically collaborative), planned to achieve a particular aim. Use properties from [[Organization]], [[subOrganization]]/[[parentOrganization]] to indicate project sub-structures. " ;
+    rdfs:subClassOf schema:Organization ;
+    schema:isPartOf <https://pending.schema.org> ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/383> ;
+    schema:source <https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FundInfoCollab> .
+
+schema:SoftwareApplication rdfs:label "SoftwareApplication" ;
+    rdfs:comment "A software application." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+schema:SoftwareSourceCode rdfs:label "SoftwareSourceCode" ;
+    rdfs:comment "Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+
+### Material-Schema Property Definitions ###
+# ------------------------------ #
+
+mat:conditionObserved rdfs:label "conditionObserved" ;
+    rdfs:comment "The conditions observed while studying a process, studying a material, or taking some type of measurement." ;
+    rdfs:domain schema:Dataset , schema:HowTo , schema:PropertyValue ;
+    rdfs:range schema:PropertyValue , schema:DefinedTerm .
+
+mat:materialReference rdfs:label "materialReference" ;
+    rdfs:comment "A control material or material definition that adds reference to this object" ;
+    rdfs:domain schema:Dataset ;
+    rdfs:range mat:Material .
+
+mat:materialReferenceExtent rdfs:label "materialReference" ;
+    rdfs:comment "The material quantity of a control material or material definition that adds reference to this object" ;
+    rdfs:domain schema:Dataset ;
+    rdfs:range mat:Material .
+
+mat:parameterControlled rdfs:label "parameterControlled" ;
+    rdfs:comment "A parameter that can be controlled by an instrument, simulation parameter, or other means." ;
+    rdfs:domain schema:Dataset , schema:HowTo , schema:PropertyValue ;
+    rdfs:range schema:PropertyValue , schema:DefinedTerm .
+
+mat:process rdfs:label "process" ;
+    rdfs:comment "A process history that has occured and which this object describes." ;
+    rdfs:domain schema:Dataset ;
+    rdfs:range mat:ProcessHistory .
+
+mat:processReference rdfs:label "processReference" ;
+    rdfs:comment "A control process or process protocol to which this object is related to." ;
+    rdfs:domain schema:Dataset ;
+    rdfs:range mat:Process .
+
+mat:supplyTo rdfs:label "supplyTo" ;
+    rdfs:comment "The material supply for a process." ;
+    rdfs:domain mat:Material ;
+    rdfs:range mat:Process .
+    
+mat:uncertainty rdfs:label "uncertainty" ;
+    rdfs:comment "uncertainty in some measured property" ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:range schema:PropertyValue , schema:Number .
+
+
+### MaterialHub Property Definitions ###
+# ------------------------------ #
+
+mathub:users rdfs:label "users" ;
+    rdfs:domain mathub:Group ;
+    rdfs:range mathub:User .
+
+
+### MaterialHub Subset of Schema.org Properties ###
+# ------------------------------ #
+
+# Thing
+schema:alternateName rdfs:label "alternateName" ;
+    rdfs:comment "An alias for the item." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range schema:Text .
+
+schema:description rdfs:label "description" ;
+    rdfs:comment "A description of the item." ;
+    owl:equivalentProperty dc:description ;
+    rdfs:domain schema:Thing ;
+    rdfs:range schema:Text .
+
+schema:identifier rdfs:label "identifier" ;
+    rdfs:comment "The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details." ;
+    owl:equivalentProperty dc:identifier ;
+    rdfs:domain schema:Thing ;
+    rdfs:range schema:PropertyValue ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:URL .
+
+schema:image rdfs:label "image" ;
+    rdfs:comment "An image of the item. This can be a [[URL]] or a fully described [[ImageObject]]." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range schema:URL .
+
+schema:name rdfs:label "name" ;
+    rdfs:comment "The name of the item." ;
+    rdfs:subPropertyOf rdfs:label ;
+    owl:equivalentProperty dc:title ;
+    rdfs:domain schema:Thing ;
+    rdfs:range schema:Text .
+
+schema:subjectOf rdfs:label "subjectOf" ;
+    rdfs:comment "A CreativeWork or Event about this Thing." ;
+    rdfs:domain schema:Thing ;
+    schema:inverseOf schema:about ;
+    rdfs:range schema:CreativeWork ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/1670> .
+
+schema:url rdfs:label "url" ;
+    rdfs:comment "URL of the item." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range schema:URL .
+
+# Creative Work
+schema:about rdfs:label "about" ;
+    rdfs:comment "The subject matter of the content." ;
+    rdfs:domain schema:CreativeWork ;
+    schema:inverseOf schema:subjectOf ;
+    rdfs:range schema:Thing ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/1670> .
+
+schema:accountablePerson rdfs:label "accountablePerson" ;
+    rdfs:comment "Specifies the Person that is legally accountable for the CreativeWork." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Person .
+
+schema:author rdfs:label "author" ;
+    rdfs:comment "The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:citation rdfs:label "citation" ;
+    rdfs:comment "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:range schema:Text .
+
+schema:comment rdfs:label "comment" ;
+    rdfs:comment "Comments, typically from users." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Comment .
+
+schema:contributor rdfs:label "contributor" ;
+    rdfs:comment "A secondary contributor to the CreativeWork or Event." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:copyrightHolder rdfs:label "copyrightHolder" ;
+    rdfs:comment "The party holding the legal copyright to the CreativeWork." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:creator rdfs:label "creator" ;
+    rdfs:comment "The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:dateCreated rdfs:label "dateCreated" ;
+    rdfs:comment "The date on which the CreativeWork was created or the item was added to a DataFeed." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Date ;
+    rdfs:range schema:DateTime .
+
+schema:dateModified rdfs:label "dateModified" ;
+    rdfs:comment "The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Date ;
+    rdfs:range schema:DateTime .
+
+schema:datePublished rdfs:label "datePublished" ;
+    rdfs:comment "Date of first broadcast/publication." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Date ;
+    rdfs:range schema:DateTime .
+
+schema:editor rdfs:label "editor" ;
+    rdfs:comment "Specifies the Person who edited the CreativeWork." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Person .
+
+schema:exampleOfWork rdfs:label "exampleOfWork" ;
+    rdfs:comment "A creative work that this work is an example/instance/realization/derivation of." ;
+    rdfs:domain schema:CreativeWork ;
+    schema:inverseOf schema:workExample ;
+    rdfs:range schema:CreativeWork ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex> .
+
+schema:funder rdfs:label "funder" ;
+    rdfs:comment "A person or organization that supports (sponsors) something through some kind of financial contribution." ;
+    rdfs:subPropertyOf schema:sponsor ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:domain schema:Organization ;
+    rdfs:domain schema:Person ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:hasPart rdfs:label "hasPart" ;
+    rdfs:comment "Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense)." ;
+    rdfs:domain schema:CreativeWork ;
+    schema:inverseOf schema:isPartOf ;
+    rdfs:range schema:CreativeWork ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex> .
+
+schema:isPartOf rdfs:label "isPartOf" ;
+    rdfs:comment "Indicates an item or CreativeWork that this item, or CreativeWork (in some sense), is part of." ;
+    rdfs:domain schema:CreativeWork ;
+    schema:inverseOf schema:hasPart ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:range schema:URL .
+
+schema:keywords rdfs:label "keywords" ;
+    rdfs:comment "Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:DefinedTerm ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:URL .
+
+schema:license rdfs:label "license" ;
+    rdfs:comment "A license document that applies to this content, typically indicated by URL." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:range schema:URL .
+
+schema:material rdfs:label "material" ;
+    rdfs:comment "A material that something is made from, e.g. leather, wool, cotton, paper." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Product ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:URL .
+
+schema:materialExtent rdfs:label "materialExtent" ;
+    rdfs:comment "The quantity of the materials being described or an expression of the physical space they occupy." ;
+    rdfs:domain schema:CreativeWork ;
+    schema:isPartOf <https://pending.schema.org> ;
+    rdfs:range schema:QuantitativeValue ;
+    rdfs:range schema:Text ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/1759> .
+
+schema:provider rdfs:label "provider" ;
+    rdfs:comment "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Organization , schema:Person ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/2289> .
+
+schema:publisher rdfs:label "publisher" ;
+    rdfs:comment "The publisher of the creative work." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Organization , schema:Person .
+
+schema:spatial rdfs:label "spatial" ;
+    rdfs:comment """The 'spatial' property can be used in cases when more specific properties
+(e.g. [[locationCreated]], [[spatialCoverage]], [[contentLocation]]) are not known to be appropriate.""" ;
+    owl:equivalentProperty dc:spatial ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Place .
+
+schema:thumbnailUrl rdfs:label "thumbnailUrl" ;
+    rdfs:comment "A thumbnail image relevant to the Thing." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:URL .
+
+schema:workExample rdfs:label "workExample" ;
+    rdfs:comment "Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook." ;
+    rdfs:domain schema:CreativeWork ;
+    schema:inverseOf schema:exampleOfWork ;
+    rdfs:range schema:CreativeWork ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex> .
+
+# Action
+schema:agent rdfs:label "agent" ;
+    rdfs:comment "The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:endTime rdfs:label "endTime" ;
+    rdfs:comment "The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*. For media, including audio and video, it's the time offset of the end of a clip within a larger file.\n\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:DateTime , schema:Time ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/2493> .
+
+schema:instrument rdfs:label "instrument" ;
+    rdfs:comment "The object that helped the agent perform the action. e.g. John wrote a book with *a pen*." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Thing .
+
+schema:location rdfs:label "location" ;
+    rdfs:comment "The location of, for example, where an event is happening, where an organization is located, or where an action takes place." ;
+    rdfs:domain schema:Action ;
+    rdfs:domain schema:Organization ;
+    rdfs:range schema:Place ;
+    rdfs:range schema:PostalAddress ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:VirtualLocation .
+
+schema:object rdfs:label "object" ;
+    rdfs:comment "The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Thing .
+
+schema:participant rdfs:label "participant" ;
+    rdfs:comment "Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Organization ;
+    rdfs:range schema:Person .
+
+schema:result rdfs:label "result" ;
+    rdfs:comment "The result produced in the action. e.g. John wrote *a book*." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Thing .
+
+schema:startTime rdfs:label "startTime" ;
+    rdfs:comment "The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.\n\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:DateTime ;
+    rdfs:range schema:Time ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/2493> .
+
+schema:target rdfs:label "target" ;
+    rdfs:comment "Indicates a target EntryPoint for an Action." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Thing .
+
+# Dataset
+schema:measurementTechnique rdfs:label "measurementTechnique" ;
+    rdfs:comment """A technique or technology used in a [[Dataset]] (or [[DataDownload]], [[DataCatalog]]), corresponding to the method used for measuring the corresponding variable(s) (described using [[variableMeasured]]). This is oriented towards scientific and scholarly dataset publication but may have broader applicability; it is not intended as a full representation of measurement, but rather as a high level summary for dataset discovery. For example, if [[variableMeasured]] is: molecule concentration, [[measurementTechnique]] could be: 'mass spectrometry' or 'nmr spectroscopy' or 'colorimetry' or 'immunofluorescence'. If the [[variableMeasured]] is 'depression rating', the [[measurementTechnique]] could be 'Zung Scale' or 'HAM-D' or 'Beck Depression Inventory'. If there are several [[variableMeasured]] properties recorded for some given data object, use a [[PropertyValue]] for each [[variableMeasured]] and attach the corresponding [[measurementTechnique]].""" ;
+    rdfs:domain schema:DataDownload ;
+    rdfs:domain schema:Dataset ;
+    rdfs:domain schema:PropertyValue ;
+    schema:isPartOf <https://pending.schema.org> ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:URL ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/1425> .
+
+schema:variableMeasured rdfs:label "variableMeasured" ;
+    rdfs:comment "The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue." ;
+    rdfs:domain schema:Dataset ;
+    schema:isPartOf <https://pending.schema.org> ;
+    rdfs:range schema:PropertyValue ;
+    rdfs:range schema:Text ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/1083> .
+
+# Defined Term
+schema:inDefinedTermSet rdfs:label "inDefinedTermSet" ;
+    rdfs:comment "A [[DefinedTermSet]] that contains this term." ;
+    rdfs:subPropertyOf schema:isPartOf ;
+    rdfs:domain schema:DefinedTerm ;
+    schema:isPartOf <https://pending.schema.org> ;
+    rdfs:range schema:DefinedTermSet ;
+    rdfs:range schema:URL ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/894> .
+
+schema:termCode rdfs:label "termCode" ;
+    rdfs:comment "A code that identifies this [[DefinedTerm]] within a [[DefinedTermSet]]" ;
+    rdfs:domain schema:DefinedTerm ;
+    schema:isPartOf <https://pending.schema.org> ;
+    rdfs:range schema:Text ;
+    schema:source <https://github.com/schemaorg/schemaorg/issues/894> .
+
+# Person, Place
+schema:address rdfs:label "address" ;
+    rdfs:comment "Physical address of the item." ;
+    rdfs:domain schema:Organization ;
+    rdfs:domain schema:Person ;
+    rdfs:domain schema:Place ;
+    rdfs:range schema:PostalAddress ;
+    rdfs:range schema:Text .
+
+schema:affiliation rdfs:label "affiliation" ;
+    rdfs:comment "An organization that this person is affiliated with. For example, a school/university, a club, or a team." ;
+    rdfs:domain schema:Person ;
+    rdfs:range schema:Organization .
+
+schema:email rdfs:label "email" ;
+    rdfs:comment "Email address." ;
+    rdfs:domain schema:Organization ;
+    rdfs:domain schema:Person ;
+    rdfs:range schema:Text .
+
+schema:familyName rdfs:label "familyName" ;
+    rdfs:comment "Family name. In the U.S., the last name of a Person." ;
+    rdfs:domain schema:Person ;
+    rdfs:range schema:Text .
+
+schema:givenName rdfs:label "givenName" ;
+    rdfs:comment "Given name. In the U.S., the first name of a Person." ;
+    rdfs:domain schema:Person ;
+    rdfs:range schema:Text .
+
+schema:telephone rdfs:label "telephone" ;
+    rdfs:comment "The telephone number." ;
+    rdfs:domain schema:Organization ;
+    rdfs:domain schema:Person ;
+    rdfs:domain schema:Place ;
+    rdfs:range schema:Text .
+
+# Product
+schema:brand rdfs:label "brand" ;
+    rdfs:comment "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person." ;
+    rdfs:domain schema:Organization ;
+    rdfs:domain schema:Person ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Brand ;
+    rdfs:range schema:Organization .
+
+schema:manufacturer rdfs:label "manufacturer" ;
+    rdfs:comment "The manufacturer of the product." ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Organization .
+
+schema:model rdfs:label "model" ;
+    rdfs:comment "The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties." ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:ProductModel ;
+    rdfs:range schema:Text .
+
+schema:productID rdfs:label "productID" ;
+    rdfs:comment """The product identifier, such as ISBN. For example: ``` meta itemprop='productID' content='isbn:123-456-789' ```.""" ;
+    rdfs:subPropertyOf schema:identifier ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Text .
+
+schema:productionDate rdfs:label "productionDate" ;
+    rdfs:comment "The date of production of the item, e.g. vehicle." ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Date ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group> .
+
+schema:purchaseDate rdfs:label "purchaseDate" ;
+    rdfs:comment "The date the item e.g. vehicle was purchased by the current owner." ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Date ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group> .
+
+schema:serialNumber rdfs:label "serialNumber" ;
+    rdfs:comment "The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer." ;
+    rdfs:subPropertyOf schema:identifier ;
+    rdfs:domain schema:Product ;
+    rdfs:range schema:Text ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+# PropertyValue
+schema:maxValue rdfs:label "maxValue" ;
+    rdfs:comment "The upper value of some characteristic or property." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:domain schema:QuantitativeValue ;
+    rdfs:range schema:Number ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+schema:minValue rdfs:label "minValue" ;
+    rdfs:comment "The lower value of some characteristic or property." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:domain schema:QuantitativeValue ;
+    rdfs:range schema:Number ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+schema:unitText rdfs:label "unitText" ;
+    rdfs:comment "A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for <a href='unitCode'>unitCode</a>." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:domain schema:QuantitativeValue ;
+    rdfs:range schema:Text .
+
+schema:unitCode rdfs:label "unitCode" ;
+    rdfs:comment "The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:domain schema:QuantitativeValue ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:URL ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+schema:value rdfs:label "value" ;
+    rdfs:comment "The value of the quantitative value or property value node.\n\n* For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type for values is 'Number'.\n* For [[PropertyValue]], it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.\n* Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.\n* Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:domain schema:QuantitativeValue ;
+    rdfs:range schema:Boolean ;
+    rdfs:range schema:Number ;
+    rdfs:range schema:PropertyValue ;
+    rdfs:range schema:Text ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+schema:valueReference rdfs:label "valueReference" ;
+    rdfs:comment "A secondary value that provides additional information on the original value, e.g. a reference temperature or a type of measurement." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:domain schema:QuantitativeValue ;
+    rdfs:range schema:DefinedTerm ;
+    rdfs:range schema:PropertyValue ;
+    rdfs:range schema:QuantitativeValue ;
+    rdfs:range schema:Text ;
+    schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+# SoftwareApplication
+schema:operatingSystem rdfs:label "operatingSystem" ;
+    rdfs:comment "Operating systems supported (Windows 7, OSX 10.6, Android 1.6, etc.)." ;
+    rdfs:domain schema:SoftwareApplication ;
+    rdfs:range schema:Text .
+
+schema:softwareRequirements rdfs:label "softwareRequirements" ;
+    rdfs:comment "Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime)." ;
+    rdfs:domain schema:SoftwareApplication ;
+    rdfs:range schema:Text ;
+    rdfs:range schema:URL .
+
+schema:softwareVersion rdfs:label "softwareVersion" ;
+    rdfs:comment "Version of the software instance." ;
+    rdfs:domain schema:SoftwareApplication ;
+    rdfs:range schema:Text .
+
+#SoftwareSourceCode
+schema:programmingLanguage rdfs:label "programmingLanguage" ;
+    rdfs:comment "The computer programming language." ;
+    rdfs:domain schema:SoftwareSourceCode ;
+    rdfs:range schema:Text .
+
+schema:targetProduct rdfs:label "targetProduct" ;
+    rdfs:comment "Target Operating System / Product to which the code applies.  If applies to several versions, just the product name can be used." ;
+    rdfs:domain schema:SoftwareSourceCode ;
+    rdfs:range schema:SoftwareApplication .
+
+### Material-Schema Extensions to Schema.org Property Definitions ###
+# ------------------------------ #
+
+schema:measurementTechnique rdfs:domain schema:DefinedTerm , 
+        mat:Instrument ,
+        schema:SoftwareApplication , 
+        schema:SoftwareSourceCode ,
+        schema:PropertyValue .
+
+schema:material rdfs:comment "A material sample which this object describes." ;
+    rdfs:range mat:Material .
+
+schema:materialExtent rdfs:range mat:Material .
+
+schema:location rdfs:domain schema:Product .
+
+mat:unitText rdfs:comment "units (in text) of the measured property" ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:range schema:Text .
+
+mat:unitCode rdfs:comment "units (in text) of the measured property" ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:range mat:UnitOfMeasurement .
+
+
+### MaterialHub Extensions to Schema.org Property Definitions ###
+# ------------------------------ #
+

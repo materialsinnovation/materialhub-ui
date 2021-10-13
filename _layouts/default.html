@@ -17,13 +17,19 @@
     <!-- Theme CSS -->
     <link href="{{ site.baseurl }}/static/css/style.css" rel="stylesheet"/>
 
+    <!-- Theme CSS -->
+    {% if page.stylesheet %}
+    <link href="{{ site.baseurl }}/static/css/{{ page.stylesheet }}.css" rel="stylesheet"/>
+    {% endif %}
+
     <link rel="shortcut icon" type="image/png" href="favicon.png">
 
     <!-- WebPage Schema.org -->
     <script type="application/ld+json">
         {
+            "@id": "{{ site.baseurl }}{{ page.permalink }}",
             "@context": "http://schema.org/",
-            "@type": "WebPage",
+            "@type": "{{ page.type | default:WebPage }}",
             "name": "{{ page.title }} - {{ site.title }}",
             "url": "{{ site.baseurl }}{{ page.permalink }}",
             "description": "{{ page.description }}"
