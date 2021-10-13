@@ -6,4 +6,1349 @@ description: ''
 ---
 
 <h1>{{ page.title }}</h1>
-<p>Coming Really Soon. Finally.</p>
+
+<link rel="stylesheet" href="periodic-table.css" />
+<script src="periodic_search.js"></script>
+<div>
+    <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Periodic Table Search"
+        aria-label="Search"
+        name="query"
+        id="searchBox"
+        size="100"
+    />
+    <label for="pageSize">Records per page: </label>
+    <select name="pageSize" id="pageSize">
+        <option value="1">1</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    <button
+        class="btn btn-outline-dark my-2 my-sm-0"
+        type="button"
+        onClick="submitSearch()"
+    >
+        Search
+    </button>
+    <button
+        class="btn btn-outline-dark my-2 my-sm-0"
+        type="reset"
+        name="reset"
+        onClick="resetPage()"
+    >
+        Reset
+    </button>
+    <div>
+        <label for="elementsRequired">Elements Included: </label>
+        <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Required Elements"
+            aria-label="Search"
+            name="query"
+            id="elementsRequired"
+            size="50"
+            disabled
+        />
+        <br />
+        <label for="elementsExcluded">Elements Excluded: </label>
+        <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Excluded Elements"
+            aria-label="Search"
+            name="query"
+            id="elementsExcluded"
+            size="50"
+            disabled
+        />
+    </div>
+</div>
+<br />
+
+<div class="container">
+    <div id="container" class="container">
+        <div id="numberResults"></div>
+        <br /><br />
+        <table>
+            <tbody>
+                <tr>
+                    <td class="element non-metal">
+                        <div
+                            id="1"
+                            title="H"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            1<br />H
+                        </div>
+                    </td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element noble">
+                        <div
+                            id="2"
+                            title="He"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            2<br />He
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="element alkali">
+                        <div
+                            id="3"
+                            title="Li"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            3<br />Li
+                        </div>
+                    </td>
+                    <td class="element alkaline">
+                        <div
+                            id="4"
+                            title="Be"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            4<br />Be
+                        </div>
+                    </td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element metalloid">
+                        <div
+                            id="5"
+                            title="B"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            5<br />B
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="6"
+                            title="C"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            6<br />C
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="7"
+                            title="N"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            7<br />N
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="8"
+                            title="O"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            8<br />O
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="9"
+                            title="F"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            9<br />F
+                        </div>
+                    </td>
+                    <td class="element noble">
+                        <div
+                            id="10"
+                            title="Ne"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            10<br />Ne
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="element alkali">
+                        <div
+                            id="11"
+                            title="Na"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            11<br />Na
+                        </div>
+                    </td>
+                    <td class="element alkaline">
+                        <div
+                            id="12"
+                            title="Mg"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            12<br />Mg
+                        </div>
+                    </td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element empty"><br /></td>
+                    <td class="element post-transition">
+                        <div
+                            id="13"
+                            title="Al"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            13<br />Al
+                        </div>
+                    </td>
+                    <td class="element metalloid">
+                        <div
+                            id="14"
+                            title="Si"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            14<br />Si
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="15"
+                            title="P"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            15<br />P
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="16"
+                            title="S"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            16<br />S
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="17"
+                            title="Cl"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            17<br />Cl
+                        </div>
+                    </td>
+                    <td class="element noble">
+                        <div
+                            id="18"
+                            title="Ar"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            18<br />Ar
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="element alkali">
+                        <div
+                            id="19"
+                            title="K"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            19<br />K
+                        </div>
+                    </td>
+                    <td class="element alkaline">
+                        <div
+                            id="20"
+                            title="Ca"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            20<br />Ca
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="21"
+                            title="Sc"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            21<br />Sc
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="22"
+                            title="Ti"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            22<br />Ti
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="23"
+                            title="V"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            23<br />V
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="24"
+                            title="Cr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            24<br />Cr
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="25"
+                            title="Mn"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            25<br />Mn
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="26"
+                            title="Fe"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            26<br />Fe
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="27"
+                            title="Co"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            27<br />Co
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="28"
+                            title="Ni"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            28<br />Ni
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="29"
+                            title="Cu"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            29<br />Cu
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="30"
+                            title="Zn"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            30<br />Zn
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="31"
+                            title="Ga"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            31<br />Ga
+                        </div>
+                    </td>
+                    <td class="element metalloid">
+                        <div
+                            id="32"
+                            title="Ge"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            32<br />Ge
+                        </div>
+                    </td>
+                    <td class="element metalloid">
+                        <div
+                            id="33"
+                            title="As"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            33<br />As
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="34"
+                            title="Se"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            34<br />Se
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="35"
+                            title="Br"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            35<br />Br
+                        </div>
+                    </td>
+                    <td class="element noble">
+                        <div
+                            id="36"
+                            title="Kr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            36<br />Kr
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="element alkali">
+                        <div
+                            id="37"
+                            title="Rb"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            37<br />Rb
+                        </div>
+                    </td>
+                    <td class="element alkaline">
+                        <div
+                            id="38"
+                            title="Sr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            38<br />Sr
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="39"
+                            title="Y"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            39<br />Y
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="40"
+                            title="Zr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            40<br />Zr
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="41"
+                            title="Nb"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            41<br />Nb
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="42"
+                            title="Mo"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            42<br />Mo
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="43"
+                            title="Tc"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            43<br />Tc
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="44"
+                            title="Ru"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            44<br />Ru
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="45"
+                            title="Rh"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            45<br />Rh
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="46"
+                            title="Pd"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            46<br />Pd
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="47"
+                            title="Ag"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            47<br />Ag
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="48"
+                            title="Cd"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            48<br />Cd
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="49"
+                            title="In"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            49<br />In
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="50"
+                            title="Sn"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            50<br />Sn
+                        </div>
+                    </td>
+                    <td class="element metalloid">
+                        <div
+                            id="51"
+                            title="Sb"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            51<br />Sb
+                        </div>
+                    </td>
+                    <td class="element metalloid">
+                        <div
+                            id="52"
+                            title="Te"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            52<br />Te
+                        </div>
+                    </td>
+                    <td class="element non-metal">
+                        <div
+                            id="53"
+                            title="I"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            53<br />I
+                        </div>
+                    </td>
+                    <td class="element noble">
+                        <div
+                            id="54"
+                            title="Xe"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            54<br />Xe
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="element alkali">
+                        <div
+                            id="55"
+                            title="Cs"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            55<br />Cs
+                        </div>
+                    </td>
+                    <td class="element alkaline">
+                        <div
+                            id="56"
+                            title="Ba"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            56<br />Ba
+                        </div>
+                    </td>
+                    <td class="element star">*<br /></td>
+                    <td class="element transition">
+                        <div
+                            id="72"
+                            title="Hf"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            72<br />Hf
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="73"
+                            title="Ta"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            73<br />Ta
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="74"
+                            title="W"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            74<br />W
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="75"
+                            title="Re"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            75<br />Re
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="76"
+                            title="Os"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            76<br />Os
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="77"
+                            title="Ir"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            77<br />Ir
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="78"
+                            title="Pt"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            78<br />Pt
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="79"
+                            title="Au"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            79<br />Au
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="80"
+                            title="Hg"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            80<br />Hg
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="81"
+                            title="Tl"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            81<br />Tl
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="82"
+                            title="Pb"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            82<br />Pb
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="83"
+                            title="Bi"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            83<br />Bi
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="84"
+                            title="Po"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            84<br />Po
+                        </div>
+                    </td>
+                    <td class="element metalloid">
+                        <div
+                            id="85"
+                            title="At"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            85<br />At
+                        </div>
+                    </td>
+                    <td class="element noble">
+                        <div
+                            id="86"
+                            title="Rn"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            86<br />Rn
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="element alkali">
+                        <div
+                            id="87"
+                            title="Fr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            87<br />Fr
+                        </div>
+                    </td>
+                    <td class="element alkaline">
+                        <div
+                            id="88"
+                            title="Ra"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            88<br />Ra
+                        </div>
+                    </td>
+                    <td class="element star">**<br /></td>
+                    <td class="element transition">
+                        <div
+                            id="104"
+                            title="Rf"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            104<br />Rf
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="105"
+                            title="Db"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            105<br />Db
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="106"
+                            title="Sg"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            106<br />Sg
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="107"
+                            title="Bh"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            107<br />Bh
+                        </div>
+                    </td>
+                    <td class="element transition">
+                        <div
+                            id="108"
+                            title="Hs"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            108<br />Hs
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="109"
+                            title="Mt"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            109<br />Mt
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="110"
+                            title="Ds"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            110<br />Ds
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="111"
+                            title="Rg"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            111<br />Rg
+                        </div>
+                    </td>
+                    <td class="element post-transition">
+                        <div
+                            id="112"
+                            title="Cn"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            112<br />Cn
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="113"
+                            title="Nh"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            113<br />Nh
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="114"
+                            title="Fl"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            114<br />Fl
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="115"
+                            title="Mc"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            115<br />Mc
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="116"
+                            title="Lv"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            116<br />Lv
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="117"
+                            title="Ts"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            117<br />Ts
+                        </div>
+                    </td>
+                    <td class="element unclassified">
+                        <div
+                            id="118"
+                            title="Og"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            118<br />Og
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                    <td class="separator"><br /></td>
+                </tr>
+                <tr>
+                    <td class="element empty"><br /></td>
+                    <td class="element star">*</td>
+                    <td class="element lanthanide">
+                        <div
+                            id="57"
+                            title="La"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            57<br />La
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="58"
+                            title="Ce"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            58<br />Ce
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="59"
+                            title="Pr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            59<br />Pr
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="60"
+                            title="Nd"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            60<br />Nd
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="61"
+                            title="Pm"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            61<br />Pm
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="62"
+                            title="Sm"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            62<br />Sm
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="63"
+                            title="Eu"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            63<br />Eu
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="64"
+                            title="Gd"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            64<br />Gd
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="65"
+                            title="Tb"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            65<br />Tb
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="66"
+                            title="Dy"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            66<br />Dy
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="67"
+                            title="Ho"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            67<br />Ho
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="68"
+                            title="Er"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            68<br />Er
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="69"
+                            title="Tm"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            69<br />Tm
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="70"
+                            title="Yb"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            70<br />Yb
+                        </div>
+                    </td>
+                    <td class="element lanthanide">
+                        <div
+                            id="71"
+                            title="Lu"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            71<br />Lu
+                        </div>
+                    </td>
+                    <td class="element empty"><br /></td>
+                </tr>
+                <tr>
+                    <td class="element empty"><br /></td>
+                    <td class="element star">**<br /></td>
+                    <td class="element actinide">
+                        <div
+                            id="89"
+                            title="Ac"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            89<br />Ac
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="90"
+                            title="Th"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            90<br />Th
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="91"
+                            title="Pa"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            91<br />Pa
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="92"
+                            title="U"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            92<br />U
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="93"
+                            title="Np"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            93<br />Np
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="94"
+                            title="Pu"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            94<br />Pu
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="95"
+                            title="Am"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            95<br />Am
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="96"
+                            title="Cm"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            96<br />Cm
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="97"
+                            title="Bk"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            97<br />Bk
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="98"
+                            title="Cf"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            98<br />Cf
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="99"
+                            title="Es"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            99<br />Es
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="100"
+                            title="Fm"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            100<br />Fm
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="101"
+                            title="Md"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            101<br />Md
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="102"
+                            title="No"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            102<br />No
+                        </div>
+                    </td>
+                    <td class="element actinide">
+                        <div
+                            id="103"
+                            title="Lr"
+                            class="symbol"
+                            onclick="elementClick(event)"
+                        >
+                            103<br />Lr
+                        </div>
+                    </td>
+                    <td class="element empty"><br /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<div id="resultsShowing"></div>
+<br />
+<div id="pageNav" class="pagination-container"></div>
+<br />
+<table
+    id="results_table"
+    class="table table-striped table-bordered table-hover"
+></table>
+<div id="bottomPageNav" class="pagination-container"></div>
